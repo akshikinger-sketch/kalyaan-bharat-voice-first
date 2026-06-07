@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kalyaan Bharat - Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#ffdcc4",
+                        "on-primary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#6f3800",
+                        "inverse-primary": "#82d3de",
+                        "secondary-container": "#ffab69",
+                        "primary-fixed-dim": "#82d3de",
+                        "inverse-surface": "#293234",
+                        "background": "#f2fbfe",
+                        "outline": "#6f797a",
+                        "on-tertiary-container": "#a9ece4",
+                        "on-primary-container": "#9becf7",
+                        "surface-container-highest": "#dbe4e7",
+                        "outline-variant": "#bec8ca",
+                        "surface-dim": "#d2dcde",
+                        "tertiary-fixed-dim": "#90d3cb",
+                        "on-background": "#141d1f",
+                        "on-surface": "#141d1f",
+                        "inverse-on-surface": "#e9f2f5",
+                        "tertiary-container": "#286d67",
+                        "primary": "#00535b",
+                        "primary-fixed": "#9ff0fb",
+                        "on-surface-variant": "#3e494a",
+                        "on-primary-fixed": "#001f23",
+                        "surface-tint": "#006972",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#e6eff2",
+                        "surface-bright": "#f2fbfe",
+                        "secondary": "#8e4e14",
+                        "on-tertiary-fixed-variant": "#00504b",
+                        "primary-container": "#006d77",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#2f1400",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#004f56",
+                        "tertiary-fixed": "#acefe7",
+                        "surface-container-low": "#ecf5f8",
+                        "surface-container-high": "#e1eaed",
+                        "on-tertiary-fixed": "#00201e",
+                        "tertiary": "#01544f",
+                        "surface-variant": "#dbe4e7",
+                        "on-secondary-container": "#783d01",
+                        "secondary-fixed-dim": "#ffb780",
+                        "on-secondary": "#ffffff",
+                        "surface": "#f2fbfe"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "touch-target-min": "56px",
+                        "gutter": "24px",
+                        "stack-gap": "16px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Noto Sans"],
+                        "body-lg": ["Noto Sans"],
+                        "voice-caption": ["Noto Sans"],
+                        "label-lg": ["Noto Sans"],
+                        "headline-md": ["Noto Sans"],
+                        "headline-lg-mobile": ["Noto Sans"],
+                        "body-md": ["Noto Sans"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "44px", "fontWeight": "700"}],
+                        "body-lg": ["20px", {"lineHeight": "30px", "fontWeight": "400"}],
+                        "voice-caption": ["22px", {"lineHeight": "32px", "fontWeight": "500"}],
+                        "label-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "38px", "fontWeight": "700"}],
+                        "body-md": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .voice-pulse {
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(142, 78, 20, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 20px rgba(142, 78, 20, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(142, 78, 20, 0); }
+        }
+        input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        .otp-input:focus {
+            border-color: #00535b;
+            box-shadow: 0 0 0 4px rgba(0, 83, 91, 0.1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen font-body-md flex flex-col items-center">
+<!-- TopAppBar -->
+<header class="w-full top-0 left-0 flex items-center justify-between px-margin-mobile h-touch-target-min bg-background dark:bg-on-background">
+<button class="text-primary dark:text-primary-fixed-dim active:scale-95 transition-transform duration-200 hover:opacity-80">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary dark:text-primary-fixed-dim">Kalyaan Bharat</h1>
+<div class="w-6"></div> <!-- Spacer for centering -->
+</header>
+<main class="w-full max-w-md px-margin-mobile py-unit flex-grow flex flex-col">
+<!-- Hero Illustration -->
+<div class="mt-4 mb-8 rounded-xl overflow-hidden shadow-sm h-48 w-full bg-surface-container">
+<img alt="Healthcare Professional" class="w-full h-full object-cover" data-alt="A warm, reassuring scene of a digital healthcare interface being used in a sunny Indian rural setting. A tablet shows the Kalyaan Bharat logo with soft green and white tones, reflecting a clean and modern medical aesthetic. The lighting is bright and natural, suggesting hope and stability. The overall mood is calm, professional, and accessible." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAM09bPu3e4pDeR4sRcC50_Zy2olOnVxhJEkgZS4CGz7h_JtuNJz8P7ne0Xl4L3ItlaQZOGVxdVa7qDaUVe8YjtMgpqcn6uAGaM1lXy-aAFxE7CcWwX04eQ5f-5wnWJK58DNbZeo_tiJy2fgNvwZ61bG27_JfX07zglqwwiUXMmoHAOgCyK5nT-BhZLTxQ40NPaqNYDMNRqBQ4PuMXR8ggGYGeQLV3490XQwvrz3drbhCQD2Nef70jGMMgUbhe32IqhqFw4r15U4jIZ"/>
+</div>
+<!-- Identity/Headline Section -->
+<div class="mb-gutter">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-background mb-2">Enter your mobile number</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">We will send you a 4-digit code to verify your account.</p>
+</div>
+<!-- Mobile Number Input -->
+<div class="mb-stack-gap">
+<div class="flex items-center bg-white border-2 border-outline-variant rounded-xl p-2 focus-within:border-primary transition-colors">
+<span class="px-4 font-label-lg text-label-lg text-on-surface border-r-2 border-outline-variant">+91</span>
+<input aria-label="Mobile Number Input" class="w-full border-none focus:ring-0 font-body-lg text-body-lg p-3 placeholder:text-outline-variant" placeholder="Mobile Number" type="number"/>
+</div>
+</div>
+<!-- Error State (Hidden by default, shown for demonstration) -->
+<div class="mb-stack-gap bg-error-container text-on-error-container p-4 rounded-xl flex items-center gap-3 border border-error" id="otp-error">
+<span class="material-symbols-outlined" data-icon="error">error</span>
+<span class="font-label-lg text-label-lg">Invalid OTP. Please try again.</span>
+</div>
+<!-- OTP Verification Section -->
+<div class="mb-gutter">
+<label class="block font-label-lg text-label-lg text-on-surface-variant mb-3">Verification Code</label>
+<div class="flex justify-between gap-3">
+<input class="otp-input w-16 h-20 text-center text-headline-md font-headline-md border-2 border-outline-variant rounded-xl bg-white focus:outline-none transition-all" maxlength="1" pattern="\d*" type="number"/>
+<input class="otp-input w-16 h-20 text-center text-headline-md font-headline-md border-2 border-outline-variant rounded-xl bg-white focus:outline-none transition-all" maxlength="1" pattern="\d*" type="number"/>
+<input class="otp-input w-16 h-20 text-center text-headline-md font-headline-md border-2 border-outline-variant rounded-xl bg-white focus:outline-none transition-all" maxlength="1" pattern="\d*" type="number"/>
+<input class="otp-input w-16 h-20 text-center text-headline-md font-headline-md border-2 border-outline-variant rounded-xl bg-white focus:outline-none transition-all" maxlength="1" pattern="\d*" type="number"/>
+</div>
+</div>
+<!-- CTA Button -->
+<button class="w-full bg-primary text-on-primary py-4 rounded-full font-label-lg text-label-lg mb-8 shadow-md active:scale-95 transition-transform hover:opacity-90 min-h-[56px]">
+            Verify &amp; Login
+        </button>
+<!-- Footer Resend -->
+<div class="text-center mb-gutter">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                Didn't receive code? <span class="text-primary font-bold">Resend in 30s</span>
+</p>
+</div>
+</main>
+<!-- Voice Assistance FAB -->
+<div class="fixed bottom-24 right-6 flex flex-col items-end gap-2 group">
+<div class="bg-surface-container-high px-4 py-2 rounded-xl shadow-lg border border-outline-variant max-w-[200px]">
+<p class="text-on-surface-variant text-sm font-medium">Having trouble? Ask me for help.</p>
+</div>
+<button class="voice-pulse w-16 h-16 bg-secondary text-on-secondary rounded-full flex items-center justify-center shadow-2xl active:scale-90 transition-all">
+<span class="material-symbols-outlined scale-125" data-icon="record_voice_over">record_voice_over</span>
+</button>
+</div>
+<!-- BottomNavBar (Suppressed for transactional screen logic, but defined in JSON) -->
+<nav class="fixed bottom-0 w-full flex justify-around items-center py-2 px-margin-mobile bg-surface-container dark:bg-surface-dim border-t border-outline-variant dark:border-outline rounded-t-xl z-50">
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-6 py-2 hover:bg-secondary-fixed-dim active:scale-90 transition-all duration-300">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-label-lg text-label-lg">Help</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-6 py-2 active:scale-90 transition-all duration-300">
+<span class="material-symbols-outlined" data-icon="record_voice_over" style="font-variation-settings: 'FILL' 1;">record_voice_over</span>
+<span class="font-label-lg text-label-lg">Voice Assistance</span>
+</button>
+</nav>
+<script>
+        // Simple OTP jump logic
+        const inputs = document.querySelectorAll('.otp-input');
+        inputs.forEach((input, index) => {
+            input.addEventListener('input', (e) => {
+                if (e.target.value.length === 1 && index < inputs.length - 1) {
+                    inputs[index + 1].focus();
+                }
+            });
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Backspace' && !e.target.value && index > 0) {
+                    inputs[index - 1].focus();
+                }
+            });
+        });
+
+        // Hide error after 5 seconds for simulation
+        setTimeout(() => {
+            document.getElementById('otp-error').style.display = 'none';
+        }, 5000);
+    </script>
+</body></html>

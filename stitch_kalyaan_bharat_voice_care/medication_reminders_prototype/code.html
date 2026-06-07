@@ -1,0 +1,310 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>SevaCare - Today's Schedule</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed-variant": "#004f56",
+                    "on-tertiary-container": "#a9ece4",
+                    "on-secondary-container": "#783d01",
+                    "surface-container-low": "#ecf5f8",
+                    "outline-variant": "#bec8ca",
+                    "on-primary-container": "#9becf7",
+                    "background": "#f2fbfe",
+                    "error-container": "#ffdad6",
+                    "primary-fixed": "#9ff0fb",
+                    "on-tertiary": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "primary-fixed-dim": "#82d3de",
+                    "on-tertiary-fixed-variant": "#00504b",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-container": "#006d77",
+                    "tertiary-container": "#286d67",
+                    "secondary": "#8e4e14",
+                    "on-surface-variant": "#3e494a",
+                    "error": "#ba1a1a",
+                    "surface-tint": "#006972",
+                    "surface": "#f2fbfe",
+                    "secondary-fixed-dim": "#ffb780",
+                    "tertiary": "#01544f",
+                    "secondary-fixed": "#ffdcc4",
+                    "on-secondary-fixed-variant": "#6f3800",
+                    "surface-variant": "#dbe4e7",
+                    "tertiary-fixed-dim": "#90d3cb",
+                    "on-secondary-fixed": "#2f1400",
+                    "on-error-container": "#93000a",
+                    "on-error": "#ffffff",
+                    "on-surface": "#141d1f",
+                    "inverse-primary": "#82d3de",
+                    "surface-bright": "#f2fbfe",
+                    "inverse-on-surface": "#e9f2f5",
+                    "surface-container-high": "#e1eaed",
+                    "secondary-container": "#ffab69",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed": "#acefe7",
+                    "on-tertiary-fixed": "#00201e",
+                    "outline": "#6f797a",
+                    "inverse-surface": "#293234",
+                    "on-primary-fixed": "#001f23",
+                    "surface-container": "#e6eff2",
+                    "surface-dim": "#d2dcde",
+                    "surface-container-highest": "#dbe4e7",
+                    "primary": "#00535b",
+                    "on-background": "#141d1f"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "touch-target-min": "56px",
+                    "margin-mobile": "20px",
+                    "gutter": "24px",
+                    "unit": "8px",
+                    "margin-desktop": "64px",
+                    "stack-gap": "16px"
+            },
+            "fontFamily": {
+                    "label-lg": ["Noto Sans"],
+                    "headline-lg": ["Noto Sans"],
+                    "body-lg": ["Noto Sans"],
+                    "body-md": ["Noto Sans"],
+                    "headline-lg-mobile": ["Noto Sans"],
+                    "headline-md": ["Noto Sans"],
+                    "voice-caption": ["Noto Sans"]
+            },
+            "fontSize": {
+                    "label-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "44px", "fontWeight": "700"}],
+                    "body-lg": ["20px", {"lineHeight": "30px", "fontWeight": "400"}],
+                    "body-md": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "38px", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "voice-caption": ["22px", {"lineHeight": "32px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Noto Sans', sans-serif; background-color: #f2fbfe; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+        }
+        .pulse-animation {
+            animation: pulse-ring 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(.8); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.3; }
+            100% { transform: scale(.8); opacity: 0.5; }
+        }
+        .mic-pulse {
+            animation: mic-glow 1.5s infinite ease-in-out;
+        }
+        @keyframes mic-glow {
+            0% { box-shadow: 0 0 0 0 rgba(142, 78, 20, 0.4); }
+            70% { box-shadow: 0 0 0 20px rgba(142, 78, 20, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(142, 78, 20, 0); }
+        }
+        .entrance-anim {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUp 0.6s ease forwards;
+        }
+        @keyframes slideUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen pb-32">
+<!-- Top Navigation -->
+<nav class="w-full top-0 sticky z-50 bg-background dark:bg-inverse-surface border-b border-outline-variant flex items-center justify-between px-margin-mobile h-touch-target-min">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[32px]">health_and_safety</span>
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">Kalyaan Bharat</span>
+</div>
+<button class="px-4 py-1 rounded-full bg-surface-container-high font-label-lg text-label-lg text-primary hover:bg-surface-variant/50 transition-transform active:scale-95">
+        हिन्दी
+    </button>
+</nav>
+<main class="px-margin-mobile mt-6 space-y-6 max-w-2xl mx-auto">
+<!-- Header -->
+<header class="space-y-1 entrance-anim">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Today's Schedule</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Monday, October 23</p>
+</header>
+<!-- Summary Card -->
+<div class="bg-primary-container text-on-primary-container p-6 rounded-xl shadow-sm border-l-8 border-primary flex items-start gap-4 entrance-anim delay-1" id="summary-card">
+<span class="material-symbols-outlined text-[40px]" style="font-variation-settings: 'FILL' 1;">notifications_active</span>
+<div>
+<h2 class="font-headline-md text-headline-md leading-tight" id="remaining-count">3 Medications Remaining</h2>
+<p class="font-body-md text-body-md mt-1 opacity-90">Next dose at 2:00 PM</p>
+</div>
+</div>
+<!-- Timeline Section -->
+<section class="space-y-4">
+<!-- Morning Dose (Taken) -->
+<div class="bg-surface-container-lowest border border-outline-variant p-4 rounded-xl flex items-center gap-4 opacity-70 entrance-anim delay-1">
+<div class="flex flex-col items-center min-w-[64px]">
+<span class="font-label-lg text-label-lg">8:00</span>
+<span class="text-sm font-bold uppercase">AM</span>
+</div>
+<div class="h-12 w-1px bg-outline-variant"></div>
+<div class="flex-grow">
+<h3 class="font-headline-md text-headline-md">Metformin 500mg</h3>
+<div class="flex items-center gap-2 text-primary font-bold mt-1">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-lg text-label-lg">TAKEN</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">medication</span>
+</div>
+<!-- Afternoon Dose (Pending) -->
+<div class="schedule-item bg-surface-container-lowest border-2 border-secondary p-5 rounded-xl shadow-md space-y-4 entrance-anim delay-2 transition-all duration-300">
+<div class="flex items-center gap-4">
+<div class="flex flex-col items-center min-w-[64px] text-secondary time-indicator">
+<span class="font-headline-md text-headline-md">2:00</span>
+<span class="text-sm font-extrabold uppercase">PM</span>
+</div>
+<div class="h-12 w-1px bg-outline-variant"></div>
+<div class="flex-grow">
+<h3 class="font-headline-md text-headline-md">Aspirin 75mg</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">After lunch</p>
+</div>
+<div class="relative flex items-center justify-center icon-container">
+<div class="absolute w-12 h-12 bg-secondary/20 rounded-full pulse-animation"></div>
+<span class="material-symbols-outlined text-secondary text-[32px]" style="font-variation-settings: 'FILL' 1;">alarm</span>
+</div>
+</div>
+<button class="mark-taken-btn w-full h-touch-target-min bg-primary text-on-primary rounded-lg font-label-lg text-label-lg flex items-center justify-center gap-2 active:scale-95 transition-all">
+<span class="material-symbols-outlined">done_all</span>
+                MARK AS TAKEN
+            </button>
+</div>
+<!-- Evening Dose (Upcoming) -->
+<div class="schedule-item bg-surface-container-lowest border border-outline-variant p-5 rounded-xl space-y-4 entrance-anim delay-3 transition-all duration-300">
+<div class="flex items-center gap-4">
+<div class="flex flex-col items-center min-w-[64px] time-indicator">
+<span class="font-headline-md text-headline-md">8:00</span>
+<span class="text-sm font-bold uppercase">PM</span>
+</div>
+<div class="h-12 w-1px bg-outline-variant"></div>
+<div class="flex-grow">
+<h3 class="font-headline-md text-headline-md">Atorvastatin 20mg</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Before bed</p>
+</div>
+<div class="icon-container">
+<span class="material-symbols-outlined text-on-surface-variant text-[32px]">nightlight</span>
+</div>
+</div>
+<button class="mark-taken-btn w-full h-touch-target-min bg-surface-container-high text-primary border border-primary rounded-lg font-label-lg text-label-lg flex items-center justify-center gap-2 active:scale-95 transition-all">
+<span class="material-symbols-outlined">done</span>
+                MARK AS TAKEN
+            </button>
+</div>
+</section>
+<!-- Health Tip Card -->
+<div class="bg-tertiary-container text-on-tertiary-container p-6 rounded-xl border-l-8 border-tertiary flex items-start gap-4 entrance-anim delay-4">
+<span class="material-symbols-outlined text-[32px]" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+<p class="font-body-lg text-body-lg font-medium">"Remember to drink a full glass of water with every pill."</p>
+</div>
+<!-- Voice Interaction Indicator (Bottom Overlay) -->
+<div class="fixed bottom-24 left-1/2 -translate-x-1/2 z-40">
+<div class="flex flex-col items-center gap-2">
+<div class="bg-on-surface px-6 py-2 rounded-full shadow-lg">
+<p class="text-white font-voice-caption text-voice-caption">Speak "Taken" to record</p>
+</div>
+<button class="mic-pulse w-20 h-20 bg-secondary rounded-full shadow-2xl flex items-center justify-center text-white active:scale-90 transition-transform relative">
+<div class="absolute inset-0 bg-secondary rounded-full animate-ping opacity-20"></div>
+<span class="material-symbols-outlined text-[40px]" style="font-variation-settings: 'FILL' 1;">mic</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface-container-lowest border-t border-outline-variant flex justify-around items-center px-2 py-2 h-[84px]">
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-1 active:scale-95 transition-all duration-200" href="{{DATA:SCREEN:SCREEN_24}}">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-lg text-label-lg">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-1 active:scale-95 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-lg text-label-lg">Records</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl min-w-[72px] py-1 active:scale-95 transition-all duration-200" href="{{DATA:SCREEN:SCREEN_30}}">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">event_note</span>
+<span class="font-label-lg text-label-lg">Reminders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-1 active:scale-95 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-lg text-label-lg">Profile</span>
+</a>
+</nav>
+<script>
+    document.querySelectorAll('.mark-taken-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const container = this.closest('.schedule-item');
+            const timeIndicator = container.querySelector('.time-indicator');
+            const iconContainer = container.querySelector('.icon-container');
+            
+            // Toggle Visual States
+            container.classList.add('opacity-70', 'border-outline-variant');
+            container.classList.remove('border-secondary', 'shadow-md');
+            
+            if(timeIndicator) {
+                timeIndicator.classList.remove('text-secondary');
+            }
+            
+            if(iconContainer) {
+                const pulse = iconContainer.querySelector('.pulse-animation');
+                if(pulse) pulse.remove();
+                
+                const icon = iconContainer.querySelector('.material-symbols-outlined');
+                if(icon) {
+                    icon.style.color = '#3e494a'; // on-surface-variant
+                }
+            }
+
+            // Update Button
+            this.classList.remove('bg-primary', 'bg-surface-container-high', 'text-primary', 'border', 'border-primary');
+            this.classList.add('bg-primary-container', 'text-primary', 'cursor-default');
+            this.disabled = true;
+            this.innerHTML = '<span class="material-symbols-outlined" style="font-variation-settings: \'FILL\' 1;">check_circle</span> <span class="font-label-lg">TAKEN</span>';
+
+            // Update Summary Card Count (Simplified Prototype Logic)
+            const countDisplay = document.getElementById('remaining-count');
+            let currentCount = parseInt(countDisplay.innerText);
+            if (currentCount > 0) {
+                currentCount--;
+                countDisplay.innerText = `${currentCount} Medication${currentCount !== 1 ? 's' : ''} Remaining`;
+                if(currentCount === 0) {
+                    document.getElementById('summary-card').classList.add('bg-tertiary-container', 'border-tertiary');
+                    document.getElementById('summary-card').classList.remove('bg-primary-container', 'border-primary');
+                    countDisplay.innerText = "All Caught Up!";
+                }
+            }
+        });
+    });
+</script>
+
+
+</body></html>

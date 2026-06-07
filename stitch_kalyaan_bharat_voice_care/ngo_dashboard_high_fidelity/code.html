@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NGO Dashboard - Kalyan Bharat</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Noto Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .pulse-orange {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.05); }
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 16px;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #bec8ca;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "surface-bright": "#f2fbfe",
+                "on-secondary-fixed": "#2f1400",
+                "tertiary-container": "#286d67",
+                "surface-tint": "#006972",
+                "tertiary-fixed-dim": "#90d3cb",
+                "on-surface": "#141d1f",
+                "error-container": "#ffdad6",
+                "on-tertiary-fixed-variant": "#00504b",
+                "on-tertiary": "#ffffff",
+                "surface-variant": "#dbe4e7",
+                "surface-container-high": "#e1eaed",
+                "surface": "#f2fbfe",
+                "on-secondary-container": "#783d01",
+                "on-primary-fixed": "#001f23",
+                "secondary-fixed": "#ffdcc4",
+                "on-secondary": "#ffffff",
+                "surface-container": "#e6eff2",
+                "surface-container-low": "#ecf5f8",
+                "on-error": "#ffffff",
+                "error": "#ba1a1a",
+                "tertiary": "#01544f",
+                "surface-container-lowest": "#ffffff",
+                "primary-fixed-dim": "#82d3de",
+                "on-primary-container": "#9becf7",
+                "on-surface-variant": "#3e494a",
+                "background": "#f2fbfe",
+                "on-error-container": "#93000a",
+                "on-tertiary-fixed": "#00201e",
+                "inverse-surface": "#293234",
+                "surface-dim": "#d2dcde",
+                "outline-variant": "#bec8ca",
+                "inverse-primary": "#82d3de",
+                "primary": "#00535b",
+                "on-secondary-fixed-variant": "#6f3800",
+                "outline": "#6f797a",
+                "secondary-fixed-dim": "#ffb780",
+                "on-primary": "#ffffff",
+                "surface-container-highest": "#dbe4e7",
+                "tertiary-fixed": "#acefe7",
+                "on-background": "#141d1f",
+                "inverse-on-surface": "#e9f2f5",
+                "primary-fixed": "#9ff0fb",
+                "on-primary-fixed-variant": "#004f56",
+                "on-tertiary-container": "#a9ece4",
+                "secondary": "#8e4e14",
+                "secondary-container": "#ffab69",
+                "primary-container": "#006d77"
+              },
+              "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+              },
+              "spacing": {
+                "unit": "8px",
+                "touch-target-min": "56px",
+                "stack-gap": "16px",
+                "margin-mobile": "20px",
+                "gutter": "24px",
+                "margin-desktop": "64px"
+              },
+              "fontFamily": {
+                "headline-md": ["Noto Sans"],
+                "body-md": ["Noto Sans"],
+                "headline-lg": ["Noto Sans"],
+                "voice-caption": ["Noto Sans"],
+                "label-lg": ["Noto Sans"],
+                "body-lg": ["Noto Sans"],
+                "headline-lg-mobile": ["Noto Sans"]
+              },
+              "fontSize": {
+                "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                "body-md": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                "headline-lg": ["32px", {"lineHeight": "44px", "fontWeight": "700"}],
+                "voice-caption": ["22px", {"lineHeight": "32px", "fontWeight": "500"}],
+                "label-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "700"}],
+                "body-lg": ["20px", {"lineHeight": "30px", "fontWeight": "400"}],
+                "headline-lg-mobile": ["28px", {"lineHeight": "38px", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-bright text-on-surface min-h-screen pb-32">
+<!-- Top App Bar -->
+<header class="bg-surface sticky top-0 z-40 flex justify-between items-center px-margin-mobile py-4 w-full shadow-sm">
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-surface-container-highest transition-colors rounded-full active:scale-95 duration-100">
+<span class="material-symbols-outlined text-primary">menu</span>
+</button>
+<h1 class="text-headline-md font-headline-md font-bold text-primary">Kalyan Bharat</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="px-4 py-2 bg-surface-container text-primary font-label-lg text-label-lg rounded-full active:scale-95 transition-all">
+                हिन्दी
+            </button>
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center overflow-hidden">
+<img alt="Admin Profile" class="w-full h-full object-cover" data-alt="Close-up professional portrait of a confident Indian woman in her late 30s, wearing business casual attire. The lighting is soft and natural, suggesting an office environment. The background is a clean, out-of-focus modern workspace with subtle teal accents that match the dashboard color scheme. High-fidelity photography style with a shallow depth of field." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiIC_NSzxR04LtywYCoHBrLp0cMKHQsQur5DHNgjvJIgG5GtgbLKvA2lfogYSQkkIbVEQYOr9IB0OTiHXAAZjouPK4j3yg_-9zTT1Wnxp9GdsfHgJJVsT0oa0quddglYVNRmhcPc1z-K_rSAo01QZKlUkC9XYsRiLNo_A_T9E9EYEGTjPiejsAffNLNFTldBEke2b7r5XdtLI02WclOaNDDb52eDhLb0T-J2iqkva9Ry6EwADoXHRPrpuIwsGUig4trP_XlD0Rlcu3"/>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-margin-mobile pt-8 space-y-stack-gap">
+<!-- Welcome & Primary Action -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">NGO Overview</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Monitoring rural community health outcomes.</p>
+</div>
+<button class="flex items-center justify-center gap-2 bg-primary text-on-primary font-label-lg text-label-lg px-8 py-4 rounded-xl shadow-lg hover:bg-opacity-90 active:scale-95 transition-all min-h-[56px]">
+<span class="material-symbols-outlined">person_add</span>
+                ADD NEW BENEFICIARY
+            </button>
+</div>
+<!-- Metrics Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Total Beneficiaries -->
+<div class="bg-surface-container-low border border-outline-variant p-6 rounded-xl space-y-2 hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined p-2 bg-primary-container text-on-primary-container rounded-lg">groups</span>
+<span class="text-tertiary font-label-lg text-label-lg flex items-center bg-tertiary-fixed p-1 px-2 rounded-full">+8%</span>
+</div>
+<p class="font-label-lg text-label-lg text-on-surface-variant">Total Beneficiaries</p>
+<h3 class="font-headline-lg text-headline-lg">12,480</h3>
+</div>
+<!-- Active Elderly Users -->
+<div class="bg-surface-container-low border border-outline-variant p-6 rounded-xl space-y-2 hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined p-2 bg-secondary-container text-on-secondary-container rounded-lg">elderly</span>
+<span class="material-symbols-outlined text-outline">trending_up</span>
+</div>
+<p class="font-label-lg text-label-lg text-on-surface-variant">Active Elderly Users</p>
+<h3 class="font-headline-lg text-headline-lg">4,215</h3>
+</div>
+<!-- Consultations -->
+<div class="bg-surface-container-low border border-outline-variant p-6 rounded-xl space-y-2 hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined p-2 bg-tertiary-container text-on-tertiary rounded-lg">medical_services</span>
+</div>
+<p class="font-label-lg text-label-lg text-on-surface-variant">Consultations</p>
+<h3 class="font-headline-lg text-headline-lg">892</h3>
+</div>
+<!-- Follow-up Rate -->
+<div class="bg-surface-container-low border border-outline-variant p-6 rounded-xl space-y-2 hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined p-2 bg-primary-container text-on-primary-container rounded-lg">fact_check</span>
+</div>
+<p class="font-label-lg text-label-lg text-on-surface-variant">Follow-up Rate</p>
+<h3 class="font-headline-lg text-headline-lg">94.2%</h3>
+</div>
+</div>
+<!-- Main Content Area: Activity & Reach -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Recent Activity List -->
+<div class="lg:col-span-2 bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden">
+<div class="px-6 py-4 border-b border-outline-variant flex justify-between items-center">
+<h4 class="font-headline-md text-headline-md">Recent Activity</h4>
+<button class="text-primary font-label-lg text-label-lg">View All</button>
+</div>
+<div class="divide-y divide-outline-variant">
+<div class="p-6 flex items-center gap-4 hover:bg-surface-container-low transition-colors cursor-pointer min-h-[72px]">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container">person_add</span>
+</div>
+<div class="flex-grow">
+<p class="font-body-lg text-body-lg font-bold">New Beneficiary Registered</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Rajesh Kumar from Village Sonepat</p>
+</div>
+<span class="text-on-surface-variant font-label-lg text-label-lg">2m ago</span>
+</div>
+<div class="p-6 flex items-center gap-4 hover:bg-surface-container-low transition-colors cursor-pointer min-h-[72px]">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container">assignment_turned_in</span>
+</div>
+<div class="flex-grow">
+<p class="font-body-lg text-body-lg font-bold">Health Checkup Logged</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Vitals recorded for Mrs. Devi</p>
+</div>
+<span class="text-on-surface-variant font-label-lg text-label-lg">15m ago</span>
+</div>
+<div class="p-6 flex items-center gap-4 hover:bg-surface-container-low transition-colors cursor-pointer min-h-[72px]">
+<div class="w-12 h-12 rounded-full bg-tertiary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary">analytics</span>
+</div>
+<div class="flex-grow">
+<p class="font-body-lg text-body-lg font-bold">Report Generated</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Monthly health summary for District A</p>
+</div>
+<span class="text-on-surface-variant font-label-lg text-label-lg">1h ago</span>
+</div>
+</div>
+</div>
+<!-- Our Reach Section with Photography -->
+<div class="space-y-4">
+<div class="bg-primary rounded-xl overflow-hidden relative group h-full flex flex-col">
+<img alt="Rural Community Reach" class="w-full h-48 object-cover opacity-80 group-hover:scale-110 transition-transform duration-700" data-alt="A heart-warming, cinematic photograph of a health worker smiling while interacting with an elderly rural Indian man outdoors. The warm afternoon sun casts a golden glow on the scene. In the background, a vibrant, lush village setting is visible. The image conveys trust, community, and the human side of healthcare, maintaining the teal and warm secondary color palette of the Bharat Care brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8jmd6BVK1HxSsG3RgN0ku18k2o930jQULO427iEdDdWFU8deMx7A5IBvn3rue3ZxMXtgaveXBusOFViJ7zLwRtYdri3MLmSIFMMMuS6RqvgU2MWwoduLBoOzrgscd_fXFlEIdn_8GVydzdO9SITqK18NHECHf4oVyEimB3bgGbw3x59gFUjWx6bvkkL8NxjAJkHLzrHZ13my5hz6viX8OQiXi-LkKfP0o_oM17isBR-jzZuxF3ZfqzwwXI5r9R20FkI2TrVf0oh3d"/>
+<div class="p-6 bg-primary text-on-primary flex-grow">
+<h4 class="font-headline-md text-headline-md mb-2">Our Reach</h4>
+<p class="font-body-md text-body-md opacity-90 mb-6">Touching lives in 45 villages across Rajasthan with dedicated healthcare monitoring.</p>
+<div class="flex items-center gap-2 mt-auto">
+<div class="flex -space-x-3">
+<div class="w-8 h-8 rounded-full border-2 border-primary bg-surface-container"></div>
+<div class="w-8 h-8 rounded-full border-2 border-primary bg-surface-container"></div>
+<div class="w-8 h-8 rounded-full border-2 border-primary bg-surface-container"></div>
+</div>
+<span class="font-label-lg text-label-lg">+2k active today</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Visual Data: Monthly Trends Placeholder -->
+<div class="bg-surface-container-lowest border border-outline-variant p-6 rounded-xl">
+<h4 class="font-headline-md text-headline-md mb-6">Service Trends</h4>
+<div class="h-64 flex items-end justify-between gap-4 px-4">
+<div class="w-full bg-primary-container rounded-t-lg" style="height: 40%"></div>
+<div class="w-full bg-primary-container rounded-t-lg" style="height: 55%"></div>
+<div class="w-full bg-primary-container rounded-t-lg" style="height: 45%"></div>
+<div class="w-full bg-secondary-container rounded-t-lg" style="height: 80%"></div>
+<div class="w-full bg-primary-container rounded-t-lg" style="height: 60%"></div>
+<div class="w-full bg-primary-container rounded-t-lg" style="height: 70%"></div>
+<div class="w-full bg-primary rounded-t-lg" style="height: 90%"></div>
+</div>
+<div class="flex justify-between mt-4 text-on-surface-variant font-label-lg text-label-lg px-2">
+<span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span>
+</div>
+</div>
+</main>
+<!-- Navigation Shell -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 py-3 bg-surface border-t border-outline-variant rounded-t-xl">
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-6 py-2 active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-lg text-label-lg">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">folder_shared</span>
+<span class="font-label-lg text-label-lg">Records</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">event_note</span>
+<span class="font-label-lg text-label-lg">Reminders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-lg text-label-lg">Profile</span>
+</a>
+</nav>
+<!-- Contextual Voice Interaction (Floating) -->
+<div class="fixed bottom-24 right-6 flex flex-col items-end gap-3 pointer-events-none">
+<div class="bg-inverse-surface text-inverse-on-surface px-6 py-3 rounded-full font-voice-caption text-voice-caption shadow-xl opacity-0 transition-opacity duration-300 pointer-events-auto" id="voiceCaption">
+            "Aapka Sahayak sun raha hai..."
+        </div>
+<button class="w-[72px] h-[72px] bg-secondary text-on-secondary rounded-full flex items-center justify-center shadow-2xl active:scale-95 duration-200 pulse-orange pointer-events-auto transition-transform" id="voiceBtn">
+<span class="material-symbols-outlined text-[32px]" style="font-variation-settings: 'FILL' 1;">mic</span>
+</button>
+</div>
+<script>
+        const voiceBtn = document.getElementById('voiceBtn');
+        const voiceCaption = document.getElementById('voiceCaption');
+        let isListening = false;
+
+        voiceBtn.addEventListener('click', () => {
+            isListening = !isListening;
+            if (isListening) {
+                voiceCaption.style.opacity = '1';
+                voiceBtn.classList.add('scale-110', 'bg-tertiary');
+                voiceBtn.classList.remove('bg-secondary');
+            } else {
+                voiceCaption.style.opacity = '0';
+                voiceBtn.classList.remove('scale-110', 'bg-tertiary');
+                voiceBtn.classList.add('bg-secondary');
+            }
+        });
+
+        // Simple animation for the bar chart
+        const bars = document.querySelectorAll('.bg-primary-container, .bg-secondary-container, .bg-primary');
+        bars.forEach((bar, index) => {
+            const finalHeight = bar.style.height;
+            bar.style.height = '0';
+            setTimeout(() => {
+                bar.style.transition = 'height 1s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                bar.style.height = finalHeight;
+            }, index * 100);
+        });
+    </script>
+</body></html>

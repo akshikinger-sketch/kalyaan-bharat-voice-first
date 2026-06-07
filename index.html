@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Kalyaan Bharat - Voice-first Healthcare Continuity</title>
+  <!-- Tailwind & Icons -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  
+  <!-- Custom Styling matching DESIGN.md -->
+  <style>
+    body {
+      font-family: 'Noto Sans', sans-serif;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .voice-pulse {
+      animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    @keyframes pulse-ring {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(142, 78, 20, 0.7); }
+      70% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(142, 78, 20, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(142, 78, 20, 0); }
+    }
+    .pulse-red {
+      animation: pulse-red-ring 2s infinite;
+    }
+    @keyframes pulse-red-ring {
+      0% { box-shadow: 0 0 0 0 rgba(186, 26, 26, 0.5); }
+      70% { box-shadow: 0 0 0 15px rgba(186, 26, 26, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(186, 26, 26, 0); }
+    }
+    .app-view {
+      transition: opacity 0.25s ease-in-out;
+    }
+    /* Hide scrollbars on bento lists */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+
+  <!-- Tailwind Configuration matching DESIGN.md color palette -->
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-bright": "#f2fbfe",
+            "on-secondary-fixed": "#2f1400",
+            "tertiary-container": "#286d67",
+            "surface-tint": "#006972",
+            "tertiary-fixed-dim": "#90d3cb",
+            "on-surface": "#141d1f",
+            "error-container": "#ffdad6",
+            "on-tertiary-fixed-variant": "#00504b",
+            "on-tertiary": "#ffffff",
+            "surface-variant": "#dbe4e7",
+            "surface-container-high": "#e1eaed",
+            "surface": "#f2fbfe",
+            "on-secondary-container": "#783d01",
+            "on-primary-fixed": "#001f23",
+            "secondary-fixed": "#ffdcc4",
+            "on-secondary": "#ffffff",
+            "surface-container": "#e6eff2",
+            "surface-container-low": "#ecf5f8",
+            "on-error": "#ffffff",
+            "error": "#ba1a1a",
+            "tertiary": "#01544f",
+            "surface-container-lowest": "#ffffff",
+            "primary-fixed-dim": "#82d3de",
+            "on-primary-container": "#9becf7",
+            "on-surface-variant": "#3e494a",
+            "background": "#f2fbfe",
+            "on-error-container": "#93000a",
+            "on-tertiary-fixed": "#00201e",
+            "inverse-surface": "#293234",
+            "surface-dim": "#d2dcde",
+            "outline-variant": "#bec8ca",
+            "inverse-primary": "#82d3de",
+            "primary": "#00535b",
+            "on-secondary-fixed-variant": "#6f3800",
+            "outline": "#6f797a",
+            "secondary-fixed-dim": "#ffb780",
+            "on-primary": "#ffffff",
+            "surface-container-highest": "#dbe4e7",
+            "tertiary-fixed": "#acefe7",
+            "on-background": "#141d1f",
+            "inverse-on-surface": "#e9f2f5",
+            "primary-fixed": "#9ff0fb",
+            "on-primary-fixed-variant": "#004f56",
+            "on-tertiary-container": "#a9ece4",
+            "secondary": "#8e4e14",
+            "secondary-container": "#ffab69",
+            "primary-container": "#006d77"
+          },
+          borderRadius: {
+            "DEFAULT": "0.5rem",
+            "lg": "1rem",
+            "xl": "1.5rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "unit": "8px",
+            "touch-target-min": "56px",
+            "stack-gap": "16px",
+            "margin-mobile": "20px",
+            "gutter": "24px",
+            "margin-desktop": "64px"
+          },
+          fontSize: {
+            "headline-lg": ["32px", {"lineHeight": "44px", "fontWeight": "700"}],
+            "body-lg": ["20px", {"lineHeight": "30px", "fontWeight": "400"}],
+            "voice-caption": ["22px", {"lineHeight": "32px", "fontWeight": "500"}],
+            "label-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "700"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+            "headline-lg-mobile": ["28px", {"lineHeight": "38px", "fontWeight": "700"}],
+            "body-md": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col overflow-x-hidden relative">
+
+  <!-- ==========================================
+       TOP APP BAR / HEADER
+       ========================================== -->
+  <header class="bg-surface fixed top-0 w-full z-40 flex justify-between items-center px-margin-mobile py-4 border-b border-outline-variant h-16 shadow-sm">
+    <div class="flex items-center gap-4">
+      <button class="material-symbols-outlined text-primary p-2 hover:bg-surface-container-high transition-colors rounded-full active:scale-95 duration-100" onclick="routeToDashboard()">menu</button>
+      <h1 class="text-headline-md font-headline-md font-bold text-primary cursor-pointer" onclick="routeToDashboard()">Kalyaan Bharat</h1>
+    </div>
+    <div class="flex items-center gap-3">
+      <!-- Language Picker button (toggle for demo) -->
+      <button class="font-label-lg text-label-lg text-primary bg-surface-container-high px-4 py-2 rounded-full active:scale-95 transition-all" onclick="toggleLanguageGlobal()">
+        <span id="header-lang-btn">हिंदी</span>
+      </button>
+      <span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+    </div>
+  </header>
+
+  <!-- ==========================================
+       MAIN CONTENT CONTAINER
+       ========================================== -->
+  <main class="flex-grow mt-16 mb-24 w-full">
+
+    <!-- 1. ONBOARDING: WELCOME SCREEN -->
+    <div id="welcome" class="app-view hidden px-margin-mobile py-8 flex flex-col gap-stack-gap max-w-md mx-auto">
+      <section class="rounded-xl overflow-hidden relative border border-outline-variant bg-white min-h-[200px] shadow-sm">
+        <img alt="Multi-generational Indian family" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRiZvFZceJyYvLK874yxKwxusUzmGSa4PgKDFk2lMrAKKrgALrUOk7C84YYPGDchuNs3a42lDRj5do_QLIZ_NVXGzjBcDFZg4LIfaYWXqtE3mXhPrYs2s-kas4pwnTbBb2ld20OQUFxD8Z-tdzzERl1JlM3_xgS21AZJW4rcDUrV595MQvLOJQcDKLcmLDS7BObF7XN1wlPzzH02JJqKwINwHmk8ANy1CMCGKkKG1-7W-dF9UuZA1Om48w1CBj2zdnuEHEQTpsCTzK"/>
+        <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
+          <p class="text-white font-headline-md leading-tight">Together for Health</p>
+        </div>
+      </section>
+
+      <section class="text-center mt-2">
+        <h1 class="font-headline-lg-mobile text-primary font-extrabold mb-1">नमस्ते!</h1>
+        <h2 class="font-headline-md text-on-surface-variant">Welcome to Kalyaan Bharat</h2>
+        <p class="text-on-surface-variant/80 text-sm mt-1">Your trusted voice-first health companion.</p>
+      </section>
+
+      <!-- Language Selector Buttons -->
+      <section class="grid grid-cols-3 gap-3">
+        <button class="lang-btn bg-white border border-outline-variant rounded-xl p-4 flex flex-col items-center justify-center gap-2 active:scale-95 transition-all" onclick="selectLangOnboarding('en')">
+          <span class="font-headline-md text-primary font-bold">A</span>
+          <span class="font-label-lg text-on-surface">English</span>
+        </button>
+        <button class="lang-btn bg-white border-2 border-primary rounded-xl p-4 flex flex-col items-center justify-center gap-2 active:scale-95 transition-all" onclick="selectLangOnboarding('hi')">
+          <span class="font-headline-md text-primary font-bold">अ</span>
+          <span class="font-label-lg text-on-surface">हिंदी</span>
+        </button>
+        <button class="lang-btn bg-white border border-outline-variant rounded-xl p-4 flex flex-col items-center justify-center gap-2 active:scale-95 transition-all" onclick="selectLangOnboarding('mr')">
+          <span class="font-headline-md text-primary font-bold">म</span>
+          <span class="font-label-lg text-on-surface">मराठी</span>
+        </button>
+      </section>
+
+      <!-- Voice Assistance Prompt -->
+      <section class="flex flex-col items-center py-4 gap-2">
+        <button class="w-16 h-16 rounded-full bg-secondary text-white flex items-center justify-center shadow-lg active:scale-90 transition-all voice-pulse" onclick="playVoicePrompt('welcome')">
+          <span class="material-symbols-outlined text-3xl">mic</span>
+        </button>
+        <div class="text-center">
+          <span class="font-voice-caption text-secondary font-bold text-lg block">Suniye</span>
+          <span class="text-on-surface-variant text-xs">Press to hear setup instructions</span>
+        </div>
+      </section>
+
+      <button class="w-full h-touch-target-min bg-primary text-on-primary rounded-xl font-headline-md shadow-md active:scale-95 transition-all flex items-center justify-center gap-2" onclick="navigateTo('login')">
+        Continue <span class="material-symbols-outlined">arrow_forward</span>
+      </button>
+    </div>
+
+    <!-- 2. ONBOARDING: OTP LOGIN SCREEN -->
+    <div id="login" class="app-view hidden px-margin-mobile py-8 flex flex-col gap-stack-gap max-w-md mx-auto">
+      <div class="rounded-xl overflow-hidden shadow-sm h-40 bg-surface-container border border-outline-variant">
+        <img alt="Doctor consulting" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAM09bPu3e4pDeR4sRcC50_Zy2olOnVxhJEkgZS4CGz7h_JtuNJz8P7ne0Xl4L3ItlaQZOGVxdVa7qDaUVe8YjtMgpqcn6uAGaM1lXy-aAFxE7CcWwX04eQ5f-5wnWJK58DNbZeo_tiJy2fgNvwZ61bG27_JfX07zglqwwiUXMmoHAOgCyK5nT-BhZLTxQ40NPaqNYDMNRqBQ4PuMXR8ggGYGeQLV3490XQwvrz3drbhCQD2Nef70jGMMgUbhe32IqhqFw4r15U4jIZ"/>
+      </div>
+
+      <div>
+        <h2 class="font-headline-lg-mobile text-on-background mb-1">Enter mobile number</h2>
+        <p class="font-body-md text-on-surface-variant text-sm">We will send a 4-digit code to verify your profile.</p>
+      </div>
+
+      <!-- Mobile field -->
+      <div class="flex items-center bg-white border-2 border-outline-variant rounded-xl p-1 focus-within:border-primary transition-colors">
+        <span class="px-4 font-label-lg text-on-surface border-r border-outline-variant">+91</span>
+        <input aria-label="Mobile Number" class="w-full border-none focus:ring-0 font-body-lg p-3 outline-none" placeholder="98765 43210" type="number" value="9876543210"/>
+      </div>
+
+      <!-- Error block -->
+      <div class="hidden bg-error-container text-on-error-container p-4 rounded-xl flex items-center gap-3 border border-error text-sm" id="otp-error">
+        <span class="material-symbols-outlined text-error">error</span>
+        <span>Invalid input. Please check number or OTP code.</span>
+      </div>
+
+      <!-- OTP blocks -->
+      <div>
+        <label class="block font-label-lg text-on-surface-variant text-sm mb-2">Verification Code (Use '1234' or leave blank)</label>
+        <div class="flex justify-between gap-3">
+          <input class="otp-input w-16 h-16 text-center text-headline-md font-bold border-2 border-outline-variant rounded-xl bg-white focus:outline-none focus:border-primary transition-all" maxlength="1" type="number"/>
+          <input class="otp-input w-16 h-16 text-center text-headline-md font-bold border-2 border-outline-variant rounded-xl bg-white focus:outline-none focus:border-primary transition-all" maxlength="1" type="number"/>
+          <input class="otp-input w-16 h-16 text-center text-headline-md font-bold border-2 border-outline-variant rounded-xl bg-white focus:outline-none focus:border-primary transition-all" maxlength="1" type="number"/>
+          <input class="otp-input w-16 h-16 text-center text-headline-md font-bold border-2 border-outline-variant rounded-xl bg-white focus:outline-none focus:border-primary transition-all" maxlength="1" type="number"/>
+        </div>
+      </div>
+
+      <button class="w-full bg-primary text-on-primary py-4 rounded-full font-label-lg shadow-md active:scale-95 transition-transform" onclick="verifyOtpLogin()">
+        Verify &amp; Login
+      </button>
+
+      <div class="text-center">
+        <p class="text-sm text-on-surface-variant">Didn't receive code? <span class="text-primary font-bold cursor-pointer">Resend in 30s</span></p>
+      </div>
+    </div>
+
+    <!-- 3. ONBOARDING: ETHICAL RULES DATA CONSENT SCREEN -->
+    <div id="consent" class="app-view hidden px-margin-mobile py-8 flex flex-col gap-stack-gap max-w-md mx-auto">
+      <section class="flex flex-col items-center text-center">
+        <div class="w-20 h-20 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center shadow-md mb-4">
+          <span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+        </div>
+        <h2 class="font-headline-lg-mobile text-on-background mb-1">Your Privacy &amp; Consent</h2>
+        <p class="text-sm text-on-surface-variant">We prioritize data transparency, integrity, and ethical care.</p>
+      </section>
+
+      <!-- Interactive playback box -->
+      <section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 shadow-sm space-y-4">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-full bg-secondary text-on-secondary flex items-center justify-center flex-shrink-0">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">record_voice_over</span>
+          </div>
+          <div class="flex-grow">
+            <p class="font-voice-caption text-on-surface leading-snug mb-3 text-lg" id="consent-text">
+              "We store your health records to support continuity of care. Only you and your doctor can access this data."
+            </p>
+            <button id="consent-listen-btn" class="flex items-center gap-2 px-5 py-2.5 bg-secondary-fixed text-on-secondary-fixed-variant rounded-full font-label-lg text-sm transition-all active:scale-95" onclick="playConsentVoice()">
+              <span class="material-symbols-outlined text-[18px]">volume_up</span> Listen (सुनिए)
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Expandable Info Accordion -->
+      <section class="space-y-3">
+        <details class="group bg-surface-container-low rounded-xl border border-outline-variant/30 overflow-hidden" open>
+          <summary class="flex justify-between items-center p-4 cursor-pointer font-bold text-on-surface">
+            <span class="flex items-center gap-2 text-primary"><span class="material-symbols-outlined">info</span> Ethical Guidelines</span>
+            <span class="material-symbols-outlined group-open:rotate-180">expand_more</span>
+          </summary>
+          <div class="p-4 bg-white border-t border-outline-variant/20 text-sm text-on-surface-variant space-y-2">
+            <p><strong>1. Human-in-the-loop:</strong> AI assists with voice logs and summaries but NEVER diagnoses or prescribes.</p>
+            <p><strong>2. Complete Encryption:</strong> Your data remains confidential under DPDP Act 2023 regulations.</p>
+            <p><strong>3. Caregiver Sync:</strong> Authorized family members only monitor vitals and adherence logs.</p>
+          </div>
+        </details>
+      </section>
+
+      <section class="flex flex-col items-center gap-1.5 text-center mt-2">
+        <div class="bg-surface-container-highest px-3 py-1 rounded-full text-xs font-bold text-primary border border-primary/20">
+          DPDP ACT 2023 COMPLIANT
+        </div>
+        <p class="text-xs text-outline">Your data is secured using national security encryption standards.</p>
+      </section>
+
+      <div class="flex flex-col gap-2 mt-auto">
+        <button class="w-full h-touch-target-min bg-primary text-on-primary rounded-xl font-label-lg flex items-center justify-center gap-2 active:scale-95 transition-transform" onclick="acceptConsent()">
+          I Accept &amp; Continue <span class="material-symbols-outlined">check_circle</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- 4. ONBOARDING: PROFILE SETUP -->
+    <div id="profile_setup" class="app-view hidden px-margin-mobile py-8 flex flex-col gap-stack-gap max-w-md mx-auto">
+      <div>
+        <h2 class="font-headline-lg-mobile text-on-background mb-1">Tell us about yourself</h2>
+        <p class="text-sm text-on-surface-variant">This information builds your medical profile card.</p>
+      </div>
+
+      <div class="flex flex-col gap-5">
+        <!-- Full Name -->
+        <div class="flex flex-col gap-1">
+          <label class="font-label-lg text-primary text-sm" for="full_name">Full Name</label>
+          <input class="w-full h-touch-target-min px-4 bg-white border border-outline-variant rounded-xl focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" id="full_name" placeholder="Kamla Bai" type="text" value="Kamla Bai"/>
+        </div>
+        <!-- Age -->
+        <div class="flex flex-col gap-1">
+          <label class="font-label-lg text-primary text-sm" for="age">Age</label>
+          <input class="w-full h-touch-target-min px-4 bg-white border border-outline-variant rounded-xl focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" id="age" placeholder="68" type="number" value="68"/>
+        </div>
+        <!-- Gender Select -->
+        <div class="flex flex-col gap-1">
+          <span class="font-label-lg text-primary text-sm">Gender</span>
+          <div class="flex gap-2 p-1 bg-surface-container rounded-xl border border-outline-variant gender-segment-container">
+            <button class="flex-1 h-touch-target-min rounded-lg flex items-center justify-center font-label-lg text-on-surface-variant hover:bg-surface-variant/40" onclick="selectProfileGender(this)" type="button">Male</button>
+            <button class="flex-1 h-touch-target-min rounded-lg flex items-center justify-center font-label-lg bg-primary text-on-primary shadow-sm" onclick="selectProfileGender(this)" type="button">Female</button>
+            <button class="flex-1 h-touch-target-min rounded-lg flex items-center justify-center font-label-lg text-on-surface-variant hover:bg-surface-variant/40" onclick="selectProfileGender(this)" type="button">Other</button>
+          </div>
+        </div>
+        <!-- Language Setting Card -->
+        <div class="p-4 bg-white border-l-4 border-primary rounded-xl border border-outline-variant/30 flex justify-between items-center">
+          <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-primary bg-primary-container p-2 rounded-full">translate</span>
+            <div>
+              <p class="font-label-lg text-xs text-on-surface-variant">Profile Language</p>
+              <p class="font-bold text-primary" id="profile-lang-text">Hindi</p>
+            </div>
+          </div>
+          <button class="text-xs font-bold text-secondary border border-secondary px-3 py-1.5 rounded-full" onclick="toggleLanguageGlobal()">CHANGE</button>
+        </div>
+
+        <button class="p-5 bg-surface-container-low border-2 border-dashed border-outline-variant rounded-2xl flex flex-col items-center justify-center gap-2 hover:border-primary">
+          <span class="material-symbols-outlined text-primary text-3xl">group_add</span>
+          <p class="font-bold text-sm">Add Family Member</p>
+          <p class="text-xs text-on-surface-variant">Include remote caregivers or children</p>
+        </button>
+      </div>
+
+      <button class="w-full h-touch-target-min bg-primary text-on-primary rounded-full font-headline-md shadow-md active:scale-95 transition-all flex items-center justify-center gap-2 mt-auto" onclick="completeProfileSetup()">
+        Complete Setup <span class="material-symbols-outlined">arrow_forward</span>
+      </button>
+    </div>
+
+    <!-- 5. PATIENT PORTAL: HOME VIEW -->
+    <div id="patient_home" class="app-view hidden px-margin-mobile py-6 flex flex-col gap-6 max-w-xl mx-auto">
+      <section class="text-center space-y-1">
+        <h2 id="patient-greeting" class="font-headline-lg-mobile text-on-surface font-extrabold">Namaste, Kamla Ji</h2>
+        <p class="text-on-surface-variant font-body-lg">How can I help you today?</p>
+      </section>
+
+      <!-- Giant Orange Mic Button -->
+      <section class="flex flex-col items-center justify-center py-6 gap-3">
+        <div class="relative flex items-center justify-center">
+          <button class="w-36 h-36 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-xl active:scale-90 transition-all voice-pulse" onclick="startPatientVoiceRecord()">
+            <span class="material-symbols-outlined text-6xl" style="font-variation-settings: 'FILL' 1;">mic</span>
+          </button>
+        </div>
+        <span class="font-headline-md font-extrabold text-secondary tracking-wide">Boliye (बोलिए)</span>
+        <p class="text-xs text-outline italic">Tap and speak to talk about your joint pains or ask for help</p>
+      </section>
+
+      <!-- Next Medicine Container -->
+      <div id="patient-next-med-section"></div>
+
+      <!-- Alert Warning Banner -->
+      <div id="patient-alert-section"></div>
+
+      <!-- Bento Cards -->
+      <section class="grid grid-cols-2 gap-4">
+        <button class="flex flex-col items-start p-5 bg-white border border-outline-variant rounded-[20px] text-left hover:bg-surface-container-low transition-colors min-h-[140px]" onclick="navigateTo('patient_records')">
+          <div class="p-3 bg-primary-container text-on-primary-container rounded-xl mb-3"><span class="material-symbols-outlined">medical_services</span></div>
+          <span class="font-bold text-lg leading-tight">मेरे डॉक्टर<br><span class="text-xs font-normal text-on-surface-variant">Doctor &amp; Timeline</span></span>
+        </button>
+        <button class="flex flex-col items-start p-5 bg-white border border-outline-variant rounded-[20px] text-left hover:bg-surface-container-low transition-colors min-h-[140px]" onclick="navigateTo('patient_records')">
+          <div class="p-3 bg-tertiary-container text-on-tertiary-container rounded-xl mb-3"><span class="material-symbols-outlined">description</span></div>
+          <span class="font-bold text-lg leading-tight">स्वास्थ्य रिकॉर्ड<br><span class="text-xs font-normal text-on-surface-variant">Medical Chart</span></span>
+        </button>
+        <button class="flex flex-col items-start p-5 bg-white border border-outline-variant rounded-[20px] text-left hover:bg-surface-container-low transition-colors min-h-[140px]" onclick="navigateTo('patient_reminders')">
+          <div class="p-3 bg-secondary-container text-on-secondary-container rounded-xl mb-3"><span class="material-symbols-outlined">notifications_active</span></div>
+          <span class="font-bold text-lg leading-tight">याद-दहानी<br><span class="text-xs font-normal text-on-surface-variant">Reminders List</span></span>
+        </button>
+        <button class="flex flex-col items-start p-5 bg-white border border-outline-variant rounded-[20px] text-left hover:bg-surface-container-low transition-colors min-h-[140px]" onclick="alert('Caregiver sync option is enabled. Ramesh Kumar is active.')">
+          <div class="p-3 bg-primary-container text-primary rounded-xl mb-3"><span class="material-symbols-outlined">groups</span></div>
+          <span class="font-bold text-lg leading-tight">परिवार<br><span class="text-xs font-normal text-on-surface-variant">Family sync active</span></span>
+        </button>
+      </section>
+    </div>
+
+    <!-- 6. PATIENT PORTAL: REMINDERS (Yad-dihani) -->
+    <div id="patient_reminders" class="app-view hidden px-margin-mobile py-6 flex flex-col gap-6 max-w-xl mx-auto">
+      <div>
+        <h2 class="font-headline-lg-mobile text-on-surface font-extrabold mb-1">दवाई याद-दहानी</h2>
+        <p class="text-sm text-on-surface-variant">Keep track of your medicine doses. Press Check to complete.</p>
+      </div>
+
+      <div id="patient-reminders-list" class="space-y-4"></div>
+
+      <!-- Water Reminder banner -->
+      <section class="bg-surface-container border-l-4 border-primary p-4 rounded-xl flex items-center justify-between shadow-sm mt-4">
+        <div class="flex items-center gap-3">
+          <span class="material-symbols-outlined text-primary bg-white p-2 rounded-full">water_drop</span>
+          <div>
+            <h4 class="font-bold text-sm text-on-surface">Hydration Alert</h4>
+            <p class="text-xs text-on-surface-variant">Drink a glass of warm water now.</p>
+          </div>
+        </div>
+        <button class="text-xs font-bold text-primary bg-white px-3 py-1.5 rounded-xl border border-outline-variant" onclick="alert('Logged hydration.')">Done</button>
+      </section>
+    </div>
+
+    <!-- 7. PATIENT PORTAL: RECORDS (Timeline) -->
+    <div id="patient_records" class="app-view hidden px-margin-mobile py-6 flex flex-col gap-6 max-w-xl mx-auto">
+      <div>
+        <h2 class="font-headline-lg-mobile text-on-surface font-extrabold mb-1">स्वास्थ्य रिकॉर्ड</h2>
+        <p class="text-sm text-on-surface-variant">Your complete medical history &amp; voice updates timeline.</p>
+      </div>
+
+      <div id="patient-records-list" class="space-y-6"></div>
+    </div>
+
+    <!-- 8. PATIENT PORTAL: CONSULTATION NOTE DETAILS -->
+    <div id="consultation_summary" class="app-view hidden px-margin-mobile py-6 flex flex-col gap-6 max-w-xl mx-auto">
+      <div class="flex items-center gap-3">
+        <button class="material-symbols-outlined p-2 hover:bg-surface-container rounded-full" onclick="navigateTo('patient_records')">arrow_back</button>
+        <h2 class="font-headline-lg-mobile text-on-surface font-extrabold">Consultation Summary</h2>
+      </div>
+
+      <div class="bg-white border border-outline-variant rounded-2xl p-6 shadow-sm space-y-6">
+        <!-- Header Profile -->
+        <div class="flex justify-between items-start border-b border-outline-variant/30 pb-4">
+          <div>
+            <h3 id="cons-summary-doc" class="font-headline-md text-primary">Dr. Anjali Sharma</h3>
+            <p id="cons-summary-specialty" class="text-sm text-on-surface-variant">General Physician • Seva Clinic</p>
+          </div>
+          <span id="cons-summary-date" class="bg-primary/10 text-primary text-xs px-3 py-1.5 rounded-full font-bold">06/07/2026</span>
+        </div>
+
+        <!-- Audio section -->
+        <div class="bg-surface-container p-4 rounded-xl space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-primary uppercase flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">play_circle</span> Simulated Voice prescription</span>
+            <button class="text-xs font-bold text-secondary flex items-center gap-1" onclick="playConsentVoice()"><span class="material-symbols-outlined text-[14px]">volume_up</span> Play Voice</button>
+          </div>
+          <p id="cons-summary-audio-transcript" class="text-sm text-on-surface-variant italic">"Amlodipine subah khayein..."</p>
+        </div>
+
+        <!-- Meds -->
+        <div>
+          <h4 class="font-label-lg text-primary text-xs uppercase mb-3">Prescribed Medications</h4>
+          <div id="cons-summary-meds" class="space-y-3"></div>
+        </div>
+
+        <!-- Recovery Path -->
+        <div class="border-t border-outline-variant/30 pt-4">
+          <h4 class="font-label-lg text-primary text-xs uppercase mb-3">Daily Recovery Exercises</h4>
+          <ul id="cons-summary-care-plan" class="space-y-2 text-sm text-on-surface-variant"></ul>
+        </div>
+      </div>
+
+      <!-- Legal AI Disclaimer block -->
+      <section class="bg-surface-container-low p-4 rounded-xl text-center space-y-1">
+        <p id="cons-summary-disclaimer" class="text-[11px] text-outline leading-normal"></p>
+      </section>
+    </div>
+
+    <!-- 9. CAREGIVER PORTAL -->
+    <div id="caregiver_home" class="app-view hidden px-margin-mobile py-6 flex flex-col gap-6 max-w-xl mx-auto">
+      <div>
+        <h2 class="font-headline-lg-mobile text-on-surface font-extrabold mb-1">Caregiver Hub</h2>
+        <p class="text-sm text-on-surface-variant">Monitoring your family member's health status remotely.</p>
+      </div>
+
+      <!-- Parent card -->
+      <section class="bg-white border border-outline-variant p-6 rounded-2xl shadow-sm space-y-4">
+        <div class="flex items-center justify-between border-b border-outline-variant/30 pb-3">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-full bg-primary-container text-primary flex items-center justify-center font-bold">KB</div>
+            <div>
+              <h3 id="caregiver-parent-name" class="font-headline-md text-on-surface">Kamla Bai</h3>
+              <p id="caregiver-parent-details" class="text-xs text-on-surface-variant">Age: 68 | Sonepat</p>
+            </div>
+          </div>
+          <span id="caregiver-parent-status">Status: Recovering</span>
+        </div>
+
+        <!-- Compliance Bar -->
+        <div class="space-y-2">
+          <div class="flex justify-between text-sm">
+            <span class="text-on-surface-variant">Today's Medication Adherence</span>
+            <strong id="caregiver-compliance-percent" class="text-primary">85%</strong>
+          </div>
+          <div class="w-full bg-surface-container rounded-full h-3 overflow-hidden">
+            <div id="caregiver-compliance-bar" class="bg-primary h-full transition-all" style="width: 85%;"></div>
+          </div>
+        </div>
+
+        <div class="bg-surface-container-low p-4 rounded-xl text-sm space-y-1">
+          <p class="text-xs text-outline uppercase font-bold">Doctor Follow-up</p>
+          <p id="caregiver-next-appointment" class="font-medium text-on-surface"></p>
+        </div>
+      </section>
+
+      <!-- Urgent Alerts Block -->
+      <section class="space-y-3">
+        <h3 class="font-label-lg text-primary text-sm uppercase">Active Alerts Center</h3>
+        <div id="caregiver-alerts-list" class="space-y-3"></div>
+      </section>
+
+      <button class="w-full p-4 border-2 border-dashed border-outline-variant rounded-xl flex items-center justify-center gap-2 hover:border-primary">
+        <span class="material-symbols-outlined text-primary">person_add</span>
+        <span class="font-bold text-sm text-primary">ADD ANOTHER FAMILY MEMBER</span>
+      </button>
+    </div>
+
+    <!-- 10. NGO PORTAL: OVERVIEW -->
+    <div id="ngo_home" class="app-view hidden px-margin-mobile py-6 flex flex-col gap-6 max-w-5xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <h2 class="font-headline-lg text-on-surface font-extrabold">NGO Overview</h2>
+          <p class="text-on-surface-variant text-sm">Monitoring rural community health compliance &amp; vitals.</p>
+        </div>
+        <button class="flex items-center justify-center gap-2 bg-primary text-on-primary font-label-lg px-6 py-3.5 rounded-xl shadow-md active:scale-95 transition-transform" onclick="navigateTo('ngo_beneficiaries')">
+          <span class="material-symbols-outlined">person_add</span>
+          BENEFICIARY DIRECTORY
+        </button>
+      </div>
+
+      <!-- Aggregate metrics Bento Grid -->
+      <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bg-white border border-outline-variant p-6 rounded-xl space-y-1">
+          <div class="flex justify-between items-center"><span class="material-symbols-outlined p-2 bg-primary-container text-primary rounded-lg">groups</span></div>
+          <p class="text-xs text-on-surface-variant font-bold uppercase">Total Beneficiaries</p>
+          <h3 id="ngo-total-beneficiaries" class="text-3xl font-extrabold text-on-surface">12,480</h3>
+        </div>
+        <div class="bg-white border border-outline-variant p-6 rounded-xl space-y-1">
+          <div class="flex justify-between items-center"><span class="material-symbols-outlined p-2 bg-secondary-container text-on-secondary-container rounded-lg">elderly</span></div>
+          <p class="text-xs text-on-surface-variant font-bold uppercase">Active Elderly Users</p>
+          <h3 id="ngo-active-elderly" class="text-3xl font-extrabold text-on-surface">4,215</h3>
+        </div>
+        <div class="bg-white border border-outline-variant p-6 rounded-xl space-y-1">
+          <div class="flex justify-between items-center"><span class="material-symbols-outlined p-2 bg-tertiary-container text-on-tertiary rounded-lg">medical_services</span></div>
+          <p class="text-xs text-on-surface-variant font-bold uppercase">Consultations</p>
+          <h3 id="ngo-consultations-count" class="text-3xl font-extrabold text-on-surface">892</h3>
+        </div>
+        <div class="bg-white border border-outline-variant p-6 rounded-xl space-y-1 cursor-pointer hover:bg-surface-container-low transition-colors" onclick="navigateTo('ngo_alerts')">
+          <div class="flex justify-between items-center">
+            <span class="material-symbols-outlined p-2 bg-error-container text-error rounded-lg">warning</span>
+            <span id="ngo-alerts-badge">0 ACTIVE</span>
+          </div>
+          <p class="text-xs text-on-surface-variant font-bold uppercase">Urgent Alerts</p>
+          <h3 class="text-3xl font-extrabold text-error">Alerts Board</h3>
+        </div>
+      </section>
+
+      <!-- Reach section and trends -->
+      <section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Recent Activity list -->
+        <div class="lg:col-span-2 bg-white border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+          <div class="px-6 py-4 border-b border-outline-variant flex justify-between items-center bg-surface-container-low">
+            <h4 class="font-bold text-primary">Recent Community Actions</h4>
+            <span class="text-xs font-bold text-outline">Real-time Feed</span>
+          </div>
+          <div id="ngo-recent-activity" class="divide-y divide-outline-variant/30"></div>
+        </div>
+
+        <!-- Photography Card -->
+        <div class="bg-primary rounded-xl overflow-hidden relative shadow-md flex flex-col min-h-[300px]">
+          <img alt="Rural health worker" class="w-full h-44 object-cover opacity-85" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8jmd6BVK1HxSsG3RgN0ku18k2o930jQULO427iEdDdWFU8deMx7A5IBvn3rue3ZxMXtgaveXBusOFViJ7zLwRtYdri3MLmSIFMMMuS6RqvgU2MWwoduLBoOzrgscd_fXFlEIdn_8GVydzdO9SITqK18NHECHf4oVyEimB3bgGbw3x59gFUjWx6bvkkL8NxjAJkHLzrHZ13my5hz6viX8OQiXi-LkKfP0o_oM17isBR-jzZuxF3ZfqzwwXI5r9R20FkI2TrVf0oh3d"/>
+          <div class="p-6 text-on-primary flex-grow">
+            <h4 class="font-headline-md mb-1.5">Our Community Reach</h4>
+            <p class="text-sm opacity-90 mb-4">Supporting elder care monitoring in 45 villages across Rohtak and Sonepat districts.</p>
+            <span class="text-xs font-bold bg-primary-container text-on-primary-container px-3 py-1.5 rounded-full inline-block">+2,000 Active Today</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Animated trends placeholder -->
+      <section class="bg-white border border-outline-variant p-6 rounded-xl shadow-sm">
+        <h4 class="font-bold text-primary mb-4">Weekly Adherence Rate Trend</h4>
+        <div class="h-32 flex items-end justify-between gap-6 px-4 border-b border-outline-variant pb-2">
+          <div class="flex-grow bg-primary-fixed-dim rounded-t-md h-3/4 flex items-center justify-center text-xs font-bold text-primary">82%</div>
+          <div class="flex-grow bg-primary-fixed-dim rounded-t-md h-[78%] flex items-center justify-center text-xs font-bold text-primary">85%</div>
+          <div class="flex-grow bg-primary rounded-t-md h-[92%] flex items-center justify-center text-xs font-bold text-white">92%</div>
+          <div class="flex-grow bg-primary-fixed-dim rounded-t-md h-[80%] flex items-center justify-center text-xs font-bold text-primary">86%</div>
+          <div class="flex-grow bg-primary-fixed-dim rounded-t-md h-[88%] flex items-center justify-center text-xs font-bold text-primary">89%</div>
+        </div>
+        <div class="flex justify-between text-xs text-outline font-bold mt-2 px-2">
+          <span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span>
+        </div>
+      </section>
+    </div>
+
+    <!-- 11. NGO PORTAL: ALERTS CENTER -->
+    <div id="ngo_alerts" class="app-view hidden px-margin-mobile py-6 flex flex-col gap-6 max-w-4xl mx-auto">
+      <div class="flex items-center gap-3">
+        <button class="material-symbols-outlined p-2 hover:bg-surface-container rounded-full" onclick="navigateTo('ngo_home')">arrow_back</button>
+        <h2 class="font-headline-lg-mobile text-on-surface font-extrabold">Urgent Alerts Board</h2>
+      </div>
+
+      <div id="ngo-alerts-list" class="space-y-4"></div>
+    </div>
+
+    <!-- 12. NGO PORTAL: BENEFICIARY DIRECTORY -->
+    <div id="ngo_beneficiaries" class="app-view hidden px-margin-mobile py-6 flex flex-col gap-6 max-w-3xl mx-auto">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <button class="material-symbols-outlined p-2 hover:bg-surface-container rounded-full" onclick="navigateTo('ngo_home')">arrow_back</button>
+          <h2 class="font-headline-lg-mobile text-on-surface font-extrabold">Beneficiary Directory</h2>
+        </div>
+        <button class="bg-primary text-on-primary px-4 py-2 rounded-xl text-sm font-bold shadow-sm" onclick="registerNewBeneficiary()">+ ADD NEW</button>
+      </div>
+
+      <div id="ngo-beneficiary-list" class="space-y-3"></div>
+    </div>
+
+    <!-- 13. COMMUNITY HEALTH WORKER PORTAL -->
+    <div id="worker_home" class="app-view hidden px-margin-mobile py-6 flex flex-col gap-6 max-w-xl mx-auto">
+      <div class="space-y-1">
+        <h2 class="font-headline-lg-mobile text-on-surface font-extrabold">Asha Worker Dashboard</h2>
+        <p class="text-sm text-on-surface-variant">Suresh Kumar (Rohtak Village Portal)</p>
+      </div>
+
+      <!-- Action items list -->
+      <section class="space-y-4">
+        <h3 class="font-label-lg text-primary text-sm uppercase">Pending Home Visits (Urgent)</h3>
+        <div id="worker-tasks-list" class="space-y-4"></div>
+      </section>
+
+      <!-- Search profile search -->
+      <section class="bg-white border border-outline-variant p-5 rounded-2xl shadow-sm space-y-4">
+        <h4 class="font-bold text-primary">Village Care Registrations</h4>
+        <button class="w-full py-4 border border-outline-variant rounded-xl flex items-center justify-between px-4 hover:bg-surface-container-low transition-colors" onclick="navigateTo('ngo_beneficiaries')">
+          <span class="text-sm font-semibold text-on-surface-variant">Search rural patient record...</span>
+          <span class="material-symbols-outlined text-outline">search</span>
+        </button>
+      </section>
+    </div>
+
+    <!-- 14. DOCTOR PORTAL: DASHBOARD -->
+    <div id="doctor_dashboard" class="app-view hidden px-margin-mobile py-6 flex flex-col gap-6 max-w-3xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <h2 class="font-headline-lg text-on-surface font-extrabold">Doctor Hub</h2>
+          <p class="text-on-surface-variant text-sm">Dr. Anjali Sharma • Seva Health Center</p>
+        </div>
+        <button class="bg-primary text-on-primary px-6 py-3 rounded-xl font-bold shadow-sm" onclick="navigateTo('doctor_patients')">
+          VIEW PATIENTS DIRECTORY
+        </button>
+      </div>
+
+      <!-- Notification alert bar -->
+      <div id="doctor-alert-section" class="space-y-4"></div>
+
+      <!-- Scheduled consultations -->
+      <section class="bg-white border border-outline-variant p-6 rounded-2xl shadow-sm space-y-4">
+        <h3 class="font-headline-md text-primary">Today's Appointment Log</h3>
+        <div id="doctor-appointments-list" class="space-y-3"></div>
+      </section>
+    </div>
+
+    <!-- 15. DOCTOR PORTAL: PATIENT DIRECTORY -->
+    <div id="doctor_patients" class="app-view hidden px-margin-mobile py-6 flex flex-col gap-6 max-w-2xl mx-auto">
+      <div class="flex items-center gap-3">
+        <button class="material-symbols-outlined p-2 hover:bg-surface-container rounded-full" onclick="navigateTo('doctor_dashboard')">arrow_back</button>
+        <h2 class="font-headline-lg-mobile text-on-surface font-extrabold">Patients Directory</h2>
+      </div>
+
+      <div id="doctor-patient-directory" class="space-y-4"></div>
+    </div>
+
+    <!-- 16. DOCTOR PORTAL: PATIENT PROFILE DETAIL -->
+    <div id="doctor_patient_profile" class="app-view hidden px-margin-mobile py-6 flex flex-col gap-6 max-w-3xl mx-auto">
+      <div class="flex items-center gap-3">
+        <button class="material-symbols-outlined p-2 hover:bg-surface-container rounded-full" onclick="navigateTo('doctor_patients')">arrow_back</button>
+        <h2 class="font-headline-lg-mobile text-on-surface font-extrabold">Patient Medical Chart</h2>
+      </div>
+
+      <!-- Profile basic card -->
+      <section class="bg-white border border-outline-variant p-6 rounded-2xl shadow-sm space-y-4">
+        <div class="flex justify-between items-start border-b border-outline-variant/30 pb-4">
+          <div>
+            <h3 id="doc-profile-p-name" class="font-headline-md text-primary">Kamla Bai</h3>
+            <p id="doc-profile-p-demographics" class="text-sm text-on-surface-variant">Age: 68 | Sonepat</p>
+          </div>
+          <span id="doc-profile-p-risk">Risk: Low</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+          <div>
+            <p class="text-xs font-bold text-primary uppercase mb-2">Primary Caregivers</p>
+            <div id="doc-profile-p-caregivers" class="space-y-2"></div>
+          </div>
+          <div>
+            <p class="text-xs font-bold text-primary uppercase mb-2">Active Medications</p>
+            <div id="doc-profile-p-meds" class="space-y-2"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Voice interactions queries list -->
+      <section class="space-y-3">
+        <h3 class="font-label-lg text-primary text-sm uppercase">Voice Query Logs (Patient Speech)</h3>
+        <div id="doc-profile-p-voice" class="space-y-3"></div>
+      </section>
+
+      <!-- Consultation notes timeline -->
+      <section class="bg-white border border-outline-variant p-6 rounded-2xl shadow-sm space-y-4">
+        <h3 class="font-label-lg text-primary text-sm uppercase">Consultation Notes Timeline</h3>
+        <div id="doc-profile-p-timeline" class="space-y-4"></div>
+      </section>
+
+      <!-- Primary Action CTA -->
+      <div id="doc-profile-actions"></div>
+    </div>
+
+    <!-- 17. DOCTOR PORTAL: DETAILED VOICE HISTORY -->
+    <div id="doctor_voice_history" class="app-view hidden px-margin-mobile py-6 flex flex-col gap-6 max-w-xl mx-auto">
+      <div class="flex items-center gap-3">
+        <button class="material-symbols-outlined p-2 hover:bg-surface-container rounded-full">arrow_back</button>
+        <h2 class="font-headline-lg-mobile text-on-surface font-extrabold">Voice Log Review</h2>
+      </div>
+
+      <div class="bg-white border border-outline-variant p-6 rounded-2xl shadow-sm space-y-6">
+        <div class="border-b border-outline-variant/30 pb-3 flex justify-between items-center">
+          <div>
+            <h3 id="voice-history-p-name" class="font-bold text-on-surface">Kamla Bai</h3>
+            <p id="voice-history-timestamp" class="text-xs text-on-surface-variant">Time</p>
+          </div>
+          <button class="text-secondary font-bold text-xs bg-secondary-fixed px-3 py-1.5 rounded-full flex items-center gap-1 active:scale-95" onclick="playAudioHistory()">
+            <span class="material-symbols-outlined text-sm">volume_up</span> PLAY RECORDING
+          </button>
+        </div>
+
+        <div class="space-y-2">
+          <p class="text-xs font-bold text-primary uppercase">Multilingual Transcript</p>
+          <div class="bg-surface-container p-4 rounded-xl border border-outline-variant/50">
+            <p id="voice-history-transcript" class="italic font-voice-caption text-on-surface leading-normal">"Transcript..."</p>
+          </div>
+        </div>
+
+        <div class="space-y-2 border-t border-outline-variant/30 pt-4">
+          <p class="text-xs font-bold text-primary uppercase flex items-center gap-1"><span class="material-symbols-outlined text-sm">auto_awesome</span> AI Clinical Summary</p>
+          <p id="voice-history-ai-summary" class="text-sm font-medium text-on-surface-variant leading-relaxed">"Summary..."</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 18. DOCTOR PORTAL: CONSULTATION WORKSPACE -->
+    <div id="doctor_consultation" class="app-view hidden px-margin-mobile py-6 flex flex-col gap-6 max-w-xl mx-auto">
+      <div class="flex items-center gap-3">
+        <button class="material-symbols-outlined p-2 hover:bg-surface-container rounded-full" onclick="navigateTo('doctor_patients')">arrow_back</button>
+        <h2 id="cons-patient-title" class="font-headline-lg-mobile text-on-surface font-extrabold">Consultation</h2>
+      </div>
+
+      <div class="bg-white border border-outline-variant p-6 rounded-2xl shadow-sm space-y-4">
+        <label class="font-label-lg text-primary text-sm" for="cons-clinical-notes">Clinical Assessment Notes</label>
+        <textarea id="cons-clinical-notes" class="w-full h-40 p-4 border border-outline-variant rounded-xl outline-none focus:border-primary focus:ring-1 focus:ring-primary text-sm font-medium" placeholder="Review symptoms and formulate prescription draft..."></textarea>
+      </div>
+
+      <button id="cons-complete-btn" class="w-full h-touch-target-min bg-primary text-on-primary rounded-xl font-label-lg flex items-center justify-center gap-2 active:scale-95 transition-transform shadow-md">
+        PROCEED TO CARE PLAN <span class="material-symbols-outlined">arrow_forward</span>
+      </button>
+    </div>
+
+    <!-- 19. DOCTOR PORTAL: CARE PLAN BUILDER -->
+    <div id="doctor_care_plan" class="app-view hidden px-margin-mobile py-6 flex flex-col gap-6 max-w-xl mx-auto">
+      <div class="flex items-center gap-3">
+        <button class="material-symbols-outlined p-2 hover:bg-surface-container rounded-full" onclick="navigateTo('doctor_dashboard')">arrow_back</button>
+        <h2 id="care-plan-patient-title" class="font-headline-lg-mobile text-on-surface font-extrabold">Care Plan Builder</h2>
+      </div>
+
+      <!-- Recovery Exercises activities -->
+      <section class="bg-white border border-outline-variant p-6 rounded-2xl shadow-sm space-y-4">
+        <h3 class="font-label-lg text-primary text-sm uppercase">Recovery Protocol Activities</h3>
+        <div id="care-plan-activities" class="space-y-3"></div>
+      </section>
+
+      <!-- Prescription Draft list -->
+      <section class="bg-white border border-outline-variant p-6 rounded-2xl shadow-sm space-y-4">
+        <h3 class="font-label-lg text-primary text-sm uppercase">Prescribed Care Medications</h3>
+        <div id="care-plan-meds-draft" class="space-y-3"></div>
+      </section>
+
+      <button id="care-plan-save-btn" class="w-full h-touch-target-min bg-primary text-on-primary rounded-xl font-label-lg flex items-center justify-center gap-2 active:scale-95 transition-transform shadow-md">
+        SAVE CARE PLAN &amp; LOG VISIT <span class="material-symbols-outlined">check_circle</span>
+      </button>
+    </div>
+
+    <!-- 20. SYSTEM ADMIN / REPORTING PORTAL -->
+    <div id="admin_reporting" class="app-view hidden px-margin-mobile py-6 flex flex-col gap-6 max-w-4xl mx-auto">
+      <h2 class="font-headline-lg text-on-surface font-extrabold mb-1">Global System Analytics</h2>
+
+      <section class="grid grid-cols-3 gap-4">
+        <div class="bg-white border border-outline-variant p-5 rounded-xl text-center">
+          <p class="text-xs text-outline uppercase font-bold">Total Enrolled</p>
+          <h3 id="admin-active-patients" class="text-3xl font-extrabold text-primary">12,481</h3>
+        </div>
+        <div class="bg-white border border-outline-variant p-5 rounded-xl text-center">
+          <p class="text-xs text-outline uppercase font-bold">Active Alerts</p>
+          <h3 id="admin-alert-metric" class="text-3xl font-extrabold text-error">0</h3>
+        </div>
+        <div class="bg-white border border-outline-variant p-5 rounded-xl text-center">
+          <p class="text-xs text-outline uppercase font-bold">Adherence Index</p>
+          <h3 class="text-3xl font-extrabold text-tertiary">91.4%</h3>
+        </div>
+      </section>
+    </div>
+
+  </main>
+
+  <!-- ==========================================
+       BOTTOM NAVIGATION SHELL
+       ========================================== -->
+  <nav id="bottom-nav-bar" class="fixed bottom-0 w-full z-40 bg-surface border-t border-outline-variant flex justify-around items-center h-20 px-2 shadow-[0_-4px_10px_rgba(0,0,0,0.03)]">
+    <!-- Home -->
+    <a data-view="home" class="flex flex-col items-center justify-center text-on-surface-variant p-2 rounded-xl transition-all cursor-pointer" onclick="routeToDashboard()">
+      <span class="material-symbols-outlined">home</span>
+      <span class="font-label-lg text-xs mt-0.5">Home</span>
+    </a>
+    <!-- Records -->
+    <a data-view="records" class="flex flex-col items-center justify-center text-on-surface-variant p-2 rounded-xl transition-all cursor-pointer" onclick="navigateTo('patient_records')">
+      <span class="material-symbols-outlined">description</span>
+      <span class="font-label-lg text-xs mt-0.5">Records</span>
+    </a>
+    <!-- Reminders -->
+    <a data-view="reminders" class="flex flex-col items-center justify-center text-on-surface-variant p-2 rounded-xl transition-all cursor-pointer" onclick="navigateTo('patient_reminders')">
+      <span class="material-symbols-outlined">notifications</span>
+      <span class="font-label-lg text-xs mt-0.5">Reminders</span>
+    </a>
+    <!-- Profile -->
+    <a data-view="profile" class="flex flex-col items-center justify-center text-on-surface-variant p-2 rounded-xl transition-all cursor-pointer" onclick="navigateTo('profile_setup')">
+      <span class="material-symbols-outlined">person</span>
+      <span class="font-label-lg text-xs mt-0.5">Profile</span>
+    </a>
+  </nav>
+
+  <!-- ==========================================
+       VOICE INTERACTION POPUP OVERLAY
+       ========================================== -->
+  <div id="voice-record-overlay" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-6 hidden">
+    <div class="bg-white rounded-[24px] w-full max-w-md p-6 flex flex-col items-center gap-6 shadow-2xl relative">
+      <button class="material-symbols-outlined text-outline p-2 hover:bg-surface-container rounded-full absolute right-4 top-4" onclick="cancelPatientVoiceRecord()">close</button>
+      
+      <div class="text-center space-y-1 mt-4">
+        <h2 id="voice-overlay-title" class="font-headline-lg-mobile text-secondary font-bold">Listening...</h2>
+        <p class="text-xs text-on-surface-variant">Speak clearly about your health symptoms</p>
+      </div>
+
+      <div class="relative flex items-center justify-center my-4">
+        <!-- Pulse animation wrapper -->
+        <div class="w-32 h-32 rounded-full bg-secondary-container flex items-center justify-center shadow-lg relative z-10 voice-pulse">
+          <span class="material-symbols-outlined text-secondary text-5xl">mic</span>
+        </div>
+      </div>
+
+      <!-- Real-time Speech transcription box -->
+      <div class="w-full bg-surface-container-low border border-outline-variant p-4 rounded-xl min-h-[100px] flex items-center justify-center text-center">
+        <p id="voice-overlay-text" class="font-voice-caption text-on-surface leading-snug">"Mujhe ghutno mein dard..."</p>
+      </div>
+
+      <!-- Language selector inside overlay -->
+      <div class="w-full space-y-1">
+        <label class="block text-xs font-bold text-outline uppercase">Simulate Language Compliancy</label>
+        <select id="voice-lang-select" class="w-full h-12 bg-surface border border-outline-variant rounded-xl text-sm font-semibold text-primary outline-none px-3" onchange="state.selectedVoiceLanguage = this.value; updateVoiceOverlayUI();">
+          <option value="hi" selected>Hindi (Mujhe ghutno mein dard...)</option>
+          <option value="en">English (I feel dizzy...)</option>
+          <option value="mr">Marathi (Mazya payala sooj...)</option>
+          <option value="ta">Tamil (Enakku thalaivali...)</option>
+          <option value="bn">Bengali (Amar pete jontrona...)</option>
+        </select>
+      </div>
+
+      <button id="voice-overlay-action-btn" class="w-full bg-primary text-on-primary py-4 rounded-xl shadow-lg font-label-lg active:scale-95 transition-transform" onclick="cancelPatientVoiceRecord()">
+        Stop &amp; Save
+      </button>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       FLOATING DEMO CONTROLLER (PORTAL ROUTER)
+       ========================================== -->
+  <div class="fixed bottom-24 left-4 z-[9999] bg-inverse-surface text-inverse-on-surface p-4 rounded-2xl shadow-2xl border border-outline/50 w-80 flex flex-col gap-3 font-body-md" id="demo-controller">
+    <div class="flex justify-between items-center border-b border-outline-variant/30 pb-2">
+      <h3 class="font-bold text-sm tracking-wide text-secondary flex items-center gap-1.5">
+        <span class="material-symbols-outlined text-[18px]">tune</span>
+        Demo Control Center
+      </h3>
+      <button class="material-symbols-outlined text-xs p-1 hover:bg-white/10 rounded-full" onclick="document.getElementById('demo-collapse-content').classList.toggle('hidden')">expand_more</button>
+    </div>
+
+    <div id="demo-collapse-content" class="flex flex-col gap-3">
+      <!-- Walkthrough Guide Box -->
+      <div class="bg-white/10 p-3 rounded-lg text-xs leading-normal space-y-2 border border-white/5">
+        <p class="text-secondary font-bold flex items-center gap-1 uppercase tracking-wider text-[9px]"><span class="material-symbols-outlined text-[12px]">auto_awesome</span> Walkthrough Assistant</p>
+        <p id="demo-guide-text" class="text-white">Guide details here...</p>
+        <button class="text-xs bg-secondary text-on-secondary px-2.5 py-1 rounded font-bold hover:opacity-90 mt-1 active:scale-95" onclick="nextWalkthroughStep()">Next Step</button>
+      </div>
+
+      <!-- Switch role select dropdown -->
+      <div class="space-y-1">
+        <label class="block text-[10px] font-bold uppercase tracking-wider text-outline-variant">Quick Switch Active Identity</label>
+        <select id="demo-role-select" class="w-full bg-white/10 border border-outline-variant/40 rounded-lg text-xs h-10 px-2 outline-none text-white font-semibold cursor-pointer" onchange="handleDemoRoleSwitch(this)">
+          <option value="patient" class="text-on-background">Kamla Bai (Elderly Patient)</option>
+          <option value="caregiver" class="text-on-background">Ramesh Kumar (Son / Caregiver)</option>
+          <option value="ngo" class="text-on-background">NGO Program Manager</option>
+          <option value="worker" class="text-on-background">Suresh Kumar (CHW)</option>
+          <option value="doctor" class="text-on-background">Dr. Anjali Sharma (Doctor)</option>
+          <option value="admin" class="text-on-background">System Administrator</option>
+        </select>
+      </div>
+
+      <!-- Action Simulation Triggers -->
+      <div class="grid grid-cols-2 gap-2 mt-1">
+        <button class="text-[10px] bg-error/20 border border-error/50 hover:bg-error/35 text-white py-2 rounded-lg font-bold" onclick="injectMissedMedicationAlert()">
+          Miss Morning Meds
+        </button>
+        <button class="text-[10px] bg-white/15 border border-white/20 hover:bg-white/25 text-white py-2 rounded-lg font-bold" onclick="resetDemoDatabase()">
+          Reset Database
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="db.js"></script>
+  <script src="app.js"></script>
+  <script>
+    // Global helper: Toggle languages
+    function toggleLanguageGlobal() {
+      state.selectedLanguage = state.selectedLanguage === 'hi' ? 'en' : 'hi';
+      const btn = document.getElementById('header-lang-btn');
+      if (btn) btn.innerText = state.selectedLanguage === 'hi' ? 'हिंदी' : 'English';
+      
+      // Update default simulation voice state language selection
+      state.selectedVoiceLanguage = state.selectedLanguage;
+      const select = document.getElementById('voice-lang-select');
+      if (select) select.value = state.selectedLanguage;
+
+      // Re-trigger current render
+      navigateTo(state.currentView, state.viewParams);
+    }
+
+    function selectLangOnboarding(lang) {
+      state.selectedLanguage = lang;
+      // update highlight in welcome view
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.className = "lang-btn bg-white border border-outline-variant rounded-xl p-4 flex flex-col items-center justify-center gap-2 active:scale-95 transition-all";
+      });
+      // Find corresponding btn and set active border
+      let index = lang === 'en' ? 0 : (lang === 'hi' ? 1 : 2);
+      const activeBtn = document.querySelectorAll('.lang-btn')[index];
+      if (activeBtn) {
+        activeBtn.className = "lang-btn bg-white border-2 border-primary rounded-xl p-4 flex flex-col items-center justify-center gap-2 active:scale-95 transition-all";
+      }
+    }
+
+    function playVoicePrompt(type) {
+      let speech = "Welcome to Kalyaan Bharat. Please select your language and press continue.";
+      if (state.selectedLanguage === 'hi') {
+        speech = "कल्याण भारत में आपका स्वागत है। कृपया अपनी भाषा चुनें और आगे बढ़ें बटन दबाएं।";
+      } else if (state.selectedLanguage === 'mr') {
+        speech = "कल्याण भारत मध्ये आपले स्वागत आहे. कृपया आपली भाषा निवडा आणि पुढे जा बटणावर क्लिक करा.";
+      }
+      if ('speechSynthesis' in window) {
+        const u = new SpeechSynthesisUtterance(speech);
+        u.lang = state.selectedLanguage === 'hi' ? 'hi-IN' : (state.selectedLanguage === 'mr' ? 'mr-IN' : 'en-IN');
+        window.speechSynthesis.speak(u);
+      } else {
+        alert(speech);
+      }
+    }
+
+    // Run first navigation entry point
+    document.addEventListener('DOMContentLoaded', () => {
+      navigateTo('welcome');
+    });
+  </script>
+</body>
+</html>

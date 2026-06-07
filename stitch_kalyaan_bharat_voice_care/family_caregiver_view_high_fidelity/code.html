@@ -1,0 +1,222 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Kalyaan Bharat - Caregiver Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#B91C1C", // Bharat Care Red
+                        "on-primary": "#FFFFFF",
+                        "primary-container": "#FEE2E2",
+                        "on-primary-container": "#991B1B",
+                        secondary: "#1E293B",
+                        "on-secondary": "#FFFFFF",
+                        "secondary-container": "#E2E8F0",
+                        "on-secondary-container": "#0F172A",
+                        tertiary: "#065F46", // Success/Stable Green
+                        "on-tertiary": "#FFFFFF",
+                        surface: "#F8FAFC",
+                        "on-surface": "#0F172A",
+                        "surface-variant": "#E2E8F0",
+                        "on-surface-variant": "#475569",
+                        outline: "#CBD5E1",
+                        "outline-variant": "#E2E8F0",
+                        error: "#B91C1C",
+                        background: "#FFFFFF",
+                        "inverse-surface": "#1E293B"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.75rem",
+                        "xl": "1rem",
+                        "2xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    fontFamily: {
+                        headline: ["Public Sans", "sans-serif"],
+                        display: ["Public Sans", "sans-serif"],
+                        body: ["Public Sans", "sans-serif"],
+                        label: ["Public Sans", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Public Sans', sans-serif; background-color: #F8FAFC; color: #0F172A; }
+        .glass-card { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(8px); border: 1px solid rgba(226, 232, 240, 0.8); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .vital-card-gradient { background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%); }
+    </style>
+</head>
+<body class="pb-24">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-50 bg-background dark:bg-inverse-surface border-b border-outline-variant dark:border-outline flex items-center justify-between px-6 h-16">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed" data-icon="health_and_safety">health_and_safety</span>
+<h1 class="font-headline font-bold text-xl text-primary dark:text-primary-fixed">Kalyaan Bharat</h1>
+</div>
+<button class="px-4 py-1.5 rounded-full border border-outline text-on-surface-variant font-medium hover:bg-surface-variant/50 transition-transform active:scale-95">
+            हिन्दी
+        </button>
+</header>
+<main class="max-w-md mx-auto px-5 pt-6 space-y-6">
+<!-- Patient Profile Card - Bento Style -->
+<section class="glass-card rounded-2xl p-5 shadow-sm transition-all duration-700 opacity-100 translate-y-0">
+<div class="flex items-center gap-5">
+<div class="relative">
+<img alt="Patient Photo" class="w-20 h-20 rounded-2xl object-cover border-2 border-white shadow-md" data-alt="A portrait of an elderly South Asian man with grey hair and a gentle smile, wearing a traditional light-colored kurta. The lighting is soft and natural, emphasizing a warm and dignified personality. The background is a clean, slightly out-of-focus indoor domestic setting with soft white and beige tones, maintaining a high-end health-care app aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjLQmjiagFQy2HN9-zmfWOdB5oj4UnQo3McMIJAN5vfwKmPKRqvUxmr9SmS4DILk8Xg8G7rE4z3uFv3LUsxI0pNVJiPyrQtJkP5sA5RTgM_7vnFfZUM419hWtMMjeurcJUWoINw0PmMSV_3vY27bzUF_v93cVChBw5lHy97FBzUlWPT4OsNCPc3gUKud4UoIUS-flPqtU_796eurHkP2oc_j1bInVBux2s0KBgum_tSDMKkvIB6Nu3CAYbC0YwM3PCuFzCi-nuzA86">
+<div class="absolute -bottom-1 -right-1 w-5 h-5 bg-tertiary rounded-full border-4 border-white"></div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h2 class="text-2xl font-extrabold tracking-tight text-on-surface">RAJU PRASAD</h2>
+<p class="text-on-surface-variant font-medium">Age: 72</p>
+</div>
+<span class="bg-tertiary/10 text-tertiary text-[10px] font-bold px-2 py-0.5 rounded-full border border-tertiary/20 uppercase tracking-wider">Stable</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Critical Alerts Section -->
+<section class="space-y-3 transition-all duration-700 opacity-100 translate-y-0">
+<div class="flex items-center justify-between">
+<h3 class="font-bold text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">error</span>
+                    CRITICAL ALERTS
+                </h3>
+</div>
+<div class="bg-primary-container rounded-2xl p-4 border border-primary/20 flex flex-col gap-4">
+<div class="flex items-start gap-4">
+<div class="bg-primary p-3 rounded-xl shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-white" data-icon="medication">medication</span>
+</div>
+<div class="flex-1">
+<h4 class="font-bold text-on-primary-container text-lg">MISSED MEDICATION</h4>
+<p class="text-on-primary-container/80 text-sm font-medium">Metformin 500mg (8:00 AM Dose)</p>
+</div>
+</div>
+<button class="w-full bg-primary text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 active:scale-[0.98] transition-all shadow-md">
+<span class="material-symbols-outlined" data-icon="call" style="font-variation-settings: 'FILL' 1;">call</span>
+                    CALL NOW
+                </button>
+</div>
+</section>
+<!-- Vitals Grid -->
+<section class="space-y-3 transition-all duration-700 opacity-100 translate-y-0">
+<h3 class="font-bold text-on-surface-variant text-sm uppercase tracking-widest">Today's Vitals</h3>
+<div class="grid grid-cols-2 gap-4">
+<!-- Blood Pressure -->
+<div class="vital-card-gradient p-4 rounded-2xl border border-outline-variant">
+<div class="flex justify-between items-start mb-3">
+<span class="material-symbols-outlined text-blue-600 bg-blue-50 p-2 rounded-lg" data-icon="monitor_heart">monitor_heart</span>
+<span class="text-[10px] font-bold text-tertiary bg-tertiary/10 px-2 py-0.5 rounded">Normal</span>
+</div>
+<p class="text-2xl font-extrabold text-on-surface">120/80</p>
+<p class="text-xs font-semibold text-on-surface-variant">mmHg · Blood Pressure</p>
+</div>
+<!-- Blood Sugar -->
+<div class="vital-card-gradient p-4 rounded-2xl border border-outline-variant">
+<div class="flex justify-between items-start mb-3">
+<span class="material-symbols-outlined text-amber-600 bg-amber-50 p-2 rounded-lg" data-icon="bloodtype">bloodtype</span>
+<span class="text-[10px] font-bold text-error bg-error/10 px-2 py-0.5 rounded">High</span>
+</div>
+<p class="text-2xl font-extrabold text-on-surface">185</p>
+<p class="text-xs font-semibold text-on-surface-variant">mg/dL · Blood Sugar</p>
+</div>
+</div>
+</section>
+<!-- Next Consultations -->
+<section class="space-y-3 transition-all duration-700 opacity-100 translate-y-0">
+<h3 class="font-bold text-on-surface-variant text-sm uppercase tracking-widest">Next Consultations</h3>
+<div class="space-y-3">
+<!-- Consult 1 -->
+<div class="glass-card p-4 rounded-2xl flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-secondary-container flex items-center justify-center overflow-hidden">
+<img alt="Doctor" class="w-full h-full object-cover" data-alt="A professional headshot of a friendly male doctor of Indian descent with spectacles and a white coat, looking directly at the camera with an approachable smile. The lighting is studio-quality, clean, and bright, with a soft blue-grey background, conveying trust and medical expertise in a modern interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfYmEQJxyaZjfENlwqHX4AjDtuF6yTB-y4r4q7XWU4YRD4dv7itA1hc0kQAvqxe7JosbL0dgvTVsBzpy-0zwMkcf6hlJDB9BopbwKrJmKorUhL96e9dHaGd5ByItK_E_E65VHtsqjQTcoGe1DDonJXHZgYC8WLzTXcw1MOm82l-jmOAKzHwYWeq6A89gsZZO0DMAmDiTjVXy0u2E5PW7ElUuJGF2UWtrmMJNt0U2VNKMW_h2VhQqPSlMpINguXdjWCA5vJ4IaUpmkD">
+</div>
+<div class="flex-1">
+<h4 class="font-bold text-on-surface">Dr. Arnab Sen</h4>
+<p class="text-xs text-on-surface-variant">Cardiology · Tomorrow 10:30 AM</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- Consult 2 -->
+<div class="glass-card p-4 rounded-2xl flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" data-icon="restaurant">restaurant</span>
+</div>
+<div class="flex-1">
+<h4 class="font-bold text-on-surface">Virtual Dietitian Check-in</h4>
+<p class="text-xs text-on-surface-variant">Diet &amp; Nutrition · Friday 04:00 PM</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="videocam">videocam</span>
+</div>
+</div>
+</section>
+<!-- CTA Action -->
+<div class="pt-4 pb-12">
+<button class="w-full bg-secondary text-white font-bold py-4 rounded-2xl shadow-xl flex items-center justify-center gap-3 active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+                BOOK NEW CONSULTATION
+            </button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface-container-lowest dark:bg-inverse-surface border-t border-outline-variant dark:border-outline flex justify-around items-center px-2 py-2 h-[84px]">
+<!-- Home (Active) -->
+<button class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary-fixed-dim text-on-secondary-container dark:text-on-secondary-fixed-variant rounded-xl min-w-[72px] py-1 active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-lg text-xs mt-1">Home</span>
+</button>
+<!-- Records -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant py-1 hover:bg-surface-container-high active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-label-lg text-xs mt-1">Records</span>
+</button>
+<!-- Reminders -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant py-1 hover:bg-surface-container-high active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="event_note">event_note</span>
+<span class="font-label-lg text-xs mt-1">Reminders</span>
+</button>
+<!-- Profile -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant py-1 hover:bg-surface-container-high active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-lg text-xs mt-1">Profile</span>
+</button>
+</nav>
+<script>
+        // Micro-interaction for buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.classList.add('scale-95');
+                setTimeout(() => this.classList.remove('scale-95'), 100);
+            });
+        });
+
+        // Simple observer for entrance animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-4');
+                }
+            });
+        });
+
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-4');
+            observer.observe(section);
+        });
+    </script>
+
+
+</body></html>

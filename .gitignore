@@ -1,0 +1,6 @@
+# Ignore big zip archives
+*.zip
+
+# Node/local server modules or logs if any
+node_modules/
+*.log

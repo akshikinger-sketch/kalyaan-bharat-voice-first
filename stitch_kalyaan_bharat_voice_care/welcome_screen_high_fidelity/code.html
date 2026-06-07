@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kalyaan Bharat - Welcome</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+        }
+        .pulse-animation {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+        .voice-ripple {
+            position: absolute;
+            border: 4px solid #ffab69;
+            border-radius: 50%;
+            animation: ripple 2s infinite;
+        }
+        @keyframes ripple {
+            0% { width: 80px; height: 80px; opacity: 1; }
+            100% { width: 160px; height: 160px; opacity: 0; }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#ffdcc4",
+                        "on-primary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#6f3800",
+                        "inverse-primary": "#82d3de",
+                        "secondary-container": "#ffab69",
+                        "primary-fixed-dim": "#82d3de",
+                        "inverse-surface": "#293234",
+                        "background": "#f2fbfe",
+                        "outline": "#6f797a",
+                        "on-tertiary-container": "#a9ece4",
+                        "on-primary-container": "#9becf7",
+                        "surface-container-highest": "#dbe4e7",
+                        "outline-variant": "#bec8ca",
+                        "surface-dim": "#d2dcde",
+                        "tertiary-fixed-dim": "#90d3cb",
+                        "on-background": "#141d1f",
+                        "on-surface": "#141d1f",
+                        "inverse-on-surface": "#e9f2f5",
+                        "tertiary-container": "#286d67",
+                        "primary": "#00535b",
+                        "primary-fixed": "#9ff0fb",
+                        "on-surface-variant": "#3e494a",
+                        "on-primary-fixed": "#001f23",
+                        "surface-tint": "#006972",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#e6eff2",
+                        "surface-bright": "#f2fbfe",
+                        "secondary": "#8e4e14",
+                        "on-tertiary-fixed-variant": "#00504b",
+                        "primary-container": "#006d77",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#2f1400",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#004f56",
+                        "tertiary-fixed": "#acefe7",
+                        "surface-container-low": "#ecf5f8",
+                        "surface-container-high": "#e1eaed",
+                        "on-tertiary-fixed": "#00201e",
+                        "tertiary": "#01544f",
+                        "surface-variant": "#dbe4e7",
+                        "on-secondary-container": "#783d01",
+                        "secondary-fixed-dim": "#ffb780",
+                        "on-secondary": "#ffffff",
+                        "surface": "#f2fbfe"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "touch-target-min": "56px",
+                        "gutter": "24px",
+                        "stack-gap": "16px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Noto Sans"],
+                        "body-lg": ["Noto Sans"],
+                        "voice-caption": ["Noto Sans"],
+                        "label-lg": ["Noto Sans"],
+                        "headline-md": ["Noto Sans"],
+                        "headline-lg-mobile": ["Noto Sans"],
+                        "body-md": ["Noto Sans"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "44px", "fontWeight": "700" }],
+                        "body-lg": ["20px", { "lineHeight": "30px", "fontWeight": "400" }],
+                        "voice-caption": ["22px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "label-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "38px", "fontWeight": "700" }],
+                        "body-md": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md text-body-md overflow-x-hidden">
+<!-- Top App Bar -->
+<header class="w-full top-0 left-0 bg-background flex items-center justify-between px-margin-mobile h-touch-target-min sticky z-40">
+<div class="flex items-center gap-4">
+<span class="font-headline-lg-mobile text-headline-lg-mobile text-primary font-extrabold tracking-tight">Kalyaan Bharat</span>
+</div>
+<button aria-label="Language options" class="material-symbols-outlined text-primary text-2xl active:scale-95 transition-transform duration-200">
+            language
+        </button>
+</header>
+<main class="flex-grow flex flex-col px-margin-mobile pb-margin-mobile gap-stack-gap">
+<!-- Hero Section -->
+<section class="mt-4 rounded-xl overflow-hidden relative shadow-sm border border-outline-variant bg-white min-h-[280px]">
+<img alt="Family health and happiness in rural India" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRiZvFZceJyYvLK874yxKwxusUzmGSa4PgKDFk2lMrAKKrgALrUOk7C84YYPGDchuNs3a42lDRj5do_QLIZ_NVXGzjBcDFZg4LIfaYWXqtE3mXhPrYs2s-kas4pwnTbBb2ld20OQUFxD8Z-tdzzERl1JlM3_xgS21AZJW4rcDUrV595MQvLOJQcDKLcmLDS7BObF7XN1wlPzzH02JJqKwINwHmk8ANy1CMCGKkKG1-7W-dF9UuZA1Om48w1CBj2zdnuEHEQTpsCTzK"/>
+<div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent">
+<p class="text-white font-headline-md text-headline-md leading-tight">Together for Health</p>
+</div>
+</section>
+<!-- Welcome Headline -->
+<section class="text-center mt-2">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-1">नमस्ते!</h1>
+<h2 class="font-headline-md text-headline-md text-on-surface-variant">Welcome to Kalyaan Bharat</h2>
+<p class="text-on-surface-variant/80 mt-2">Your trusted health companion.</p>
+</section>
+<!-- Language Selection (Bento Style) -->
+<section class="grid grid-cols-3 gap-3 mt-2">
+<button class="lang-btn bg-white border-2 border-primary rounded-xl p-4 flex flex-col items-center justify-center gap-2 active:scale-95 transition-all" onclick="selectLang(this)">
+<span class="font-headline-md text-headline-md text-primary">A</span>
+<span class="font-label-lg text-label-lg text-on-surface">English</span>
+</button>
+<button class="lang-btn bg-white border border-outline-variant rounded-xl p-4 flex flex-col items-center justify-center gap-2 active:scale-95 transition-all" onclick="selectLang(this)">
+<span class="font-headline-md text-headline-md text-primary">अ</span>
+<span class="font-label-lg text-label-lg text-on-surface">हिंदी</span>
+</button>
+<button class="lang-btn bg-white border border-outline-variant rounded-xl p-4 flex flex-col items-center justify-center gap-2 active:scale-95 transition-all" onclick="selectLang(this)">
+<span class="font-headline-md text-headline-md text-primary">म</span>
+<span class="font-label-lg text-label-lg text-on-surface">मराठी</span>
+</button>
+</section>
+<!-- Voice Greeting Button -->
+<section class="flex flex-col items-center justify-center py-6 gap-4">
+<div class="relative flex items-center justify-center">
+<div class="hidden voice-ripple" id="voice-ripple"></div>
+<button class="w-24 h-24 rounded-full bg-secondary text-white flex items-center justify-center shadow-lg active:scale-90 transition-all duration-300 z-10" id="voice-button" onclick="toggleVoice()">
+<span class="material-symbols-outlined text-4xl" data-weight="fill">mic</span>
+</button>
+</div>
+<div class="text-center">
+<span class="font-voice-caption text-voice-caption text-secondary font-bold block">Suniye</span>
+<span class="text-on-surface-variant text-sm">Press to hear help</span>
+</div>
+</section>
+<!-- Primary CTA -->
+<section class="mt-auto pt-6">
+<button class="w-full h-touch-target-min bg-primary text-on-primary rounded-xl font-headline-md text-headline-md shadow-md active:scale-95 transition-all flex items-center justify-center gap-3">
+                Continue
+                <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</section>
+</main>
+<!-- Bottom Nav Bar (Suppressed on Welcome, but following JSON if it were required) -->
+<!-- Exclusion Rule applied: Transactional/Onboarding screen suppresses navigation -->
+<nav class="fixed bottom-0 w-full flex justify-around items-center py-2 px-margin-mobile bg-surface-container rounded-t-xl border-t border-outline-variant z-50 md:hidden hidden">
+<div class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-6 py-2 transition-all duration-300">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-lg text-label-lg">Help</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-6 py-2 transition-all duration-300">
+<span class="material-symbols-outlined">record_voice_over</span>
+<span class="font-label-lg text-label-lg">Voice Assistance</span>
+</div>
+</nav>
+<script>
+        function selectLang(btn) {
+            // Remove active style from all
+            document.querySelectorAll('.lang-btn').forEach(b => {
+                b.classList.remove('border-primary', 'border-2');
+                b.classList.add('border', 'border-outline-variant');
+            });
+            // Add active style to selected
+            btn.classList.remove('border', 'border-outline-variant');
+            btn.classList.add('border-primary', 'border-2');
+        }
+
+        let isListening = false;
+        function toggleVoice() {
+            const ripple = document.getElementById('voice-ripple');
+            const btn = document.getElementById('voice-button');
+            isListening = !isListening;
+            
+            if (isListening) {
+                ripple.classList.remove('hidden');
+                btn.classList.add('bg-secondary-container', 'text-on-secondary-container');
+                btn.classList.remove('bg-secondary');
+            } else {
+                ripple.classList.add('hidden');
+                btn.classList.add('bg-secondary');
+                btn.classList.remove('bg-secondary-container', 'text-on-secondary-container');
+            }
+        }
+    </script>
+</body></html>

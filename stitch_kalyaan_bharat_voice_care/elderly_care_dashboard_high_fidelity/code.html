@@ -1,0 +1,287 @@
+<!DOCTYPE html><html lang="hi"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed-variant": "#004f56",
+                    "on-tertiary-container": "#a9ece4",
+                    "on-secondary-container": "#783d01",
+                    "surface-container-low": "#ecf5f8",
+                    "outline-variant": "#bec8ca",
+                    "on-primary-container": "#9becf7",
+                    "background": "#f2fbfe",
+                    "error-container": "#ffdad6",
+                    "primary-fixed": "#9ff0fb",
+                    "on-tertiary": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "primary-fixed-dim": "#82d3de",
+                    "on-tertiary-fixed-variant": "#00504b",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-container": "#006d77",
+                    "tertiary-container": "#286d67",
+                    "secondary": "#8e4e14",
+                    "on-surface-variant": "#3e494a",
+                    "error": "#ba1a1a",
+                    "surface-tint": "#006972",
+                    "surface": "#f2fbfe",
+                    "secondary-fixed-dim": "#ffb780",
+                    "tertiary": "#01544f",
+                    "secondary-fixed": "#ffdcc4",
+                    "on-secondary-fixed-variant": "#6f3800",
+                    "surface-variant": "#dbe4e7",
+                    "tertiary-fixed-dim": "#90d3cb",
+                    "on-secondary-fixed": "#2f1400",
+                    "on-error-container": "#93000a",
+                    "on-error": "#ffffff",
+                    "on-surface": "#141d1f",
+                    "inverse-primary": "#82d3de",
+                    "surface-bright": "#f2fbfe",
+                    "inverse-on-surface": "#e9f2f5",
+                    "surface-container-high": "#e1eaed",
+                    "secondary-container": "#ffab69",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed": "#acefe7",
+                    "on-tertiary-fixed": "#00201e",
+                    "outline": "#6f797a",
+                    "inverse-surface": "#293234",
+                    "on-primary-fixed": "#001f23",
+                    "surface-container": "#e6eff2",
+                    "surface-dim": "#d2dcde",
+                    "surface-container-highest": "#dbe4e7",
+                    "primary": "#00535b",
+                    "on-background": "#141d1f"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "touch-target-min": "56px",
+                    "margin-mobile": "20px",
+                    "gutter": "24px",
+                    "unit": "8px",
+                    "margin-desktop": "64px",
+                    "stack-gap": "16px"
+            },
+            "fontFamily": {
+                    "label-lg": ["Noto Sans"],
+                    "headline-lg": ["Noto Sans"],
+                    "body-lg": ["Noto Sans"],
+                    "body-md": ["Noto Sans"],
+                    "headline-lg-mobile": ["Noto Sans"],
+                    "headline-md": ["Noto Sans"],
+                    "voice-caption": ["Noto Sans"]
+            },
+            "fontSize": {
+                    "label-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "44px", "fontWeight": "700"}],
+                    "body-lg": ["20px", {"lineHeight": "30px", "fontWeight": "400"}],
+                    "body-md": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "38px", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "voice-caption": ["22px", {"lineHeight": "32px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .pulse-animation {
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 0.4; }
+            100% { transform: scale(0.95); opacity: 0.8; }
+        }
+        body {
+            background-color: #f2fbfe;
+            font-family: 'Noto Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+</head>
+<body class="min-h-screen pb-[100px]">
+<!-- Top App Bar -->
+<header class="w-full top-0 sticky bg-background border-b border-outline-variant z-50 flex items-center justify-between px-margin-mobile h-touch-target-min">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[32px]" data-icon="health_and_safety">health_and_safety</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Kalyaan Bharat</h1>
+</div>
+<button class="bg-surface-variant/50 px-4 py-2 rounded-full font-label-lg text-label-lg text-primary active:scale-95 transition-transform">
+            हिन्दी
+        </button>
+</header>
+<main class="max-w-4xl mx-auto px-margin-mobile py-6 space-y-stack-gap">
+<!-- Welcome Header -->
+<section class="mb-8">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Namaste, Ramesh Ji</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Aapka aaj ka din mangalmay ho.</p>
+</section>
+<!-- Hero Card -->
+<div class="relative w-full aspect-[16/9] md:aspect-[21/9] rounded-xl overflow-hidden shadow-sm border border-outline-variant">
+<img alt="Caregiver supporting elderly person" class="w-full h-full object-cover" data-alt="A warm and reassuring scene featuring a caregiver gently holding the hand of an elderly person in a bright, sun-filled living room. The lighting is soft and high-key, emphasizing a safe and trusting atmosphere. The background is minimalist with soft teal and white tones, reflecting a clean and modern healthcare environment designed for comfort and peace of mind." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2j2C670BvKAAvqLCryGNnnunEeIPJizZyut7f78Erz6xaddj58Adk0jGeOJkcZC0O3TqQxKZZoWAAZdO5i1eOH_9x7f5W58glRoBbbF677BI89Ugf54r3EXg7-k0j53zvS9iKQYD_TvjDg5F6NHaGHPQRTXpQHCnuHVfC92p1LOe4Grkr4GjnZXH4_GXxipgP30NEpDVgrk4s-h8kqBk2EAAqWPJt9HV4hQYXSa7rBwPcrjSHrZZRiHf0ExF86dVj54vrRZY2Ycl2">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">
+<span class="text-white font-headline-md text-headline-md">Aapki Seva Mein</span>
+</div>
+</div>
+<!-- Daily Health Check-in -->
+<section class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant shadow-sm space-y-6">
+<h3 class="font-headline-md text-headline-md text-on-surface text-center">Aap aaj kaisa mehsoos kar rahe hain?</h3>
+<div class="grid grid-cols-3 gap-4">
+<button class="flex flex-col items-center justify-center p-4 rounded-xl bg-surface-container-low border-2 border-transparent hover:border-primary active:scale-95 transition-all h-[120px]">
+<span class="material-symbols-outlined text-[48px] text-primary" data-icon="sentiment_very_satisfied">sentiment_very_satisfied</span>
+<span class="font-label-lg text-label-lg mt-2">ACHHA</span>
+</button>
+<button class="flex flex-col items-center justify-center p-4 rounded-xl bg-surface-container-low border-2 border-transparent hover:border-primary active:scale-95 transition-all h-[120px]">
+<span class="material-symbols-outlined text-[48px] text-secondary" data-icon="sentiment_neutral">sentiment_neutral</span>
+<span class="font-label-lg text-label-lg mt-2 text-on-surface">THIK HAI</span>
+</button>
+<button class="flex flex-col items-center justify-center p-4 rounded-xl bg-surface-container-low border-2 border-transparent hover:border-primary active:scale-95 transition-all h-[120px]">
+<span class="material-symbols-outlined text-[48px] text-error" data-icon="sentiment_very_dissatisfied">sentiment_very_dissatisfied</span>
+<span class="font-label-lg text-label-lg mt-2 text-on-surface">THIK NAHI</span>
+</button>
+</div>
+</section>
+<!-- Dynamic Cards Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-gap">
+<!-- Physiotherapy Card -->
+<div class="bg-white p-6 rounded-xl border-l-8 border-primary border-t border-r border-b border-outline-variant shadow-sm flex flex-col justify-between h-full min-h-[160px]">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary" data-icon="fitness_center">fitness_center</span>
+<h4 class="font-headline-md text-headline-md text-on-surface">Physiotherapy</h4>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Session 4 of 10</p>
+</div>
+<div class="mt-4 flex items-center justify-between">
+<span class="font-label-lg text-label-lg text-primary">Next visit: Tomorrow 10 AM</span>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<!-- Diet Plan Card -->
+<div class="bg-white p-6 rounded-xl border-l-8 border-secondary border-t border-r border-b border-outline-variant shadow-sm flex flex-col justify-between h-full min-h-[160px]">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-secondary" data-icon="restaurant">restaurant</span>
+<h4 class="font-headline-md text-headline-md text-on-surface">Diet Plan</h4>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Updating your nutrition chart...</p>
+</div>
+<div class="mt-4 w-full bg-surface-variant h-3 rounded-full overflow-hidden">
+<div class="bg-secondary h-full w-2/3"></div>
+</div>
+</div>
+</div>
+<!-- Reminders List -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden">
+<div class="p-4 border-b border-outline-variant bg-surface-container">
+<h3 class="font-headline-md text-headline-md text-on-surface">Upcoming Reminders</h3>
+</div>
+<div class="divide-y divide-outline-variant">
+<!-- Reminder 1 -->
+<div class="flex items-center gap-4 p-4 min-h-[72px] hover:bg-surface-variant/50 active:scale-95 transition-all">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container" data-icon="pill">pill</span>
+</div>
+<div class="flex-grow">
+<p class="font-label-lg text-label-lg text-on-surface">Morning Medicine</p>
+<p class="font-body-md text-body-md text-on-surface-variant">09:30 AM</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="radio_button_unchecked">radio_button_unchecked</span>
+</div>
+<!-- Reminder 2 -->
+<div class="flex items-center gap-4 p-4 min-h-[72px] hover:bg-surface-variant/50 active:scale-95 transition-all">
+<div class="w-12 h-12 rounded-full bg-tertiary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-fixed" data-icon="directions_walk">directions_walk</span>
+</div>
+<div class="flex-grow">
+<p class="font-label-lg text-label-lg text-on-surface">Evening Walk</p>
+<p class="font-body-md text-body-md text-on-surface-variant">05:00 PM</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="radio_button_unchecked">radio_button_unchecked</span>
+</div>
+<!-- Reminder 3 -->
+<div class="flex items-center gap-4 p-4 min-h-[72px] hover:bg-surface-variant/50 active:scale-95 transition-all">
+<div class="w-12 h-12 rounded-full bg-secondary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-fixed" data-icon="call">call</span>
+</div>
+<div class="flex-grow">
+<p class="font-label-lg text-label-lg text-on-surface">Dr. Verma Call</p>
+<p class="font-body-md text-body-md text-on-surface-variant">06:30 PM</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="radio_button_unchecked">radio_button_unchecked</span>
+</div>
+</div>
+</section>
+<!-- Help Section -->
+<section class="bg-primary-container p-6 rounded-2xl text-on-primary-container shadow-lg flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="text-center md:text-left">
+<h3 class="font-headline-md text-headline-md mb-2">Need Help?</h3>
+<p class="font-body-lg text-body-lg opacity-90">Aapka Sahayak hamesha aapke saath hai.</p>
+</div>
+<button class="bg-secondary-container text-on-secondary-container w-full md:w-auto px-8 h-touch-target-min rounded-full flex items-center justify-center gap-3 font-label-lg text-label-lg shadow-md active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="support_agent">support_agent</span>
+                CALL SAHAYAK
+            </button>
+</section>
+</main>
+<!-- Voice Interaction Floating Indicator (Contextual to Home) -->
+<div class="fixed bottom-24 right-6 z-[60]">
+<button class="w-16 h-16 rounded-full bg-secondary shadow-xl flex items-center justify-center text-white pulse-animation active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[32px]" data-icon="mic" data-weight="fill" style="font-variation-settings: 'FILL' 1;">mic</span>
+</button>
+</div>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface-container-lowest border-t border-outline-variant flex justify-around items-center px-2 py-2 h-[84px]">
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl min-w-[72px] py-1 active:scale-95 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="home" data-weight="fill" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-lg text-label-lg">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-1 hover:bg-surface-container-high rounded-xl min-w-[72px] active:scale-95 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-label-lg text-label-lg">Records</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-1 hover:bg-surface-container-high rounded-xl min-w-[72px] active:scale-95 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="event_note">event_note</span>
+<span class="font-label-lg text-label-lg">Reminders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-1 hover:bg-surface-container-high rounded-xl min-w-[72px] active:scale-95 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-lg text-label-lg">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for check-in buttons
+        const checkInButtons = document.querySelectorAll('section button');
+        checkInButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove border from all
+                checkInButtons.forEach(b => b.classList.remove('border-primary', 'bg-primary-fixed'));
+                // Add to clicked
+                this.classList.add('border-primary', 'bg-primary-fixed');
+                
+                // Feedback effect
+                const ripple = document.createElement('div');
+                ripple.className = 'absolute inset-0 bg-primary/10 rounded-xl animate-ping';
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 500);
+            });
+        });
+    </script>
+
+
+</body></html>

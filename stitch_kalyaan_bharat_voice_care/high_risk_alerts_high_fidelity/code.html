@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>High-Risk Alerts | Kalyan Bharat</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-bright": "#f2fbfe",
+                      "on-secondary-fixed": "#2f1400",
+                      "tertiary-container": "#286d67",
+                      "surface-tint": "#006972",
+                      "tertiary-fixed-dim": "#90d3cb",
+                      "on-surface": "#141d1f",
+                      "error-container": "#ffdad6",
+                      "on-tertiary-fixed-variant": "#00504b",
+                      "on-tertiary": "#ffffff",
+                      "surface-variant": "#dbe4e7",
+                      "surface-container-high": "#e1eaed",
+                      "surface": "#f2fbfe",
+                      "on-secondary-container": "#783d01",
+                      "on-primary-fixed": "#001f23",
+                      "secondary-fixed": "#ffdcc4",
+                      "on-secondary": "#ffffff",
+                      "surface-container": "#e6eff2",
+                      "surface-container-low": "#ecf5f8",
+                      "on-error": "#ffffff",
+                      "error": "#ba1a1a",
+                      "tertiary": "#01544f",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-fixed-dim": "#82d3de",
+                      "on-primary-container": "#9becf7",
+                      "on-surface-variant": "#3e494a",
+                      "background": "#f2fbfe",
+                      "on-error-container": "#93000a",
+                      "on-tertiary-fixed": "#00201e",
+                      "inverse-surface": "#293234",
+                      "surface-dim": "#d2dcde",
+                      "outline-variant": "#bec8ca",
+                      "inverse-primary": "#82d3de",
+                      "primary": "#00535b",
+                      "on-secondary-fixed-variant": "#6f3800",
+                      "outline": "#6f797a",
+                      "secondary-fixed-dim": "#ffb780",
+                      "on-primary": "#ffffff",
+                      "surface-container-highest": "#dbe4e7",
+                      "tertiary-fixed": "#acefe7",
+                      "on-background": "#141d1f",
+                      "inverse-on-surface": "#e9f2f5",
+                      "primary-fixed": "#9ff0fb",
+                      "on-primary-fixed-variant": "#004f56",
+                      "on-tertiary-container": "#a9ece4",
+                      "secondary": "#8e4e14",
+                      "secondary-container": "#ffab69",
+                      "primary-container": "#006d77"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "unit": "8px",
+                      "touch-target-min": "56px",
+                      "stack-gap": "16px",
+                      "margin-mobile": "20px",
+                      "gutter": "24px",
+                      "margin-desktop": "64px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Noto Sans"],
+                      "body-md": ["Noto Sans"],
+                      "headline-lg": ["Noto Sans"],
+                      "voice-caption": ["Noto Sans"],
+                      "label-lg": ["Noto Sans"],
+                      "body-lg": ["Noto Sans"],
+                      "headline-lg-mobile": ["Noto Sans"]
+              },
+              "fontSize": {
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "body-md": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "44px", "fontWeight": "700"}],
+                      "voice-caption": ["22px", {"lineHeight": "32px", "fontWeight": "500"}],
+                      "label-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "700"}],
+                      "body-lg": ["20px", {"lineHeight": "30px", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "38px", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .pulse-red {
+            animation: pulse-red 2s infinite;
+        }
+        @keyframes pulse-red {
+            0% { box-shadow: 0 0 0 0 rgba(186, 26, 26, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(186, 26, 26, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(186, 26, 26, 0); }
+        }
+        .progress-bar-fill {
+            transition: width 1s ease-out;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface flex justify-between items-center px-margin-mobile py-4 w-full sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary hover:bg-surface-container-highest transition-colors p-2 rounded-full active:scale-95 duration-100">menu</button>
+<h1 class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed-dim">Kalyan Bharat</h1>
+</div>
+<button class="font-label-lg text-label-lg text-primary border-2 border-primary px-4 py-1 rounded-full active:scale-95 duration-100 transition-colors">हिन्दी</button>
+</header>
+<main class="px-margin-mobile mt-6 max-w-4xl mx-auto">
+<!-- Dashboard Header -->
+<section class="mb-8">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-2">High-Risk Alerts</h2>
+<p class="font-body-md text-on-surface-variant">Immediate action required for priority cases.</p>
+</section>
+<!-- Escalation Cases Section -->
+<section class="mb-10">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 1;">report</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Escalation Cases</h3>
+</div>
+<div class="space-y-4">
+<!-- Case 1: Anjali Sharma -->
+<div class="bg-surface-container-lowest border-l-8 border-error rounded-xl p-5 shadow-md flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex items-start gap-4">
+<div class="bg-error-container p-3 rounded-full">
+<span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 1;">medical_services</span>
+</div>
+<div>
+<p class="font-label-lg text-error text-sm mb-1 uppercase tracking-wider">Severe Complication</p>
+<h4 class="font-headline-md text-on-surface">Anjali Sharma</h4>
+<p class="font-body-md text-on-surface-variant">BP: 165/105 | Persistent Headaches</p>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="flex-1 md:flex-none flex items-center justify-center gap-2 min-h-[56px] px-6 bg-primary text-on-primary font-label-lg rounded-xl active:scale-95 duration-100 shadow-sm">
+<span class="material-symbols-outlined">call</span>
+                            CONTACT
+                        </button>
+<button class="flex-1 md:flex-none flex items-center justify-center gap-2 min-h-[56px] px-6 border-2 border-outline text-on-surface-variant font-label-lg rounded-xl active:scale-95 duration-100">
+<span class="material-symbols-outlined">check_circle</span>
+                            RESOLVE
+                        </button>
+</div>
+</div>
+<!-- Case 2: Rajesh Kumar -->
+<div class="bg-surface-container-lowest border-l-8 border-error rounded-xl p-5 shadow-md flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex items-start gap-4">
+<div class="bg-error-container p-3 rounded-full">
+<span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 1;">person_off</span>
+</div>
+<div>
+<p class="font-label-lg text-error text-sm mb-1 uppercase tracking-wider">Inaccessible for 24 Hours</p>
+<h4 class="font-headline-md text-on-surface">Rajesh Kumar</h4>
+<p class="font-body-md text-on-surface-variant">Last known loc: Ward 4 | No response</p>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="flex-1 md:flex-none flex items-center justify-center gap-2 min-h-[56px] px-6 bg-primary text-on-primary font-label-lg rounded-xl active:scale-95 duration-100 shadow-sm">
+<span class="material-symbols-outlined">call</span>
+                            CONTACT
+                        </button>
+<button class="flex-1 md:flex-none flex items-center justify-center gap-2 min-h-[56px] px-6 border-2 border-outline text-on-surface-variant font-label-lg rounded-xl active:scale-95 duration-100">
+<span class="material-symbols-outlined">check_circle</span>
+                            RESOLVE
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid: Analytics & Missed Follow-ups -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Weekly Performance (Bar Chart) -->
+<section class="bg-surface-container-low rounded-xl p-6 border border-outline-variant">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h3 class="font-label-lg text-on-surface">Weekly Performance</h3>
+<p class="font-headline-lg text-primary">88% <span class="text-body-md text-on-surface-variant font-normal">Resolution Rate</span></p>
+</div>
+<div class="bg-primary-container p-2 rounded-lg">
+<span class="material-symbols-outlined text-on-primary-container">trending_up</span>
+</div>
+</div>
+<div class="flex items-end justify-between h-40 gap-2 mb-2">
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full bg-primary-fixed-dim rounded-t-md" style="height: 60%;"></div>
+<span class="text-xs font-bold text-outline">MON</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full bg-primary-fixed-dim rounded-t-md" style="height: 45%;"></div>
+<span class="text-xs font-bold text-outline">TUE</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full bg-primary rounded-t-md" style="height: 85%;"></div>
+<span class="text-xs font-bold text-primary">WED</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full bg-primary-fixed-dim rounded-t-md" style="height: 55%;"></div>
+<span class="text-xs font-bold text-outline">THU</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full bg-primary-fixed-dim rounded-t-md" style="height: 70%;"></div>
+<span class="text-xs font-bold text-outline">FRI</span>
+</div>
+</div>
+</section>
+<!-- Missed Follow-ups List -->
+<section class="bg-surface-container-low rounded-xl p-6 border border-outline-variant">
+<h3 class="font-label-lg text-on-surface mb-4">Missed Follow-ups</h3>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-3 bg-surface-container-lowest rounded-lg border border-outline-variant">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A portrait of a serene middle-aged Indian woman in a simple sari, set against a soft, sun-drenched domestic background. The lighting is warm and natural, evoking a sense of trust and community health. The image style is clear and high-resolution, maintaining the professional yet paternal aesthetic of the healthcare service brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSjLL_pM-EgIkAaiherf4GZKO19Ot8KtARKKmHJagsFGRC5f3U__rSJmSyyagvuePUEVKaQfk5R0EkAxCu5zCUJpER5bU8K3kY9zJy38qsntQyQTk5QAyaWAM_whbwOPtidAsyYkWq5PwNJqC47OvceDkKJ7Z0J6ujmgCOAyxaSOLb1F5RBJoqGIvtHifpnAb9i6Ih_pA36RGRw6ufkmsM6e3WutEzGD2VTQnkmMLl7tafUKoAF7tbxw3AX7nk9EWT3PsincCoDian"/>
+<div>
+<p class="font-label-lg text-on-surface">Meena Devi</p>
+<p class="text-xs text-on-surface-variant">Diabetes Checkup • 2d ago</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-container-lowest rounded-lg border border-outline-variant">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A portrait of an elderly Indian man with a kind expression, wearing traditional attire. The scene is lit with gentle morning light, creating a calm and reassuring atmosphere. The visual style is crisp and detailed, aligning with the healthcare platform's identity of stability and accessibility for rural populations." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVZLoaO1h8F6uCmWz6nKHyE8NbLtW5y05eAc-SGoBGYQeyCvjA2t7b5LueM68hx6NOyLNHKva-j9wAtz9MG-BpkX3lHa31J4JzTmfNcDpcIbNdtpnUdVGZTyxe25SAllOl-scfS8w0rKm1YNcAuQwPQWBM5jWw9ARnpxKPPXzqcY-SuTZjsI5S8bnDOkPS-U_9JoFL1Mc9MA4irVG-UGV_K1LsSYpgif1uvv_kKp_bxxuoldfX1gUEY1Kyc7lqmlyb5OmN4pRGQJXM"/>
+<div>
+<p class="font-label-lg text-on-surface">Ram Prasad</p>
+<p class="text-xs text-on-surface-variant">Post-Op Review • 1d ago</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-container-lowest rounded-lg border border-outline-variant">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A close-up portrait of a young woman in rural India, smiling gently. The environment suggests a clean, well-lit rural clinic. The color palette features soft teals and whites, reflecting the Bharat Care brand's focus on healthcare reliability and paternal care. High-quality photography with a soft-focus background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuATlj0ssai5xB-4AppQFRmGBnIz2OcLiPKuw_5-axSCPxjzoIxS5vnrrhiDU_UmnnGmgVSjZlBP1i6MFUORMdzDlvY0SdCFUrMW1t4c4o9MA4QXfqv8Pt3xpxGRzc-cSHzowzXu3Jrf_h4gitSwNj2UlwCsM0-dRDXvFCeuT5sfoiFtycK06o8bJdMqkKGL6em5hpCsKKneu4uYw2IWzucZvphtKNPPnY-ZYYj5X_8GMYfQbQcdgvuYukoVc0g7K5RIh6hsOA8aLvzM"/>
+<div>
+<p class="font-label-lg text-on-surface">Sunita K.</p>
+<p class="text-xs text-on-surface-variant">Vaccination • 4h ago</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Voice Interaction FAB (Contextual) -->
+<div class="fixed bottom-24 right-6 z-40">
+<button class="w-16 h-16 bg-secondary-container text-on-secondary-container rounded-full shadow-lg flex items-center justify-center pulse-red transition-transform active:scale-90 duration-200">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">mic</span>
+</button>
+</div>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface dark:bg-surface-container-lowest flex justify-around items-center px-4 py-3 border-t border-outline-variant dark:border-outline rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-high transition-colors active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-lg text-label-lg">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-6 py-2 active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">folder_shared</span>
+<span class="font-label-lg text-label-lg">Records</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-high transition-colors active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined">event_note</span>
+<span class="font-label-lg text-label-lg">Reminders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-high transition-colors active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-lg text-label-lg">Profile</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for list items
+        document.querySelectorAll('.bg-surface-container-lowest').forEach(item => {
+            item.addEventListener('click', () => {
+                item.classList.add('scale-95');
+                setTimeout(() => item.classList.remove('scale-95'), 100);
+            });
+        });
+
+        // Resolve action simulation
+        document.querySelectorAll('button').forEach(btn => {
+            if (btn.innerText.includes('RESOLVE')) {
+                btn.addEventListener('click', function(e) {
+                    const card = e.target.closest('.border-l-8');
+                    card.style.opacity = '0.5';
+                    card.style.transform = 'translateX(20px)';
+                    card.style.transition = 'all 0.4s ease';
+                    setTimeout(() => {
+                        card.remove();
+                    }, 400);
+                });
+            }
+        });
+    </script>
+</body></html>

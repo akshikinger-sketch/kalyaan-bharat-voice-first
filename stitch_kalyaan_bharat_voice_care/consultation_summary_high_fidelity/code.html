@@ -1,0 +1,277 @@
+<!DOCTYPE html><html class="light" lang="hi"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>SevaHealth - Consultation Summary</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed-variant": "#004f56",
+                    "on-primary-container": "#9becf7",
+                    "surface-dim": "#d2dcde",
+                    "surface": "#f2fbfe",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#dbe4e7",
+                    "on-secondary-fixed-variant": "#6f3800",
+                    "on-primary": "#ffffff",
+                    "secondary-container": "#ffab69",
+                    "outline-variant": "#bec8ca",
+                    "primary-container": "#006d77",
+                    "secondary-fixed": "#ffdcc4",
+                    "outline": "#6f797a",
+                    "error": "#ba1a1a",
+                    "tertiary-container": "#286d67",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed-dim": "#90d3cb",
+                    "tertiary": "#01544f",
+                    "on-tertiary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "inverse-on-surface": "#e9f2f5",
+                    "primary-fixed": "#9ff0fb",
+                    "on-secondary-fixed": "#2f1400",
+                    "on-tertiary-fixed-variant": "#00504b",
+                    "on-primary-fixed": "#001f23",
+                    "surface-container": "#e6eff2",
+                    "primary-fixed-dim": "#82d3de",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-surface": "#293234",
+                    "background": "#f2fbfe",
+                    "surface-container-low": "#ecf5f8",
+                    "on-tertiary-fixed": "#00201e",
+                    "on-secondary-container": "#783d01",
+                    "tertiary-fixed": "#acefe7",
+                    "surface-container-high": "#e1eaed",
+                    "on-surface-variant": "#3e494a",
+                    "on-background": "#141d1f",
+                    "surface-bright": "#f2fbfe",
+                    "primary": "#00535b",
+                    "on-error": "#ffffff",
+                    "surface-tint": "#006972",
+                    "on-surface": "#141d1f",
+                    "on-tertiary-container": "#a9ece4",
+                    "inverse-primary": "#82d3de",
+                    "surface-container-highest": "#dbe4e7",
+                    "secondary-fixed-dim": "#ffb780",
+                    "secondary": "#8e4e14"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "unit": "8px",
+                    "touch-target-min": "56px",
+                    "margin-desktop": "64px",
+                    "stack-gap": "16px",
+                    "margin-mobile": "20px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Noto Sans"],
+                    "label-lg": ["Noto Sans"],
+                    "headline-lg": ["Noto Sans"],
+                    "voice-caption": ["Noto Sans"],
+                    "headline-lg-mobile": ["Noto Sans"],
+                    "body-md": ["Noto Sans"],
+                    "headline-md": ["Noto Sans"]
+            },
+            "fontSize": {
+                    "body-lg": ["20px", {"lineHeight": "30px", "fontWeight": "400"}],
+                    "label-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "44px", "fontWeight": "700"}],
+                    "voice-caption": ["22px", {"lineHeight": "32px", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "38px", "fontWeight": "700"}],
+                    "body-md": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+        }
+        .voice-pulse {
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 171, 105, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 20px rgba(255, 171, 105, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 171, 105, 0); }
+        }
+        .active-listening {
+            background: linear-gradient(135deg, #ffab69 0%, #8e4e14 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-[100px]">
+<!-- Top Navigation -->
+<header class="w-full top-0 sticky bg-surface dark:bg-on-background flex items-center justify-between px-margin-mobile h-touch-target-min border-b border-outline-variant dark:border-outline z-40">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer active:scale-95 duration-100" data-icon="arrow_back">arrow_back</span>
+<h1 class="font-headline-md text-headline-md-mobile text-primary dark:text-primary-fixed">Kalyaan Bharat</h1>
+</div>
+<button class="bg-surface-container-high px-4 py-2 rounded-full font-label-lg text-label-lg text-primary hover:bg-surface-variant transition-colors active:scale-95">
+            A/अ
+        </button>
+</header>
+<main class="px-margin-mobile pt-6 space-y-6">
+<!-- Voice Playback Hero -->
+<section class="relative bg-surface-container-low rounded-xl p-6 flex flex-col items-center text-center gap-4 shadow-sm">
+<div class="voice-pulse w-[80px] h-[80px] bg-secondary-container rounded-full flex items-center justify-center cursor-pointer active:scale-90 transition-transform" id="voice-button">
+<span class="material-symbols-outlined text-on-secondary-container text-4xl" data-icon="play_arrow">play_arrow</span>
+</div>
+<div class="space-y-1">
+<h2 class="font-headline-md text-headline-md text-primary">Summary Suniye</h2>
+<p class="font-body-md text-on-surface-variant">Listen to Dr. Sharma's advice in Hindi</p>
+</div>
+<!-- Audio Progress Bar Visual -->
+<div class="w-full h-1 bg-outline-variant rounded-full overflow-hidden">
+<div class="w-1/3 h-full bg-secondary"></div>
+</div>
+</section>
+<!-- Doctor's Advice Section -->
+<section class="space-y-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="clinical_notes">clinical_notes</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Doctor ki Salah</h3>
+</div>
+<div class="bg-surface-container-lowest border-l-4 border-primary p-5 rounded-xl shadow-sm space-y-3">
+<p class="font-body-lg text-body-lg text-on-surface">"Thand se bachein aur din mein 3 baar garam paani se bhap lein."</p>
+<div class="flex items-center gap-4 py-2 border-t border-outline-variant">
+<img class="w-12 h-12 rounded-full object-cover border-2 border-primary-container" data-alt="A professional Indian female doctor in a white lab coat with a stethoscope around her neck, smiling warmly in a bright, clean clinic setting. The lighting is soft and high-key, conveying trust and reliability within the SevaHealth brand's teal and off-white color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC44iOFr1UooVRLS2q2C9aPT9opYc2rw1jz7WhmHy-ysiu553v4-I79ViwoFkO9-ASj1geW2elgINP1cDWplu0yayntWbp2Ex1KkeZr9WdsWIkMP379IbodM3lMZZzjZiU0fBxEO-TYOC23qGVGKz7Bmea2uTOHSXt0CTgCYG5wQnXEz-OJ0UgwTZS1FGzETMFNbAzwqMvmsNtzSAYkVLXugCcLGAuiqEbbH-zbRSZW8lhqLylnpH8Tn1Xmp_Lx2B3EVn_DPegnqakm">
+<div>
+<p class="font-label-lg text-label-lg text-primary">Dr. Anjali Sharma</p>
+<p class="text-sm text-on-surface-variant">MBBS, MD - General Physician</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Medication Section -->
+<section class="space-y-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="medication">medication</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Dawai (Medicines)</h3>
+</div>
+<!-- Medication Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 bg-primary-fixed rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="pill">pill</span>
+</div>
+<div>
+<p class="font-headline-md text-headline-md text-on-surface">Paracetamol 500mg</p>
+<p class="font-body-md text-on-surface-variant">Khane ke baad (After Food)</p>
+</div>
+</div>
+<div class="flex flex-col gap-1 items-center">
+<div class="flex gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="wb_sunny">wb_sunny</span>
+<span class="material-symbols-outlined text-outline" data-icon="wb_twilight">wb_twilight</span>
+<span class="material-symbols-outlined text-secondary" data-icon="dark_mode">dark_mode</span>
+</div>
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">1 — 0 — 1</p>
+</div>
+</div>
+<!-- Medication Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 bg-tertiary-fixed rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary text-3xl" data-icon="vaccines">vaccines</span>
+</div>
+<div>
+<p class="font-headline-md text-headline-md text-on-surface">Cough Syrup</p>
+<p class="font-body-md text-on-surface-variant">5ml din mein 3 baar</p>
+</div>
+</div>
+<div class="flex flex-col gap-1 items-center">
+<div class="flex gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="wb_sunny">wb_sunny</span>
+<span class="material-symbols-outlined text-secondary" data-icon="wb_twilight">wb_twilight</span>
+<span class="material-symbols-outlined text-secondary" data-icon="dark_mode">dark_mode</span>
+</div>
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">1 — 1 — 1</p>
+</div>
+</div>
+</section>
+<!-- Next Appointment Card -->
+<section class="space-y-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="event">event</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Agla Milna</h3>
+</div>
+<div class="bg-surface-container-high rounded-2xl p-6 border-2 border-primary shadow-lg space-y-4">
+<div class="flex justify-between items-start">
+<div>
+<p class="font-headline-lg text-headline-lg text-on-surface">15 October</p>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Tuesday, 10:30 AM</p>
+</div>
+<div class="bg-primary px-3 py-1 rounded-full text-white font-label-lg text-label-lg">Follow-up</div>
+</div>
+<button class="w-full h-touch-target-min bg-primary text-white rounded-xl font-label-lg text-label-lg flex items-center justify-center gap-3 hover:bg-primary-container transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="notifications_active">notifications_active</span>
+                    REMIND KARO
+                </button>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface-container dark:bg-surface-container-highest flex justify-around items-center h-[80px] px-2 border-t border-outline-variant dark:border-outline">
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl min-w-[64px] py-1 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-lg text-label-lg">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-variant transition-colors active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-label-lg text-label-lg">Records</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-variant transition-colors active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="font-label-lg text-label-lg">Reminders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-variant transition-colors active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-lg text-label-lg">Profile</span>
+</a>
+</nav>
+<script>
+        const voiceBtn = document.getElementById('voice-button');
+        const voiceIcon = voiceBtn.querySelector('.material-symbols-outlined');
+        let isPlaying = false;
+
+        voiceBtn.addEventListener('click', () => {
+            isPlaying = !isPlaying;
+            if(isPlaying) {
+                voiceIcon.innerText = 'pause';
+                voiceIcon.setAttribute('data-icon', 'pause');
+                voiceBtn.classList.add('active-listening');
+                voiceBtn.classList.remove('voice-pulse');
+            } else {
+                voiceIcon.innerText = 'play_arrow';
+                voiceIcon.setAttribute('data-icon', 'play_arrow');
+                voiceBtn.classList.remove('active-listening');
+                voiceBtn.classList.add('voice-pulse');
+            }
+        });
+
+        // Simple haptic feedback simulation
+        document.querySelectorAll('button, a, .cursor-pointer').forEach(el => {
+            el.addEventListener('click', () => {
+                if (window.navigator && window.navigator.vibrate) {
+                    window.navigator.vibrate(10);
+                }
+            });
+        });
+    </script>
+
+
+</body></html>

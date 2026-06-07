@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Profile Setup - Kalyaan Bharat</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed": "#ffdcc4",
+                      "on-primary": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary-fixed-variant": "#6f3800",
+                      "inverse-primary": "#82d3de",
+                      "secondary-container": "#ffab69",
+                      "primary-fixed-dim": "#82d3de",
+                      "inverse-surface": "#293234",
+                      "background": "#f2fbfe",
+                      "outline": "#6f797a",
+                      "on-tertiary-container": "#a9ece4",
+                      "on-primary-container": "#9becf7",
+                      "surface-container-highest": "#dbe4e7",
+                      "outline-variant": "#bec8ca",
+                      "surface-dim": "#d2dcde",
+                      "tertiary-fixed-dim": "#90d3cb",
+                      "on-background": "#141d1f",
+                      "on-surface": "#141d1f",
+                      "inverse-on-surface": "#e9f2f5",
+                      "tertiary-container": "#286d67",
+                      "primary": "#00535b",
+                      "primary-fixed": "#9ff0fb",
+                      "on-surface-variant": "#3e494a",
+                      "on-primary-fixed": "#001f23",
+                      "surface-tint": "#006972",
+                      "surface-container-lowest": "#ffffff",
+                      "error": "#ba1a1a",
+                      "on-error-container": "#93000a",
+                      "surface-container": "#e6eff2",
+                      "surface-bright": "#f2fbfe",
+                      "secondary": "#8e4e14",
+                      "on-tertiary-fixed-variant": "#00504b",
+                      "primary-container": "#006d77",
+                      "on-error": "#ffffff",
+                      "on-secondary-fixed": "#2f1400",
+                      "error-container": "#ffdad6",
+                      "on-primary-fixed-variant": "#004f56",
+                      "tertiary-fixed": "#acefe7",
+                      "surface-container-low": "#ecf5f8",
+                      "surface-container-high": "#e1eaed",
+                      "on-tertiary-fixed": "#00201e",
+                      "tertiary": "#01544f",
+                      "surface-variant": "#dbe4e7",
+                      "on-secondary-container": "#783d01",
+                      "secondary-fixed-dim": "#ffb780",
+                      "on-secondary": "#ffffff",
+                      "surface": "#f2fbfe"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "unit": "8px",
+                      "touch-target-min": "56px",
+                      "gutter": "24px",
+                      "stack-gap": "16px",
+                      "margin-mobile": "20px",
+                      "margin-desktop": "64px"
+              },
+              "fontFamily": {
+                      "headline-lg": ["Noto Sans"],
+                      "body-lg": ["Noto Sans"],
+                      "voice-caption": ["Noto Sans"],
+                      "label-lg": ["Noto Sans"],
+                      "headline-md": ["Noto Sans"],
+                      "headline-lg-mobile": ["Noto Sans"],
+                      "body-md": ["Noto Sans"]
+              },
+              "fontSize": {
+                      "headline-lg": ["32px", {"lineHeight": "44px", "fontWeight": "700"}],
+                      "body-lg": ["20px", {"lineHeight": "30px", "fontWeight": "400"}],
+                      "voice-caption": ["22px", {"lineHeight": "32px", "fontWeight": "500"}],
+                      "label-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "38px", "fontWeight": "700"}],
+                      "body-md": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f2fbfe;
+        }
+        .voice-pulse {
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(142, 78, 20, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(142, 78, 20, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(142, 78, 20, 0); }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-on-surface flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="w-full top-0 left-0 bg-background flex items-center justify-between px-margin-mobile h-touch-target-min z-50 sticky">
+<div class="flex items-center gap-4">
+<button aria-label="Back" class="material-symbols-outlined text-primary active:scale-95 transition-transform duration-200">arrow_back</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary">Kalyaan Bharat</h1>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant">
+<img alt="Profile Placeholder" class="w-full h-full object-cover" data-alt="A portrait of an elderly person with a warm, gentle smile, looking directly at the camera. The background is a soft, out-of-focus interior with natural sunlight streaming in, creating a high-key and serene atmosphere. The overall aesthetic is clean and professional, using a bright and trustworthy color palette suitable for a modern healthcare application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyKF2nn9yjGzMf-7P6yYHhwrqbfeaRsPSf8WknHYVMjIj73aqKapQSJDp9DifAXik2VYDaMf5y48jJtgN_Svl2NLczaGbFBrvX8VqNvBkbk1qFzJ01uPEWeFBj797JdIu7nFqi1XO1Wdh8aOU0-HDyhvZ-98ZdGMQWPxOgLrwjORbFfFnTtqRgha4Pq3c7k4pZ7DTigeBwythd5HDwtRiKD6Kop5JZ_Bvvw5itwBZUs4KqemOyuKiyumORvUrjs9IGQ2rV2riBJqcc"/>
+</div>
+</header>
+<main class="flex-grow px-margin-mobile py-8 flex flex-col gap-stack-gap max-w-2xl mx-auto w-full">
+<!-- Headline Section -->
+<section class="mb-4">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-background">Tell us about yourself</h2>
+<p class="font-body-md text-on-surface-variant mt-2">This helps us customize your healthcare experience.</p>
+</section>
+<!-- Form Fields -->
+<div class="flex flex-col gap-6">
+<!-- Full Name -->
+<div class="flex flex-col gap-2">
+<label class="font-label-lg text-label-lg text-primary" for="full_name">Full Name</label>
+<div class="relative">
+<input class="w-full h-touch-target-min px-4 bg-surface-container-lowest border border-outline-variant rounded-xl focus:border-primary focus:ring-1 focus:ring-primary text-body-lg font-body-lg outline-none transition-all" id="full_name" name="full_name" placeholder="Enter your full name" type="text"/>
+<span class="material-symbols-outlined absolute right-4 top-4 text-outline">person</span>
+</div>
+</div>
+<!-- Age -->
+<div class="flex flex-col gap-2">
+<label class="font-label-lg text-label-lg text-primary" for="age">Age</label>
+<div class="relative">
+<input class="w-full h-touch-target-min px-4 bg-surface-container-lowest border border-outline-variant rounded-xl focus:border-primary focus:ring-1 focus:ring-primary text-body-lg font-body-lg outline-none transition-all" id="age" name="age" placeholder="How old are you?" type="number"/>
+<span class="material-symbols-outlined absolute right-4 top-4 text-outline">cake</span>
+</div>
+</div>
+<!-- Gender Segmented Control -->
+<div class="flex flex-col gap-2">
+<span class="font-label-lg text-label-lg text-primary">Gender</span>
+<div class="flex gap-2 p-1 bg-surface-container rounded-xl border border-outline-variant">
+<button class="flex-1 h-touch-target-min rounded-lg flex items-center justify-center font-label-lg text-label-lg bg-primary text-on-primary transition-all shadow-sm" onclick="selectGender(this)" type="button">Male</button>
+<button class="flex-1 h-touch-target-min rounded-lg flex items-center justify-center font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-variant transition-all" onclick="selectGender(this)" type="button">Female</button>
+<button class="flex-1 h-touch-target-min rounded-lg flex items-center justify-center font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-variant transition-all" onclick="selectGender(this)" type="button">Other</button>
+</div>
+</div>
+<!-- Language Setting -->
+<div class="p-4 bg-white border-l-4 border-primary rounded-xl shadow-sm flex items-center justify-between">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary p-2 bg-primary-fixed rounded-full" data-weight="fill">translate</span>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">Preferred Language</p>
+<p class="font-body-md text-primary font-bold">Hindi</p>
+</div>
+</div>
+<button class="font-label-lg text-label-lg text-secondary px-4 py-2 border-2 border-secondary rounded-full active:scale-95 transition-all">Change</button>
+</div>
+<!-- Add Family Member Card (Bento Style) -->
+<button class="group p-6 bg-surface-container-low border-2 border-dashed border-outline-variant rounded-2xl flex flex-col items-center justify-center gap-3 hover:border-primary transition-all duration-300">
+<div class="w-14 h-14 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-size: 32px;">group_add</span>
+</div>
+<div class="text-center">
+<p class="font-headline-md text-headline-md text-on-background">Add a Family Member</p>
+<p class="font-body-md text-on-surface-variant">Manage health for your loved ones too</p>
+</div>
+</button>
+</div>
+<!-- Spacer -->
+<div class="h-12"></div>
+<!-- CTA and Sign Out -->
+<div class="flex flex-col gap-6 mt-auto">
+<button class="w-full h-touch-target-min bg-primary text-on-primary rounded-full font-headline-md text-headline-md shadow-lg active:scale-95 transition-all flex items-center justify-center gap-2">
+<span>Complete Setup</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<button class="w-fit mx-auto text-on-surface-variant font-label-lg text-label-lg flex items-center gap-1 hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+                Sign Out
+            </button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full flex justify-around items-center py-2 px-margin-mobile bg-surface-container rounded-t-xl border-t border-outline-variant z-50">
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-6 py-2 hover:bg-secondary-fixed-dim transition-all active:scale-90 duration-300">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-lg text-label-lg">Help</span>
+</button>
+<!-- Voice Interaction FAB Override: Centered Voice Hub -->
+<div class="relative -top-8">
+<button class="voice-pulse w-16 h-16 bg-secondary text-on-secondary rounded-full flex items-center justify-center shadow-xl active:scale-90 transition-all duration-300">
+<span class="material-symbols-outlined" data-weight="fill" style="font-size: 36px;">mic</span>
+</button>
+</div>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-6 py-2 hover:bg-secondary-fixed-dim transition-all active:scale-90 duration-300">
+<span class="material-symbols-outlined">record_voice_over</span>
+<span class="font-label-lg text-label-lg">Voice Assistance</span>
+</button>
+</nav>
+<!-- Subtle atmospheric background effect -->
+<div class="fixed inset-0 pointer-events-none opacity-5 dark:opacity-10 z-[-1]">
+<div class="absolute top-0 right-0 w-96 h-96 bg-primary rounded-full blur-[100px]"></div>
+<div class="absolute bottom-0 left-0 w-64 h-64 bg-secondary rounded-full blur-[80px]"></div>
+</div>
+<script>
+        function selectGender(btn) {
+            // Find parent container
+            const container = btn.parentElement;
+            // Remove active classes from all siblings
+            container.querySelectorAll('button').forEach(child => {
+                child.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
+                child.classList.add('text-on-surface-variant', 'hover:bg-surface-variant');
+            });
+            // Add active classes to clicked button
+            btn.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
+            btn.classList.remove('text-on-surface-variant', 'hover:bg-surface-variant');
+        }
+
+        // Voice Ripple Micro-interaction simulation
+        const micBtn = document.querySelector('.voice-pulse');
+        micBtn.addEventListener('click', () => {
+            const isActive = micBtn.classList.toggle('pulse-active');
+            if(isActive) {
+                micBtn.style.backgroundColor = '#8e4e14'; // Ensure stays secondary color
+            }
+        });
+    </script>
+</body></html>

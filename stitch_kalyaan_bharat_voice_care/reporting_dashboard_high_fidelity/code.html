@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kalyan Bharat - Reporting Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+        }
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .chart-pulse {
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); opacity: 0.5; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+            100% { transform: scale(0.95); opacity: 0.5; }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-bright": "#f2fbfe",
+                      "on-secondary-fixed": "#2f1400",
+                      "tertiary-container": "#286d67",
+                      "surface-tint": "#006972",
+                      "tertiary-fixed-dim": "#90d3cb",
+                      "on-surface": "#141d1f",
+                      "error-container": "#ffdad6",
+                      "on-tertiary-fixed-variant": "#00504b",
+                      "on-tertiary": "#ffffff",
+                      "surface-variant": "#dbe4e7",
+                      "surface-container-high": "#e1eaed",
+                      "surface": "#f2fbfe",
+                      "on-secondary-container": "#783d01",
+                      "on-primary-fixed": "#001f23",
+                      "secondary-fixed": "#ffdcc4",
+                      "on-secondary": "#ffffff",
+                      "surface-container": "#e6eff2",
+                      "surface-container-low": "#ecf5f8",
+                      "on-error": "#ffffff",
+                      "error": "#ba1a1a",
+                      "tertiary": "#01544f",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-fixed-dim": "#82d3de",
+                      "on-primary-container": "#9becf7",
+                      "on-surface-variant": "#3e494a",
+                      "background": "#f2fbfe",
+                      "on-error-container": "#93000a",
+                      "on-tertiary-fixed": "#00201e",
+                      "inverse-surface": "#293234",
+                      "surface-dim": "#d2dcde",
+                      "outline-variant": "#bec8ca",
+                      "inverse-primary": "#82d3de",
+                      "primary": "#00535b",
+                      "on-secondary-fixed-variant": "#6f3800",
+                      "outline": "#6f797a",
+                      "secondary-fixed-dim": "#ffb780",
+                      "on-primary": "#ffffff",
+                      "surface-container-highest": "#dbe4e7",
+                      "tertiary-fixed": "#acefe7",
+                      "on-background": "#141d1f",
+                      "inverse-on-surface": "#e9f2f5",
+                      "primary-fixed": "#9ff0fb",
+                      "on-primary-fixed-variant": "#004f56",
+                      "on-tertiary-container": "#a9ece4",
+                      "secondary": "#8e4e14",
+                      "secondary-container": "#ffab69",
+                      "primary-container": "#006d77"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "unit": "8px",
+                      "touch-target-min": "56px",
+                      "stack-gap": "16px",
+                      "margin-mobile": "20px",
+                      "gutter": "24px",
+                      "margin-desktop": "64px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Noto Sans"],
+                      "body-md": ["Noto Sans"],
+                      "headline-lg": ["Noto Sans"],
+                      "voice-caption": ["Noto Sans"],
+                      "label-lg": ["Noto Sans"],
+                      "body-lg": ["Noto Sans"],
+                      "headline-lg-mobile": ["Noto Sans"]
+              },
+              "fontSize": {
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "body-md": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "44px", "fontWeight": "700"}],
+                      "voice-caption": ["22px", {"lineHeight": "32px", "fontWeight": "500"}],
+                      "label-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "700"}],
+                      "body-lg": ["20px", {"lineHeight": "30px", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "38px", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="bg-surface sticky top-0 w-full z-40 flex justify-between items-center px-margin-mobile py-4 transition-all duration-300">
+<div class="flex items-center gap-4">
+<button class="w-touch-target-min h-touch-target-min flex items-center justify-center hover:bg-surface-container-highest transition-colors rounded-full active:scale-95 duration-100">
+<span class="material-symbols-outlined text-primary">menu</span>
+</button>
+<h1 class="text-headline-md font-headline-md font-bold text-primary">Kalyan Bharat</h1>
+</div>
+<button class="bg-primary text-on-primary font-label-lg text-label-lg px-6 py-2 rounded-full hover:bg-primary-container hover:text-on-primary-container transition-colors active:scale-95 duration-100">
+            हिन्दी
+        </button>
+</header>
+<main class="max-w-7xl mx-auto px-margin-mobile pt-6 space-y-stack-gap">
+<!-- Screen Title -->
+<div class="flex flex-col gap-2">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary">Program Insights</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Real-time impact analysis and community engagement metrics.</p>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Impact Summary Card (Primary Highlight) -->
+<div class="md:col-span-8 bg-surface-container-lowest border border-outline-variant p-6 rounded-xl flex flex-col justify-between min-h-[240px] relative overflow-hidden group">
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">volunteer_activism</span>
+<span class="font-label-lg text-label-lg text-on-surface-variant">Impact Summary</span>
+</div>
+<div class="flex flex-baseline gap-2">
+<span class="font-headline-lg text-headline-lg text-primary">12.4k</span>
+<span class="font-body-lg text-body-lg text-on-surface-variant">Lives Impacted</span>
+</div>
+<div class="mt-4 flex items-center gap-2 text-primary font-bold">
+<span class="material-symbols-outlined">trending_up</span>
+<span>+14% from last month</span>
+</div>
+</div>
+<!-- Abstract Pattern Background -->
+<div class="absolute right-[-20px] bottom-[-20px] opacity-10 group-hover:scale-110 transition-transform duration-700">
+<span class="material-symbols-outlined text-[160px]" style="font-variation-settings: 'FILL' 1;">analytics</span>
+</div>
+</div>
+<!-- Program Outcomes Chart (Circular) -->
+<div class="md:col-span-4 bg-surface-container-lowest border border-outline-variant p-6 rounded-xl flex flex-col items-center justify-center text-center">
+<span class="font-label-lg text-label-lg text-on-surface-variant mb-6">Program Outcomes</span>
+<div class="relative w-40 h-40">
+<!-- SVG Circular Progress -->
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-surface-variant" cx="80" cy="80" fill="transparent" r="70" stroke="currentColor" stroke-width="12"></circle>
+<circle class="text-primary" cx="80" cy="80" fill="transparent" r="70" stroke="currentColor" stroke-dasharray="440" stroke-dashoffset="110" stroke-linecap="round" stroke-width="12"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-headline-md text-headline-md text-primary">75%</span>
+<span class="text-xs uppercase font-bold text-on-surface-variant">Target Met</span>
+</div>
+</div>
+<div class="mt-6 flex items-center gap-2 text-on-surface-variant">
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+<span class="font-label-lg text-label-lg">Active Goals</span>
+</div>
+</div>
+<!-- Monthly Engagement Bar Chart -->
+<div class="md:col-span-12 bg-surface-container-lowest border border-outline-variant p-6 rounded-xl">
+<div class="flex justify-between items-center mb-8">
+<div>
+<span class="font-label-lg text-label-lg text-on-surface-variant">Monthly Engagement</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Digital Interactions</h3>
+</div>
+<div class="flex gap-4">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-primary-container"></div>
+<span class="text-sm font-medium">Rural Hubs</span>
+</div>
+</div>
+</div>
+<div class="flex items-end justify-between h-48 px-4 border-b border-outline-variant pb-2">
+<!-- Bar Chart Implementation -->
+<div class="flex flex-col items-center gap-2 w-full max-w-[60px]">
+<div class="bg-primary-container w-full rounded-t-lg transition-all duration-500 hover:bg-primary" style="height: 45%;"></div>
+<span class="text-xs font-bold text-on-surface-variant">Jan</span>
+</div>
+<div class="flex flex-col items-center gap-2 w-full max-w-[60px]">
+<div class="bg-primary-container w-full rounded-t-lg transition-all duration-500 hover:bg-primary" style="height: 62%;"></div>
+<span class="text-xs font-bold text-on-surface-variant">Feb</span>
+</div>
+<div class="flex flex-col items-center gap-2 w-full max-w-[60px]">
+<div class="bg-primary-container w-full rounded-t-lg transition-all duration-500 hover:bg-primary" style="height: 55%;"></div>
+<span class="text-xs font-bold text-on-surface-variant">Mar</span>
+</div>
+<div class="flex flex-col items-center gap-2 w-full max-w-[60px]">
+<div class="bg-primary-container w-full rounded-t-lg transition-all duration-500 hover:bg-primary" style="height: 78%;"></div>
+<span class="text-xs font-bold text-on-surface-variant">Apr</span>
+</div>
+<div class="flex flex-col items-center gap-2 w-full max-w-[60px]">
+<div class="bg-primary-container w-full rounded-t-lg transition-all duration-500 hover:bg-primary" style="height: 85%;"></div>
+<span class="text-xs font-bold text-on-surface-variant">May</span>
+</div>
+<div class="flex flex-col items-center gap-2 w-full max-w-[60px]">
+<div class="bg-primary-container w-full rounded-t-lg transition-all duration-500 hover:bg-primary" style="height: 92%;"></div>
+<span class="text-xs font-bold text-on-surface-variant">Jun</span>
+</div>
+</div>
+</div>
+<!-- Detailed Metrics Table -->
+<div class="md:col-span-12 overflow-hidden bg-surface-container-lowest border border-outline-variant rounded-xl">
+<div class="p-6 border-b border-outline-variant">
+<h3 class="font-headline-md text-headline-md text-on-surface">Detailed Metrics</h3>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-surface-container-low">
+<tr>
+<th class="p-6 font-label-lg text-label-lg text-on-surface-variant">Indicator</th>
+<th class="p-6 font-label-lg text-label-lg text-on-surface-variant">Current Value</th>
+<th class="p-6 font-label-lg text-label-lg text-on-surface-variant">Target</th>
+<th class="p-6 font-label-lg text-label-lg text-on-surface-variant">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="p-6 font-body-lg text-body-lg text-on-surface">Village Penetration</td>
+<td class="p-6 font-headline-md text-headline-md text-primary">88%</td>
+<td class="p-6 font-body-md text-body-md text-on-surface-variant">90%</td>
+<td class="p-6">
+<span class="px-4 py-1 rounded-full bg-tertiary-container text-on-tertiary font-bold text-sm">On Track</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="p-6 font-body-lg text-body-lg text-on-surface">Healthcare Access</td>
+<td class="p-6 font-headline-md text-headline-md text-primary">642</td>
+<td class="p-6 font-body-md text-body-md text-on-surface-variant">500</td>
+<td class="p-6">
+<span class="px-4 py-1 rounded-full bg-secondary-container text-on-secondary-container font-bold text-sm">Exceeded</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="p-6 font-body-lg text-body-lg text-on-surface">Community Training</td>
+<td class="p-6 font-headline-md text-headline-md text-primary">1,240</td>
+<td class="p-6 font-body-md text-body-md text-on-surface-variant">2,000</td>
+<td class="p-6">
+<span class="px-4 py-1 rounded-full bg-surface-variant text-on-surface-variant font-bold text-sm">Pending</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Large Action Callout -->
+<div class="mt-8 bg-primary rounded-xl p-8 flex flex-col md:flex-row items-center justify-between gap-6 overflow-hidden relative">
+<div class="flex-1 space-y-2 z-10">
+<h3 class="text-on-primary font-headline-md text-headline-md">Expand Outreach</h3>
+<p class="text-on-primary-container font-body-md text-body-md">Initiate new healthcare screening programs in District B-12.</p>
+</div>
+<button class="bg-secondary-fixed text-on-secondary-fixed h-touch-target-min px-8 rounded-full font-label-lg text-label-lg hover:shadow-lg transition-all active:scale-95 z-10">
+                Start New Project
+            </button>
+<div class="absolute right-0 top-0 w-64 h-64 bg-primary-container rounded-full blur-[100px] opacity-20 -translate-y-1/2 translate-x-1/2"></div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 py-3 bg-surface border-t border-outline-variant rounded-t-xl">
+<button class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-high transition-colors rounded-lg">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-lg text-label-lg">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-6 py-2 active:scale-95 duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">folder_shared</span>
+<span class="font-label-lg text-label-lg">Records</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-high transition-colors rounded-lg">
+<span class="material-symbols-outlined">event_note</span>
+<span class="font-label-lg text-label-lg">Reminders</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-high transition-colors rounded-lg">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-lg text-label-lg">Profile</span>
+</button>
+</nav>
+<!-- Floating Action Button (FAB) - Suppressed on Details/Dashboards per instructions usually, but relevant for Report Action -->
+<button class="fixed bottom-24 right-margin-mobile w-[72px] h-[72px] bg-secondary text-on-secondary rounded-full shadow-lg flex items-center justify-center active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined text-[32px]">mic</span>
+</button>
+<script>
+        // Micro-interaction: Chart hover effect
+        document.querySelectorAll('tr').forEach(row => {
+            row.addEventListener('mouseenter', () => {
+                row.style.transform = 'translateX(4px)';
+            });
+            row.addEventListener('mouseleave', () => {
+                row.style.transform = 'translateX(0)';
+            });
+        });
+
+        // Simple scroll reveal for the bar chart
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100');
+                    entry.target.classList.remove('translate-y-4');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.bg-primary-container').forEach(bar => {
+            bar.parentElement.classList.add('opacity-0', 'translate-y-4', 'transition-all', 'duration-700');
+            observer.observe(bar.parentElement);
+        });
+    </script>
+</body></html>
