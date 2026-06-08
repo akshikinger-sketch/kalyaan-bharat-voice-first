@@ -28,24 +28,120 @@ const voiceSimulations = {
     translation: "Hello doctor, I have been feeling very dizzy...",
     aiSummary: "Patient reports sudden onset of dizziness and mild chest tightness starting yesterday evening.",
     languageName: "English"
+  }
+};
+
+// Mappings for UI multi-lingual translations
+const translations = {
+  en: {
+    welcome_h1: "Namaste!",
+    welcome_h2: "Welcome to Kalyaan Bharat",
+    welcome_p: "Your trusted voice-first health companion.",
+    welcome_image_caption: "Together for Health",
+    welcome_suniye: "Suniye",
+    welcome_suniye_sub: "Press to hear setup instructions",
+    welcome_continue: "Continue",
+    login_h2: "Enter mobile number",
+    login_p: "We will send a 4-digit code to verify your profile.",
+    login_placeholder: "98765 43210",
+    login_otp_label: "Verification Code (Use '1234' or leave blank)",
+    login_btn: "Verify & Login",
+    login_resend: "Didn't receive code? <span class=\"text-primary font-bold cursor-pointer\">Resend in 30s</span>",
+    consent_h2: "Your Privacy & Consent",
+    consent_p: "We prioritize data transparency, integrity, and ethical care.",
+    consent_btn_listen: "Listen",
+    consent_btn_accept: "I Accept & Continue",
+    consent_btn_more: "Learn More",
+    consent_shield: "DPDP ACT 2023 COMPLIANT",
+    consent_shield_sub: "Your data is secured using national security encryption standards.",
+    consent_text: '"We store your health information to support future care. Only you and your doctor can see this data."',
+    profile_h2: "Tell us about yourself",
+    profile_p: "This information builds your medical profile card.",
+    profile_name_label: "Full Name",
+    profile_name_placeholder: "Kamla Bai",
+    profile_age_label: "Age",
+    profile_age_placeholder: "68",
+    profile_gender_label: "Gender",
+    profile_lang_label: "Profile Language",
+    profile_add_family: "Add Family Member",
+    profile_add_family_sub: "Include remote caregivers or children",
+    profile_btn_complete: "Complete Setup",
+    gender_male: "Male",
+    gender_female: "Female",
+    gender_other: "Other",
+    patient_home_greeting: "Namaste",
+    patient_home_sub: "How can I help you today?",
+    patient_home_speak_text: "Boliye",
+    patient_home_next_med: "Next Medicine",
+    patient_home_all_taken: "All medicines taken for today!",
+    patient_home_missed_med: "Missed Medicine",
+    patient_home_btn_taken: "Mark Taken",
+    patient_home_mic_sub: "Tap and speak to talk about your joint pains or ask for help",
+    patient_card_doctor_text: "My Doctor",
+    patient_card_doctor_sub: "Doctor & Timeline",
+    patient_card_records_text: "Health Records",
+    patient_card_records_sub: "Medical Chart",
+    patient_card_reminders_text: "Reminders",
+    patient_card_reminders_sub: "Reminders List",
+    patient_card_family_text: "Family",
+    patient_card_family_sub: "Family sync active",
+    records_title: "Health Records",
+    records_sub: "Your complete medical history & voice updates timeline."
   },
-  mr: {
-    phrase: "नमस्कार डॉक्टर, माझ्या पायाला सूज आली आहे आणि मला ताप आल्यासारखं वाटतंय.",
-    translation: "Namaskar doctor, mazya payala sooj aali aahe...",
-    aiSummary: "Patient reports leg swelling accompanied by subjective feverishness.",
-    languageName: "Marathi"
-  },
-  ta: {
-    phrase: "வணக்கம் டாக்டர், எனக்கு இரண்டு நாட்களாக கடுமையான தலைவலி மற்றும் காய்ச்சல் உள்ளது.",
-    translation: "Vanakkam doctor, enakku irandu naatkalaaga...",
-    aiSummary: "Patient reports severe headache and fever persisting for 2 days.",
-    languageName: "Tamil"
-  },
-  bn: {
-    phrase: "নমস্কার ডাক্তারবাবু, আমার পেটে খুব যন্ত্রণা হচ্ছে এবং সকাল থেকে বমি বমি ভাব আছে।",
-    translation: "Nomoshkar doctorbabu, amar pete khub jontrona hochhe...",
-    aiSummary: "Patient reports acute abdominal pain and persistent morning nausea.",
-    languageName: "Bengali"
+  hi: {
+    welcome_h1: "नमस्ते!",
+    welcome_h2: "कल्याण भारत में आपका स्वागत है",
+    welcome_p: "आपका भरोसेमंद वॉयस-फर्स्ट स्वास्थ्य साथी।",
+    welcome_image_caption: "स्वास्थ्य के लिए साथ मिलकर",
+    welcome_suniye: "सुनिए",
+    welcome_suniye_sub: "सेटअप निर्देश सुनने के लिए दबाएं",
+    welcome_continue: "आगे बढ़ें",
+    login_h2: "मोबाइल नंबर दर्ज करें",
+    login_p: "हम आपके प्रोफ़ाइल को सत्यापित करने के लिए 4-अंकीय कोड भेजेंगे।",
+    login_placeholder: "98765 43210",
+    login_otp_label: "सत्यापन कोड (1234 का उपयोग करें या खाली छोड़ दें)",
+    login_btn: "सत्यापित करें और लॉगिन करें",
+    login_resend: "कोड प्राप्त नहीं हुआ? <span class=\"text-primary font-bold cursor-pointer\">30 सेकंड में दोबारा भेजें</span>",
+    consent_h2: "आपकी गोपनीयता और सहमति",
+    consent_p: "हम डेटा पारदर्शिता, ईमानदारी और नैतिक देखभाल को प्राथमिकता देते हैं।",
+    consent_btn_listen: "सुनिए",
+    consent_btn_accept: "मैं स्वीकार करता हूँ और आगे बढ़ें",
+    consent_btn_more: "अधिक जानें",
+    consent_shield: "DPDP अधिनियम 2023 अनुपालन",
+    consent_shield_sub: "आपका डेटा राष्ट्रीय सुरक्षा एन्क्रिप्शन मानकों का उपयोग करके सुरक्षित है।",
+    consent_text: '"हम आपकी स्वास्थ्य जानकारी भविष्य की देखभाल के लिए सुरक्षित रखते हैं। यह डेटा केवल आप और आपके डॉक्टर ही देख सकते हैं।"',
+    profile_h2: "हमें अपने बारे में बताएं",
+    profile_p: "यह जानकारी आपकी चिकित्सा प्रोफ़ाइल कार्ड बनाती है।",
+    profile_name_label: "पूरा नाम",
+    profile_name_placeholder: "कमला बाई",
+    profile_age_label: "उम्र",
+    profile_age_placeholder: "68",
+    profile_gender_label: "लिंग",
+    profile_lang_label: "प्रोफ़ाइल भाषा",
+    profile_add_family: "परिवार के सदस्य को जोड़ें",
+    profile_add_family_sub: "रिमोट केयरगिवर या बच्चों को शामिल करें",
+    profile_btn_complete: "सेटअप पूरा करें",
+    gender_male: "पुरुष",
+    gender_female: "महिला",
+    gender_other: "अन्य",
+    patient_home_greeting: "नमस्ते",
+    patient_home_sub: "आज मैं आपकी क्या मदद कर सकता हूँ?",
+    patient_home_speak_text: "बोलिए",
+    patient_home_next_med: "अगली दवा",
+    patient_home_all_taken: "आज की सभी दवाएं ले ली गई हैं!",
+    patient_home_missed_med: "छूटी हुई दवा",
+    patient_home_btn_taken: "लिया गया चिह्नित करें",
+    patient_home_mic_sub: "अपने जोड़ों के दर्द के बारे में बात करने या मदद मांगने के लिए टैप करें और बोलें",
+    patient_card_doctor_text: "मेरे डॉक्टर",
+    patient_card_doctor_sub: "डॉक्टर और समयरेखा",
+    patient_card_records_text: "स्वास्थ्य रिकॉर्ड",
+    patient_card_records_sub: "चिकित्सा चार्ट",
+    patient_card_reminders_text: "याद-दहानी",
+    patient_card_reminders_sub: "अनुस्मारक सूची",
+    patient_card_family_text: "परिवार",
+    patient_card_family_sub: "पारिवारिक सिंक सक्रिय",
+    records_title: "स्वास्थ्य रिकॉर्ड",
+    records_sub: "आपका पूरा चिकित्सा इतिहास और आवाज अपडेट समयरेखा।"
   }
 };
 
@@ -78,6 +174,13 @@ function navigateTo(viewId, params = {}) {
   // Update nav bar highlight
   updateNavbarHighlight();
   
+  // Sync header language button text
+  const headerLangBtn = document.getElementById('header-lang-btn');
+  if (headerLangBtn) {
+    const langLabels = { hi: 'हिंदी', en: 'English' };
+    headerLangBtn.innerText = langLabels[state.selectedLanguage] || 'हिंदी';
+  }
+
   // Scroll to top
   window.scrollTo(0, 0);
 
@@ -101,9 +204,23 @@ function updateNavbarHighlight() {
   }
   bottomNav.classList.remove('hidden');
 
+  const lang = state.selectedLanguage || 'hi';
+  const navLabels = {
+    en: { home: 'Home', records: 'Records', reminders: 'Reminders', profile: 'Profile' },
+    hi: { home: 'मुख्य पृष्ठ', records: 'रिकॉर्ड', reminders: 'याद-दहानी', profile: 'प्रोफ़ाइल' }
+  };
+  const labels = navLabels[lang] || navLabels.hi;
+
   const navLinks = bottomNav.querySelectorAll('a');
   navLinks.forEach(link => {
     const action = link.getAttribute('data-view');
+
+    // Update label text dynamically
+    const textSpan = link.querySelector('span:not(.material-symbols-outlined)');
+    if (textSpan && labels[action]) {
+      textSpan.innerText = labels[action];
+    }
+
     // Simple check: active role determines patient menu behavior
     if (state.currentUser && state.currentUser.role === 'patient') {
       const isHome = state.currentView === 'patient_home' && action === 'home';
@@ -134,6 +251,42 @@ window.render_welcome = function() {
   // Clear OTP values
   state.otpInputValues = ['', '', '', ''];
   state.otpMobile = '';
+
+  const lang = state.selectedLanguage || 'hi';
+  const t = translations[lang] || translations.hi;
+
+  const h1 = document.getElementById('welcome-h1');
+  if (h1) h1.innerText = t.welcome_h1;
+
+  const h2 = document.getElementById('welcome-h2');
+  if (h2) h2.innerText = t.welcome_h2;
+
+  const p = document.getElementById('welcome-p');
+  if (p) p.innerText = t.welcome_p;
+
+  const imgCaption = document.querySelector('#welcome p.text-white');
+  if (imgCaption) imgCaption.innerText = t.welcome_image_caption || 'Together for Health';
+
+  const suniye = document.getElementById('welcome-suniye');
+  if (suniye) suniye.innerText = t.welcome_suniye;
+
+  const suniyeSub = document.getElementById('welcome-suniye-sub');
+  if (suniyeSub) suniyeSub.innerText = t.welcome_suniye_sub;
+
+  const continueBtn = document.getElementById('welcome-continue-btn');
+  if (continueBtn) {
+    continueBtn.innerHTML = `${t.welcome_continue} <span class="material-symbols-outlined">arrow_forward</span>`;
+  }
+
+  // Update highlight of onboarding language buttons
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.className = "lang-btn bg-white border border-outline-variant rounded-xl p-4 flex flex-col items-center justify-center gap-2 active:scale-95 transition-all";
+  });
+  let index = lang === 'en' ? 0 : 1;
+  const activeBtn = document.querySelectorAll('.lang-btn')[index];
+  if (activeBtn) {
+    activeBtn.className = "lang-btn bg-white border-2 border-primary rounded-xl p-4 flex flex-col items-center justify-center gap-2 active:scale-95 transition-all";
+  }
 };
 
 // Onboarding: Login Render
@@ -143,6 +296,31 @@ window.render_login = function() {
 
   const errorDiv = document.getElementById('otp-error');
   if (errorDiv) errorDiv.classList.add('hidden');
+
+  const lang = state.selectedLanguage || 'hi';
+  const t = translations[lang] || translations.hi;
+
+  const h2 = document.getElementById('login-h2');
+  if (h2) h2.innerText = t.login_h2;
+
+  const p = document.getElementById('login-p');
+  if (p) p.innerText = t.login_p;
+
+  const mobileInput = document.getElementById('login-mobile-input');
+  if (mobileInput) mobileInput.placeholder = t.login_placeholder || '98765 43210';
+
+  const otpLabel = document.getElementById('login-otp-label');
+  if (otpLabel) otpLabel.innerText = t.login_otp_label;
+
+  const loginBtn = document.getElementById('login-btn');
+  if (loginBtn) {
+    loginBtn.innerHTML = `${t.login_btn} <span class="material-symbols-outlined">arrow_forward</span>`;
+  }
+
+  const resend = document.getElementById('login-resend');
+  if (resend) {
+    resend.innerHTML = t.login_resend;
+  }
 
   // Register OTP box input listeners
   const inputs = container.querySelectorAll('.otp-input');
@@ -174,7 +352,7 @@ function verifyOtpLogin() {
   if (!mobile || mobile.length < 10) {
     if (errorDiv) {
       errorDiv.classList.remove('hidden');
-      errorDiv.querySelector('span:last-child').innerText = "Please enter a valid 10-digit mobile number.";
+      errorDiv.querySelector('span:last-child').innerText = state.selectedLanguage === 'hi' ? "कृपया एक मान्य 10-अंकीय मोबाइल नंबर दर्ज करें।" : "Please enter a valid 10-digit mobile number.";
     }
     return;
   }
@@ -183,7 +361,7 @@ function verifyOtpLogin() {
   if (otp !== '1234' && otp !== '') {
     if (errorDiv) {
       errorDiv.classList.remove('hidden');
-      errorDiv.querySelector('span:last-child').innerText = "Invalid OTP. Please use '1234' for testing.";
+      errorDiv.querySelector('span:last-child').innerText = state.selectedLanguage === 'hi' ? "अमान्य ओटीपी। परीक्षण के लिए कृपया '1234' का उपयोग करें।" : "Invalid OTP. Please use '1234' for testing.";
     }
     return;
   }
@@ -203,15 +381,34 @@ function verifyOtpLogin() {
 
 // Onboarding: Consent Screen Render
 window.render_consent = function() {
+  const lang = state.selectedLanguage || 'hi';
+  const t = translations[lang] || translations.hi;
+
+  const h2 = document.getElementById('consent-h2');
+  if (h2) h2.innerText = t.consent_h2;
+
+  const p = document.getElementById('consent-p');
+  if (p) p.innerText = t.consent_p;
+
+  const listenBtn = document.getElementById('consent-listen-btn');
+  if (listenBtn) {
+    listenBtn.innerHTML = `<span class="material-symbols-outlined text-[18px]">volume_up</span> ${t.consent_btn_listen || 'Listen'}`;
+  }
+
+  const acceptBtn = document.getElementById('consent-accept-btn');
+  if (acceptBtn) {
+    acceptBtn.innerHTML = `${t.consent_btn_accept} <span class="material-symbols-outlined">check_circle</span>`;
+  }
+
+  const shield = document.getElementById('consent-shield');
+  if (shield) shield.innerText = t.consent_shield;
+
+  const shieldSub = document.getElementById('consent-shield-sub');
+  if (shieldSub) shieldSub.innerText = t.consent_shield_sub;
+
   const consentText = document.getElementById('consent-text');
   if (consentText) {
-    if (state.selectedLanguage === 'hi') {
-      consentText.innerText = '"हम आपकी स्वास्थ्य जानकारी भविष्य की देखभाल के लिए सुरक्षित रखते हैं। यह डेटा केवल आप और आपके डॉक्टर ही देख सकते हैं।"';
-    } else if (state.selectedLanguage === 'mr') {
-      consentText.innerText = '"आम्ही तुमची आरोग्य माहिती भविष्यातील उपचारांसाठी सुरक्षित ठेवतो. हा डेटा फक्त तुम्ही आणि तुमचे डॉक्टरच पाहू शकतात."';
-    } else {
-      consentText.innerText = '"We store your health information to support future care. Only you and your doctor can see this data."';
-    }
+    consentText.innerText = t.consent_text;
   }
 };
 
@@ -227,7 +424,7 @@ function playConsentVoice() {
   const speechText = document.getElementById('consent-text').innerText;
   if ('speechSynthesis' in window) {
     const utterance = new SpeechSynthesisUtterance(speechText);
-    utterance.lang = state.selectedLanguage === 'hi' ? 'hi-IN' : (state.selectedLanguage === 'mr' ? 'mr-IN' : 'en-IN');
+    utterance.lang = state.selectedLanguage === 'hi' ? 'hi-IN' : 'en-IN';
     utterance.rate = 0.9;
     utterance.onend = () => {
       btn.innerHTML = original;
@@ -256,29 +453,87 @@ window.render_profile_setup = function() {
   
   // Populate form with existing data if patient
   const patient = window.KB_DB.getPatient(state.currentUser.id);
-  if (patient) {
-    document.getElementById('full_name').value = patient.name === 'New Patient' ? '' : patient.name;
-    document.getElementById('age').value = patient.age || '';
-    
-    // Set active gender segment
-    const genderVal = patient.gender || 'Female';
-    const container = document.querySelector('.gender-segment-container');
-    if (container) {
-      container.querySelectorAll('button').forEach(btn => {
-        if (btn.innerText === genderVal) {
-          btn.className = "flex-1 h-touch-target-min rounded-lg flex items-center justify-center font-label-lg text-label-lg bg-primary text-on-primary transition-all shadow-sm";
-        } else {
-          btn.className = "flex-1 h-touch-target-min rounded-lg flex items-center justify-center font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-variant transition-all";
-        }
-      });
+  
+  const lang = state.selectedLanguage || 'hi';
+  const t = translations[lang] || translations.hi;
+
+  const h2 = document.getElementById('profile-h2');
+  if (h2) h2.innerText = t.profile_h2;
+
+  const p = document.getElementById('profile-p');
+  if (p) p.innerText = t.profile_p;
+
+  const nameLabel = document.getElementById('profile-name-label');
+  if (nameLabel) nameLabel.innerText = t.profile_name_label;
+
+  const fullNameInput = document.getElementById('full_name');
+  if (fullNameInput) {
+    fullNameInput.placeholder = t.profile_name_placeholder;
+    if (patient && patient.name && patient.name !== 'New Patient') {
+      fullNameInput.value = patient.name;
+    } else {
+      fullNameInput.value = '';
     }
+  }
+
+  const ageLabel = document.getElementById('profile-age-label');
+  if (ageLabel) ageLabel.innerText = t.profile_age_label;
+
+  const ageInput = document.getElementById('age');
+  if (ageInput) {
+    ageInput.placeholder = t.profile_age_placeholder;
+    if (patient && patient.age) {
+      ageInput.value = patient.age;
+    } else {
+      ageInput.value = '';
+    }
+  }
+
+  const genderLabel = document.getElementById('profile-gender-label');
+  if (genderLabel) genderLabel.innerText = t.profile_gender_label;
+
+  const langLabel = document.getElementById('profile-lang-label');
+  if (langLabel) langLabel.innerText = t.profile_lang_label;
+
+  const completeBtn = document.getElementById('profile-complete-btn');
+  if (completeBtn) {
+    completeBtn.innerHTML = `${t.profile_btn_complete} <span class="material-symbols-outlined">arrow_forward</span>`;
+  }
+
+  const addFamily = document.getElementById('profile-add-family');
+  if (addFamily) addFamily.innerText = t.profile_add_family;
+
+  const addFamilySub = document.getElementById('profile-add-family-sub');
+  if (addFamilySub) addFamilySub.innerText = t.profile_add_family_sub;
+
+  const genderVals = {
+    Male: t.gender_male || 'Male',
+    Female: t.gender_female || 'Female',
+    Other: t.gender_other || 'Other'
+  };
+
+  const container = document.querySelector('.gender-segment-container');
+  if (container) {
+    container.querySelectorAll('button').forEach(btn => {
+      const gAttr = btn.getAttribute('data-gender');
+      if (genderVals[gAttr]) {
+        btn.innerText = genderVals[gAttr];
+      }
+      
+      const genderVal = (patient && patient.gender) || 'Female';
+      if (gAttr === genderVal) {
+        btn.className = "flex-1 h-touch-target-min rounded-lg flex items-center justify-center font-label-lg text-label-lg bg-primary text-on-primary transition-all shadow-sm";
+      } else {
+        btn.className = "flex-1 h-touch-target-min rounded-lg flex items-center justify-center font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-variant transition-all";
+      }
+    });
   }
 
   // Render language card
   const langText = document.getElementById('profile-lang-text');
   if (langText) {
-    const langNames = { hi: 'Hindi (हिंदी)', mr: 'Marathi (मराठी)', en: 'English' };
-    langText.innerText = langNames[state.selectedLanguage] || 'Hindi';
+    const langNames = { hi: 'Hindi (हिंदी)', en: 'English' };
+    langText.innerText = langNames[lang] || 'Hindi';
   }
 };
 
@@ -299,7 +554,7 @@ function completeProfileSetup() {
   // Find active gender
   let gender = 'Female';
   const activeGenderBtn = document.querySelector('.gender-segment-container button.bg-primary');
-  if (activeGenderBtn) gender = activeGenderBtn.innerText;
+  if (activeGenderBtn) gender = activeGenderBtn.getAttribute('data-gender') || 'Female';
 
   if (state.currentUser) {
     window.KB_DB.updateUserProfile(state.currentUser.id, {
@@ -345,11 +600,53 @@ window.render_patient_home = function() {
   const patient = window.KB_DB.getPatient(state.currentUser.id);
   if (!patient) return;
 
+  const lang = state.selectedLanguage || 'hi';
+  const t = translations[lang] || translations.hi;
+
   // Set greeting name
   const greeting = document.getElementById('patient-greeting');
   if (greeting) {
-    greeting.innerText = state.selectedLanguage === 'hi' ? `नमस्ते, ${patient.name} जी` : `Namaste, ${patient.name}`;
+    let prefix = t.patient_home_greeting || 'Namaste';
+    if (lang === 'hi') {
+      greeting.innerText = `${prefix}, ${patient.name} जी`;
+    } else {
+      greeting.innerText = `${prefix}, ${patient.name}`;
+    }
   }
+
+  const greetingSub = document.getElementById('patient-greeting-sub');
+  if (greetingSub) greetingSub.innerText = t.patient_home_sub;
+
+  const speakText = document.getElementById('patient-home-speak-text');
+  if (speakText) speakText.innerText = t.patient_home_speak_text || 'Boliye';
+
+  const micSub = document.getElementById('patient-home-mic-sub');
+  if (micSub) micSub.innerText = t.patient_home_mic_sub;
+
+  // Set bento card texts
+  const cardDoctorText = document.getElementById('patient-card-doctor-text');
+  if (cardDoctorText) cardDoctorText.innerText = t.patient_card_doctor_text || 'Mere Doctor';
+
+  const cardDoctorSub = document.getElementById('patient-card-doctor-sub');
+  if (cardDoctorSub) cardDoctorSub.innerText = t.patient_card_doctor_sub || 'Doctor & Timeline';
+
+  const cardRecordsText = document.getElementById('patient-card-records-text');
+  if (cardRecordsText) cardRecordsText.innerText = t.patient_card_records_text || 'Swasthya Record';
+
+  const cardRecordsSub = document.getElementById('patient-card-records-sub');
+  if (cardRecordsSub) cardRecordsSub.innerText = t.patient_card_records_sub || 'Medical Chart';
+
+  const cardRemindersText = document.getElementById('patient-card-reminders-text');
+  if (cardRemindersText) cardRemindersText.innerText = t.patient_card_reminders_text || 'Yad-dihani';
+
+  const cardRemindersSub = document.getElementById('patient-card-reminders-sub');
+  if (cardRemindersSub) cardRemindersSub.innerText = t.patient_card_reminders_sub || 'Reminders List';
+
+  const cardFamilyText = document.getElementById('patient-card-family-text');
+  if (cardFamilyText) cardFamilyText.innerText = t.patient_card_family_text || 'Parivar';
+
+  const cardFamilySub = document.getElementById('patient-card-family-sub');
+  if (cardFamilySub) cardFamilySub.innerText = t.patient_card_family_sub || 'Family sync active';
 
   // Set next medicine card
   const medSection = document.getElementById('patient-next-med-section');
@@ -358,15 +655,15 @@ window.render_patient_home = function() {
     if (upcoming) {
       medSection.innerHTML = `
         <div class="bg-surface-container-lowest border-l-8 border-primary rounded-xl p-6 shadow-sm">
-          <h3 class="font-label-lg text-label-lg text-primary uppercase">${state.selectedLanguage === 'hi' ? 'अगली दवाई' : 'Next Medicine'}</h3>
-          <p class="font-headline-md text-headline-md mt-1">${upcoming.title.replace('Take ', '')}</p>
+          <h3 class="font-label-lg text-label-lg text-primary uppercase">${t.patient_home_next_med || 'Next Medicine'}</h3>
+          <p class="font-headline-md text-headline-md mt-1">${upcoming.title.replace('Take ', '').replace('दवाई लें: ', '')}</p>
           <div class="mt-4 flex items-center gap-4">
             <div class="bg-primary-container text-on-primary-container px-4 py-2 rounded-lg flex items-center gap-2">
               <span class="material-symbols-outlined">schedule</span>
               <span class="font-headline-md">${upcoming.time}</span>
             </div>
             <button class="bg-primary text-on-primary px-4 py-2 rounded-lg font-label-lg" onclick="takeReminderNow('${upcoming.id}')">
-              ${state.selectedLanguage === 'hi' ? 'ले ली' : 'Mark Taken'}
+              ${t.patient_home_btn_taken || 'Mark Taken'}
             </button>
           </div>
         </div>
@@ -375,7 +672,7 @@ window.render_patient_home = function() {
       medSection.innerHTML = `
         <div class="bg-surface-container-lowest border-l-8 border-tertiary rounded-xl p-6 shadow-sm text-center">
           <span class="material-symbols-outlined text-tertiary text-4xl mb-2">check_circle</span>
-          <p class="font-headline-md">${state.selectedLanguage === 'hi' ? 'आज की सभी दवाइयाँ ले ली हैं!' : 'All medicines taken for today!'}</p>
+          <p class="font-headline-md">${t.patient_home_all_taken || 'All medicines taken for today!'}</p>
         </div>
       `;
     }
@@ -392,7 +689,7 @@ window.render_patient_home = function() {
             <span class="material-symbols-outlined text-on-secondary-container">report_problem</span>
           </div>
           <div class="flex-1">
-            <h3 class="font-label-lg text-label-lg text-secondary">${state.selectedLanguage === 'hi' ? 'दवाई छूट गई है' : 'Missed Medicine'}</h3>
+            <h3 class="font-label-lg text-label-lg text-secondary">${t.patient_home_missed_med || 'Missed Medicine'}</h3>
             <p class="font-body-md text-body-md">${missed.title} - ${missed.time}</p>
           </div>
           <span class="material-symbols-outlined text-outline">chevron_right</span>
@@ -417,18 +714,44 @@ window.render_patient_reminders = function() {
   const list = document.getElementById('patient-reminders-list');
   if (!list) return;
 
+  const lang = state.selectedLanguage || 'hi';
+  const t = translations[lang] || translations.hi;
+
+  const headingTitle = document.getElementById('reminders-heading-title');
+  if (headingTitle) headingTitle.innerText = lang === 'hi' ? 'दवाई याद-दहानी' : 'Medicine Reminders';
+
+  const headingSub = document.getElementById('reminders-heading-sub');
+  if (headingSub) headingSub.innerText = lang === 'hi' ? 'दवा की खुराक ट्रैक करें। पूरा करने के लिए चेक दबाएं।' : 'Keep track of your medicine doses. Press Check to complete.';
+
+  const hydrationTitle = document.getElementById('reminders-hydration-title');
+  if (hydrationTitle) hydrationTitle.innerText = lang === 'hi' ? 'जलयोजन चेतावनी' : 'Hydration Alert';
+
+  const hydrationSub = document.getElementById('reminders-hydration-sub');
+  if (hydrationSub) hydrationSub.innerText = lang === 'hi' ? 'अभी एक गिलास गुनगुना पानी पिएं।' : 'Drink a glass of warm water now.';
+
+  const hydrationDone = document.getElementById('reminders-hydration-done');
+  if (hydrationDone) hydrationDone.innerText = lang === 'hi' ? 'हो गया' : 'Done';
+
   const reminders = window.KB_DB.getReminders(state.currentUser.id);
   if (reminders.length === 0) {
-    list.innerHTML = `<p class="text-center py-10 text-on-surface-variant">No reminders scheduled for today.</p>`;
+    list.innerHTML = `<p class="text-center py-10 text-on-surface-variant">${lang === 'hi' ? 'आज के लिए कोई अनुस्मारक निर्धारित नहीं है।' : 'No reminders scheduled for today.'}</p>`;
     return;
   }
 
   list.innerHTML = reminders.map(r => {
     let icon = 'pill';
     let colorClass = 'text-primary bg-primary-container';
-    let statusLabel = 'Scheduled';
+    
+    // Status translations
+    let statusLabel = lang === 'hi' ? 'निर्धारित' : 'Scheduled';
     let statusColor = 'text-on-surface-variant';
-    let actions = `<button class="px-4 py-2 bg-primary text-on-primary rounded-xl text-sm font-bold active:scale-95" onclick="changeReminderState('${r.id}', 'completed')">Take</button>`;
+    
+    // Action labels translations
+    const takeLabel = lang === 'hi' ? 'दवाई लें' : 'Take';
+    const takeNowLabel = lang === 'hi' ? 'अब लें' : 'Take Now';
+    const resetLabel = lang === 'hi' ? 'रीसेट' : 'Reset';
+
+    let actions = `<button class="px-4 py-2 bg-primary text-on-primary rounded-xl text-sm font-bold active:scale-95" onclick="changeReminderState('${r.id}', 'completed')">${takeLabel}</button>`;
 
     if (r.type === 'doctor_follow_up') {
       icon = 'medical_services';
@@ -436,16 +759,16 @@ window.render_patient_reminders = function() {
     }
 
     if (r.status === 'completed') {
-      statusLabel = 'Completed';
+      statusLabel = lang === 'hi' ? 'पूरा हुआ' : 'Completed';
       statusColor = 'text-tertiary font-bold';
       actions = `<span class="material-symbols-outlined text-tertiary">check_circle</span>`;
     } else if (r.status === 'missed') {
-      statusLabel = 'Missed';
+      statusLabel = lang === 'hi' ? 'छूट गई' : 'Missed';
       statusColor = 'text-error font-bold';
       actions = `
         <div class="flex gap-2">
-          <button class="px-3 py-1 bg-primary text-on-primary rounded-lg text-xs" onclick="changeReminderState('${r.id}', 'completed')">Take Now</button>
-          <button class="px-3 py-1 bg-outline-variant text-on-surface-variant rounded-lg text-xs" onclick="changeReminderState('${r.id}', 'scheduled')">Reset</button>
+          <button class="px-3 py-1 bg-primary text-on-primary rounded-lg text-xs" onclick="changeReminderState('${r.id}', 'completed')">${takeNowLabel}</button>
+          <button class="px-3 py-1 bg-outline-variant text-on-surface-variant rounded-lg text-xs" onclick="changeReminderState('${r.id}', 'scheduled')">${resetLabel}</button>
         </div>
       `;
     }
@@ -458,7 +781,7 @@ window.render_patient_reminders = function() {
           </div>
           <div>
             <h4 class="font-headline-md text-headline-md leading-tight">${r.title}</h4>
-            <p class="text-sm text-on-surface-variant mt-1">Time: ${r.time} • <span class="${statusColor}">${statusLabel}</span></p>
+            <p class="text-sm text-on-surface-variant mt-1">${lang === 'hi' ? 'समय' : 'Time'}: ${r.time} • <span class="${statusColor}">${statusLabel}</span></p>
           </div>
         </div>
         <div>${actions}</div>
@@ -478,9 +801,18 @@ window.render_patient_records = function() {
   const container = document.getElementById('patient-records-list');
   if (!container) return;
 
+  const lang = state.selectedLanguage || 'hi';
+  const t = translations[lang] || translations.hi;
+
+  const headingTitle = document.getElementById('records-heading-title');
+  if (headingTitle) headingTitle.innerText = t.records_title || "Swasthya Record";
+
+  const headingSub = document.getElementById('records-heading-sub');
+  if (headingSub) headingSub.innerText = t.records_sub || "Your complete medical history";
+
   const consultations = window.KB_DB.getConsultations(state.currentUser.id);
   if (consultations.length === 0) {
-    container.innerHTML = `<p class="text-center py-10">No consultations logged yet.</p>`;
+    container.innerHTML = `<p class="text-center py-10">${lang === 'hi' ? 'अभी तक कोई परामर्श दर्ज नहीं किया गया है।' : 'No consultations logged yet.'}</p>`;
     return;
   }
 
@@ -498,18 +830,18 @@ window.render_patient_records = function() {
           </span>
         </div>
         <div>
-          <h4 class="font-label-lg text-primary uppercase text-xs">AI Consultation Summary</h4>
+          <h4 class="font-label-lg text-primary uppercase text-xs">${lang === 'hi' ? 'एआई परामर्श सारांश' : 'AI Consultation Summary'}</h4>
           <p class="text-body-md mt-1 font-medium">${c.aiSummary || c.notes}</p>
         </div>
         <div>
-          <h4 class="font-label-lg text-primary uppercase text-xs">Prescribed Care Plan</h4>
+          <h4 class="font-label-lg text-primary uppercase text-xs">${lang === 'hi' ? 'निर्धारित देखभाल योजना' : 'Prescribed Care Plan'}</h4>
           <ul class="list-disc pl-5 mt-1 text-on-surface-variant space-y-1">
             ${c.medications.map(m => `<li><strong>${m.name}</strong> - ${m.instructions} (Schedule: ${m.scheduleTime})</li>`).join('')}
           </ul>
         </div>
         <div class="bg-surface-container-low p-4 rounded-xl flex items-center justify-between text-sm">
-          <span>Next Follow-up: <strong>${c.followUpDate.toLocaleDateString()}</strong></span>
-          <button class="text-primary font-bold text-xs" onclick="navigateTo('consultation_summary', { consId: '${c.id}' })">VIEW FULL NOTE</button>
+          <span>${lang === 'hi' ? 'अगला फॉलो-अप' : 'Next Follow-up'}: <strong>${c.followUpDate.toLocaleDateString()}</strong></span>
+          <button class="text-primary font-bold text-xs" onclick="navigateTo('consultation_summary', { consId: '${c.id}' })">${lang === 'hi' ? 'पूर्ण विवरण देखें' : 'VIEW FULL NOTE'}</button>
         </div>
       </div>
     `;
@@ -538,13 +870,15 @@ function updateVoiceOverlayUI() {
   const ripple = overlay.querySelector('.voice-pulse');
 
   const phraseData = voiceSimulations[state.selectedVoiceLanguage];
+  const lang = state.selectedVoiceLanguage || 'hi';
+  const isHi = lang === 'hi';
 
   if (state.simulatedVoiceState === 'listening') {
-    title.innerText = "Listening...";
+    title.innerText = isHi ? "सुन रहा हूँ..." : "Listening...";
     title.className = "font-headline-lg-mobile text-secondary font-bold";
     text.innerText = `"..."`;
     ripple.classList.add('voice-pulse');
-    btn.innerHTML = 'Stop Recording';
+    btn.innerHTML = isHi ? 'रिकॉर्डिंग रोकें' : 'Stop Recording';
     btn.className = "w-full bg-error text-on-error font-label-lg py-4 rounded-xl shadow-lg";
     btn.onclick = () => {
       state.simulatedVoiceState = 'processing';
@@ -558,11 +892,13 @@ function updateVoiceOverlayUI() {
       }
     }, 1500);
   } else if (state.simulatedVoiceState === 'processing') {
-    title.innerText = "Processing Speech...";
+    title.innerText = isHi ? "आवाज को संसाधित किया जा रहा है..." : "Processing Speech...";
     title.className = "font-headline-lg-mobile text-primary font-bold animate-pulse";
     text.innerText = `"${phraseData.phrase}"`;
     ripple.classList.remove('voice-pulse');
-    btn.innerHTML = '<span class="material-symbols-outlined animate-spin mr-2">progress_activity</span> Generating AI Summary...';
+    btn.innerHTML = isHi 
+      ? '<span class="material-symbols-outlined animate-spin mr-2">progress_activity</span> एआई सारांश उत्पन्न किया जा रहा है...'
+      : '<span class="material-symbols-outlined animate-spin mr-2">progress_activity</span> Generating AI Summary...';
     btn.className = "w-full bg-primary-container text-on-primary-container font-label-lg py-4 rounded-xl shadow-lg flex items-center justify-center";
     btn.onclick = null;
 
@@ -572,7 +908,7 @@ function updateVoiceOverlayUI() {
       updateVoiceOverlayUI();
     }, 2000);
   } else if (state.simulatedVoiceState === 'done') {
-    title.innerText = "Interaction Saved!";
+    title.innerText = isHi ? "बातचीत सहेज ली गई!" : "Interaction Saved!";
     title.className = "font-headline-lg-mobile text-tertiary font-bold";
     
     // Save to DB
@@ -590,16 +926,16 @@ function updateVoiceOverlayUI() {
 
     text.innerHTML = `
       <div class="space-y-3 text-left">
-        <p class="text-xs uppercase text-outline font-bold">Speech Transcript (${phraseData.languageName})</p>
+        <p class="text-xs uppercase text-outline font-bold">${isHi ? 'भाषण प्रतिलेख' : 'Speech Transcript'} (${phraseData.languageName === 'Hindi' && isHi ? 'हिंदी' : phraseData.languageName})</p>
         <p class="italic font-voice-caption text-on-surface">"${phraseData.phrase}"</p>
         <div class="border-t border-outline-variant/50 my-2 pt-2">
-          <p class="text-xs uppercase text-primary font-bold flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">auto_awesome</span> AI Clinical Summary</p>
+          <p class="text-xs uppercase text-primary font-bold flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">auto_awesome</span> ${isHi ? 'एआई नैदानिक सारांश' : 'AI Clinical Summary'}</p>
           <p class="text-sm font-medium text-on-surface-variant">${phraseData.aiSummary}</p>
         </div>
       </div>
     `;
     
-    btn.innerHTML = 'Done & View History';
+    btn.innerHTML = isHi ? 'हो गया और इतिहास देखें' : 'Done & View History';
     btn.className = "w-full bg-tertiary text-on-tertiary font-label-lg py-4 rounded-xl shadow-lg";
     btn.onclick = () => {
       overlay.classList.add('hidden');
@@ -620,6 +956,9 @@ window.render_consultation_summary = function(params) {
   const cons = window.KB_DB.getState().consultations.find(c => c.id === consId) || window.KB_DB.getState().consultations[0];
   if (!cons) return;
 
+  const lang = state.selectedLanguage || 'hi';
+  const t = translations[lang] || translations.hi;
+
   const doc = window.KB_DB.getDoctor(cons.doctorId);
   const patient = window.KB_DB.getPatient(cons.patientId);
 
@@ -633,6 +972,32 @@ window.render_consultation_summary = function(params) {
     audioText.innerText = `"${cons.aiSummary}"`;
   }
 
+  // Heading and static sections translation
+  const heading = document.querySelector('#consultation_summary h2');
+  if (heading) {
+    heading.innerText = lang === 'hi' ? 'परामर्श सारांश' : 'Consultation Summary';
+  }
+
+  const voiceTitle = document.querySelector('#consultation_summary span.text-primary');
+  if (voiceTitle) {
+    voiceTitle.innerHTML = `<span class="material-symbols-outlined text-[16px]">play_circle</span> ${lang === 'hi' ? 'अनुकरणित आवाज नुस्खा' : 'Simulated Voice prescription'}`;
+  }
+
+  const playBtn = document.querySelector('#consultation_summary button.text-secondary');
+  if (playBtn) {
+    playBtn.innerHTML = `<span class="material-symbols-outlined text-[14px]">volume_up</span> ${lang === 'hi' ? 'आवाज सुनें' : 'Play Voice'}`;
+  }
+
+  const medsTitle = document.querySelector('#consultation_summary h4.font-label-lg');
+  if (medsTitle) {
+    medsTitle.innerText = lang === 'hi' ? 'निर्धारित दवाएं' : 'Prescribed Medications';
+  }
+
+  const recoveryTitle = document.querySelector('#consultation_summary div.border-t h4.font-label-lg');
+  if (recoveryTitle) {
+    recoveryTitle.innerText = lang === 'hi' ? 'दैनिक रिकवरी व्यायाम' : 'Daily Recovery Exercises';
+  }
+
   // Medications list
   const medContainer = document.getElementById('cons-summary-meds');
   if (medContainer) {
@@ -642,7 +1007,7 @@ window.render_consultation_summary = function(params) {
         <div>
           <h4 class="font-bold text-on-surface">${m.name}</h4>
           <p class="text-sm text-on-surface-variant">${m.instructions}</p>
-          <span class="inline-block mt-1 bg-primary/10 text-primary text-xs font-bold px-2 py-0.5 rounded">Time: ${m.scheduleTime}</span>
+          <span class="inline-block mt-1 bg-primary/10 text-primary text-xs font-bold px-2 py-0.5 rounded">${lang === 'hi' ? 'समय' : 'Time'}: ${m.scheduleTime}</span>
         </div>
       </div>
     `).join('');
@@ -661,7 +1026,9 @@ window.render_consultation_summary = function(params) {
   }
 
   // Disclaimer
-  document.getElementById('cons-summary-disclaimer').innerText = "Health guidance is informational and does not replace professional medical advice. AI-generated information is for assistance only.";
+  document.getElementById('cons-summary-disclaimer').innerText = lang === 'hi'
+    ? "स्वास्थ्य मार्गदर्शन सूचनात्मक है और यह पेशेवर चिकित्सा सलाह का विकल्प नहीं है। एआई-जनित जानकारी केवल सहायता के लिए है।"
+    : "Health guidance is informational and does not replace professional medical advice. AI-generated information is for assistance only.";
 };
 
 

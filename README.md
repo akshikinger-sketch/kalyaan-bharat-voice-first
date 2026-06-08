@@ -9,7 +9,7 @@ Kalyaan Bharat is a voice-first, family-centric healthcare continuity platform d
 
 Unlike traditional telemedicine marketplaces, Kalyaan Bharat is a **continuity of care platform**. It does not treat healthcare as a series of one-off transactional video calls; instead, it establishes an ongoing record of voice history, care plan adjustments, community visits, and family updates.
 
-1. **Voice-First (Radical Accessibility)**: Elderly users can complete key actions, report pain/symptoms, and review instructions by tapping a single orange mic button ("Boliye") speaking in their native language (Hindi, Marathi, Bengali, Tamil, English).
+1. **Voice-First (Radical Accessibility)**: Elderly users can complete key actions, report pain/symptoms, and review instructions by tapping a single orange mic button ("Boliye") speaking in their preferred language (Hindi, English).
 2. **Continuity of Care**: Medical records, consultation notes, and voice interactions persist across visits on a centralized patient health timeline.
 3. **Family-Centric Reassurance**: Caregivers can monitor the vitals, medication adherence, and alerts of elderly family members remotely from a dedicated dashboard.
 4. **Human-in-the-Loop**: AI services summarize voice interactions and consultations, but never diagnose or prescribe. All medical decisions are drafted by Doctors and validated by Community Health Workers.
@@ -29,7 +29,7 @@ Unlike traditional telemedicine marketplaces, Kalyaan Bharat is a **continuity o
 
 ## 🛠️ System Modules
 
-- **Module 1: Authentication & Onboarding**: Implements mobile log entry, 4-digit mock OTP verification, and language choices (Hindi, English, Marathi).
+- **Module 1: Authentication & Onboarding**: Implements mobile log entry, 4-digit mock OTP verification, and language choices (Hindi, English).
 - **Module 2: DPDP Act 2023 Consent (Ethical Rules)**: Prompts users on privacy, explaining data usage. Includes a voice-enabled "Listen" playback feature.
 - **Module 3: Profile Setup**: Collects name, age, and gender, and allows linking caregivers.
 - **Module 4: Patient Dashboard & Voice Interaction**: Features a large mic button that transcribes speech in real-time, stores voice recordings, and triggers clinical summaries.
