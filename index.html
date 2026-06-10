@@ -752,8 +752,15 @@
         </div>
 
         <div class="space-y-2 border-t border-outline-variant/30 pt-4">
-          <p class="text-xs font-bold text-primary uppercase flex items-center gap-1"><span class="material-symbols-outlined text-sm">auto_awesome</span> AI Clinical Summary</p>
-          <p id="voice-history-ai-summary" class="text-sm font-medium text-on-surface-variant leading-relaxed">"Summary..."</p>
+          <div class="flex justify-between items-center">
+            <p class="text-xs font-bold text-primary uppercase flex items-center gap-1">
+              <span class="material-symbols-outlined text-sm">auto_awesome</span> AI Clinical Summary
+            </p>
+            <span class="text-[10px] text-secondary font-bold uppercase tracking-wider bg-secondary-fixed px-2 py-0.5 rounded-full flex items-center gap-0.5 cursor-pointer active:scale-95 transition-all" onclick="playAiSummary()">
+              <span class="material-symbols-outlined text-[12px]">volume_up</span> CLICK TO HEAR
+            </span>
+          </div>
+          <p id="voice-history-ai-summary" class="text-sm font-medium text-on-surface-variant leading-relaxed cursor-pointer hover:bg-surface-container-low p-2 rounded-lg transition-all" onclick="playAiSummary()">"Summary..."</p>
         </div>
       </div>
     </div>
@@ -999,6 +1006,9 @@
         speech = "कल्याण भारत में आपका स्वागत है। कृपया अपनी भाषा चुनें और आगे बढ़ें बटन दबाएं।";
       }
       if ('speechSynthesis' in window) {
+        if (typeof window.speechSynthesis.cancel === 'function') {
+          window.speechSynthesis.cancel();
+        }
         const u = new SpeechSynthesisUtterance(speech);
         u.lang = state.selectedLanguage === 'hi' ? 'hi-IN' : 'en-IN';
         window.speechSynthesis.speak(u);

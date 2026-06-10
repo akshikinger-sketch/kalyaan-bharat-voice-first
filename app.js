@@ -423,6 +423,9 @@ function playConsentVoice() {
   // Simple simulated voice output via Web Speech API if supported, or fallback
   const speechText = document.getElementById('consent-text').innerText;
   if ('speechSynthesis' in window) {
+    if (typeof window.speechSynthesis.cancel === 'function') {
+      window.speechSynthesis.cancel();
+    }
     const utterance = new SpeechSynthesisUtterance(speechText);
     utterance.lang = state.selectedLanguage === 'hi' ? 'hi-IN' : 'en-IN';
     utterance.rate = 0.9;
@@ -1510,12 +1513,30 @@ window.render_doctor_voice_history = function(params) {
 function playAudioHistory() {
   const audioText = document.getElementById('voice-history-transcript').innerText;
   if ('speechSynthesis' in window) {
+    if (typeof window.speechSynthesis.cancel === 'function') {
+      window.speechSynthesis.cancel();
+    }
     const utterance = new SpeechSynthesisUtterance(audioText);
     utterance.lang = 'hi-IN'; // hindi accent for simulated voice log
     utterance.rate = 0.9;
     window.speechSynthesis.speak(utterance);
   } else {
     alert("Audio playback simulation started.");
+  }
+}
+
+function playAiSummary() {
+  const summaryText = document.getElementById('voice-history-ai-summary').innerText;
+  if ('speechSynthesis' in window) {
+    if (typeof window.speechSynthesis.cancel === 'function') {
+      window.speechSynthesis.cancel();
+    }
+    const utterance = new SpeechSynthesisUtterance(summaryText);
+    utterance.lang = 'en-IN'; // English accent for clinical summary
+    utterance.rate = 0.95;
+    window.speechSynthesis.speak(utterance);
+  } else {
+    alert("AI Summary playback: " + summaryText);
   }
 }
 
